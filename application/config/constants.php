@@ -85,6 +85,6 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 define('SITE_TITLE', 'Proverbs Everyday');
-define('RESOURCES_FOLDER', 'http://localhost/proverbs_everyday_admin/resources');
+define('RESOURCES_FOLDER', 'http://localhost/proverbs_everyday_admin/resources/');
 define('DATE_TIME_ZONE', 'Asia/Singapore');
 define('SYSTEM_DATE_FORMAT', 'd m Y');

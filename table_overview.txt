@@ -1,0 +1,34 @@
+Proverbs of Solomon, son of David, king of Israel: (Proverb 1:1 YLT)
+
+Translation
+	translation_id
+	name
+	abbr
+	copyright
+	status
+	date_added
+	last_updated
+
+
+
+
+Chapter
+	chapter_id
+	total_verses
+	status
+	date_added
+	last_updated
+
+
+
+
+Verse
+	verse_id
+	chapter_id
+	translation_id
+	verse_no
+	verse
+	status
+	date_added
+	last_updated
+

@@ -11,8 +11,8 @@
 	
 ***********************************************************************************/
 /* Migration version: 
- * 11 Dec 2016, 10:15PM
- * 20161211221516
+ * 19 Dec 2016, 10:15PM
+ * 20161219221516
  */
 class Migration_Inital_setup extends CI_Migration
 {
@@ -41,8 +41,8 @@ class Migration_Inital_setup extends CI_Migration
 		$last_updated = $date_added = $this->datetime_helper->now('Y-m-d H:i:s');
 
 		$script = "
-			DROP TABLE IF EXISTS script_generator.`ci_sessions`;
-			CREATE TABLE script_generator.`ci_sessions` (
+			DROP TABLE IF EXISTS `ci_sessions`;
+			CREATE TABLE `ci_sessions` (
 				`id` varchar(40) NOT NULL,
 				`ip_address` varchar(45) NOT NULL,
 				`timestamp` int(10) unsigned NOT NULL DEFAULT '0',
@@ -50,17 +50,57 @@ class Migration_Inital_setup extends CI_Migration
 				KEY `ci_sessions_timestamp` (`timestamp`)
 			) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+			DROP TABLE IF EXISTS `translation`;
+			CREATE TABLE `translation` (
+				`translation_id` INT(3) UNSIGNED NOT NULL AUTO_INCREMENT,
+				`name` VARCHAR (512) NOT NULL,
+				`abbr` VARCHAR(512) NOT NULL,
+				`copyright` VARCHAR(512) NOT NULL,
+				`status` VARCHAR(512) NOT NULL,
+				`date_added` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+				`last_updated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+				PRIMARY KEY(`translation_id`)
+			) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+
+			DROP TABLE IF EXISTS `chapter`;
+			CREATE TABLE `chapter` (
+				`chapter_id` INT(3) UNSIGNED NOT NULL AUTO_INCREMENT,
+				`total_verses` INT(4) UNSIGNED NOT NULL DEFAULT 0,
+				`status` VARCHAR(512) NOT NULL,
+				`date_added` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+				`last_updated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+				PRIMARY KEY(`chapter_id`)
+			) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+
+			DROP TABLE IF EXISTS `verse`;
+			CREATE TABLE `verse` (
+				`verse_id` INT(3) UNSIGNED  NOT NULL AUTO_INCREMENT,
+				`chapter_id` INT(3) UNSIGNED NOT NULL,
+				`translation_id` INT(3) UNSIGNED NOT NULL,
+				`verse_no` INT(3) UNSIGNED NOT NULL,
+				`verse` VARCHAR(512) NOT NULL,
+				`status` VARCHAR(512) NOT NULL,
+				`date_added` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+				`last_updated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+				PRIMARY KEY(`verse_id`)
+			) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+
 			DROP TABLE IF EXISTS `user_log`;
             CREATE TABLE `user_log` (
-              `ulid` int(11) NOT NULL AUTO_INCREMENT,
-              `user_id` int(11) NOT NULL,
+              `ulid` INT(3) NOT NULL AUTO_INCREMENT,
+              `user_id` INT(3) NOT NULL,
               `message` text NOT NULL,
-              `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+              `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
               PRIMARY KEY (`ulid`)
             ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
-            DROP TABLE IF EXISTS script_generator.`user`;
-			CREATE TABLE script_generator.`user` (
+
+            DROP TABLE IF EXISTS `user`;
+			CREATE TABLE `user` (
 				`user_id` INT(3) UNSIGNED NOT NULL AUTO_INCREMENT,
 				`username` VARCHAR(128) NOT NULL,
 				`password_hash` VARCHAR(512) NOT NULL,
@@ -82,11 +122,17 @@ class Migration_Inital_setup extends CI_Migration
 	private function _down_script()
 	{
 		$script = "
-			DROP TABLE IF EXISTS script_generator.`ci_sessions`;
+			DROP TABLE IF EXISTS `ci_sessions`;
 
-			DROP TABLE IF EXISTS script_generator.`user_log`;
+			DROP TABLE IF EXISTS `translation`;
 
-			DROP TABLE IF EXISTS script_generator.`user`;
+			DROP TABLE IF EXISTS `chapter`;
+
+			DROP TABLE IF EXISTS `verse`;
+
+			DROP TABLE IF EXISTS `user_log`;
+
+			DROP TABLE IF EXISTS `user`;
 		";
 
 		return $script;
