@@ -29,13 +29,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Welcome to Script Generator</h1>
+                    <h1 class="page-header">Welcome to <?=SITE_TITLE;?></h1>
                     <p class="lead">You are logged in as <span class="text-primary"><?=$this->session->userdata('name');?></span>.</p>
                     <?php $this->load->view('_snippets/message_box'); ?>
                     <ul>
-                        <li>Script Generator is a simple tool built to assist in exporting commonly used scripts.</li>
-                        <li>There is no CRUD for this Admin Panel.</li>
-                        <li>The main purpose of the login is to prevent access of this tool to strangers of this site.</li>
+                        <li>Backend UI for updating Proverbs database.</li>
                     </ul>
                 </div>
             </div>

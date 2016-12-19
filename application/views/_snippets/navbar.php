@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<?=site_url();?>">Script Generator</a>
+        <a class="navbar-brand" href="<?=site_url();?>"><?=SITE_TITLE;?></a>
     </div>
     <!-- /.navbar-header -->
 
