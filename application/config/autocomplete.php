@@ -54,16 +54,13 @@
  * @property Datetime_helper $datetime_helper
  * @property Debug_helper $debug_helper
  *
- * @property Authenticate $Authenticate
- * @property User $User
- * @property Personal_profile $Personal_profile
- *
  * @property User_log_model $User_log_model
  * @property User_model $User_model
  * @property Migration_model $Migration_model
- * @property Personal_profile_model $Personal_profile_model
  * @property Script_runner_model $Script_runner_model
- * @property Web_safe_colour_model $Web_safe_colour_model
+ * @property Translation_model $Translation_model
+ * @property Chapter_model $Chapter_model
+ * @property Verse_model $Verse_model
  */
 class CI_Controller {};
 class MY_Controller extends CI_Controller {};
@@ -111,17 +108,13 @@ class MY_Controller extends CI_Controller {};
  * @property Datetime_helper $datetime_helper
  * @property Debug_helper $debug_helper
  *
- * @property Authenticate $Authenticate
- * @property User $User
- * @property Personal_profile $Personal_profile
- * @property Web_safe_colour $Web_safe_colour
- *
  * @property User_log_model $User_log_model
  * @property User_model $User_model
  * @property Migration_model $Migration_model
- * @property Personal_profile_model $Personal_profile_model
  * @property Script_runner_model $Script_runner_model
- * @property Web_safe_colour_model $Web_safe_colour_model
+ * @property Translation_model $Translation_model
+ * @property Chapter_model $Chapter_model
+ * @property Verse_model $Verse_model
  */
 class CI_Model {};
 
@@ -165,12 +158,14 @@ class CI_Model {};
  *
  * --- CUSTOM LIBRARIES ---
  * @property Datetime_helper $datetime_helper
+ * @property Debug_helper $debug_helper
  *
  * @property User_log_model $User_log_model
  * @property User_model $User_model
  * @property Migration_model $Migration_model
- * @property Personal_profile_model $Personal_profile_model
  * @property Script_runner_model $Script_runner_model
- * @property Web_safe_colour_model $Web_safe_colour_model
+ * @property Translation_model $Translation_model
+ * @property Chapter_model $Chapter_model
+ * @property Verse_model $Verse_model
  */
 class CI_Migration {};
