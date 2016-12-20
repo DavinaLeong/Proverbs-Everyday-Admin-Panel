@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	- File Info -
 		File name		: body_resources.php
 		Author(s)		: DAVINA Leong Shi Yun
-		Date Created	: 11 Dec 2016
+		Date Created	: 20 Dec 2016
 
 	- Contact Info -
 		Email	: leong.shi.yun@gmail.com

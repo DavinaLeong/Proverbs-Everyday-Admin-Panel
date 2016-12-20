@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	- File Info -
 		File name		: head_resources.php
 		Author(s)		: DAVINA Leong Shi Yun
-		Date Created	: 11 Dec 2016
+		Date Created	: 20 Dec 2016
 
 	- Contact Info -
 		Email	: leong.shi.yun@gmail.com
@@ -24,6 +24,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!-- Custom CSS -->
 <link href="<?=RESOURCES_FOLDER;?>vendor/sb-admin-2/dist/css/sb-admin-2.min.css" rel="stylesheet" />
+
+<!-- Proverbs Everyday Admin CSS -->
+<link href="<?=RESOURCES_FOLDER;?>pe/styles_admin_main.css" rel="stylesheet" />
 
 <!-- Font Awesome Icons -->
 <link href="<?=RESOURCES_FOLDER;?>vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />

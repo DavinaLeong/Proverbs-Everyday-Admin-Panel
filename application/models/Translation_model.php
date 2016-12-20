@@ -36,7 +36,7 @@ class Translation_model extends CI_Model
         if($translation_id !== FALSE)
         {
             $query = $this->db->get_where(TABLE_TRANSLATION, array('translation_id' => $translation_id));
-            return $query->result_array();
+            return $query->row_array();
         }
         else
         {

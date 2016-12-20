@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <li class="active">Home</li>
             </ol>
 
-            <div class="row">
+            <div id="content-wrapper" class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Welcome to <?=SITE_TITLE;?></h1>
                     <p class="lead">You are logged in as <span class="text-primary"><?=$this->session->userdata('name');?></span>.</p>

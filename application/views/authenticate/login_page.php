@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <?php $this->load->view('_snippets/meta'); ?>
     <?php $this->load->view('_snippets/head_resources'); ?>
-    <link href="<?=RESOURCES_FOLDER;?>styles_parsley.css" rel="stylesheet" type="text/css">
+    <link href="<?=RESOURCES_FOLDER;?>pe/styles_parsley.css" rel="stylesheet" type="text/css">
     <style>
         html, body {
             width: 100%;
@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
 
         body {
-            background: url(<?=RESOURCES_FOLDER;?>images/linedpaper.png) #000;
+            background: url(<?=RESOURCES_FOLDER;?>pe/images/linedpaper.png) #000;
             background-size: cover;
         }
     </style>
@@ -35,7 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-md-4 col-md-offset-4">
             <div class="login-panel panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title text-center"><img data-toggle="tooltip" title="<?=SITE_TITLE;?>" src="<?=RESOURCES_FOLDER;?>images/openbook_admin_128.png" alt="site logo" width="64" height="64" /></h3>
+                    <h3 class="panel-title text-center"><img data-toggle="tooltip" title="<?=SITE_TITLE;?>" src="<?=RESOURCES_FOLDER;?>pe/images/openbook_admin_128.png" alt="site logo" width="64" height="64" /></h3>
                 </div>
                 <div class="panel-body">
                     <form method="post" data-parsley-validate>
