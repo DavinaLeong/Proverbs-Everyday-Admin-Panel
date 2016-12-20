@@ -13,6 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ***********************************************************************************/
 ?><!-- Navigation -->
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <!-- header start -->
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -22,8 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </button>
         <a class="navbar-brand" href="<?=site_url();?>"><?=SITE_TITLE;?></a>
     </div>
-    <!-- /.navbar-header -->
+    <!-- header end -->
 
+    <!-- top-links start -->
     <ul class="nav navbar-top-links navbar-right">
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -34,26 +36,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </ul>
         </li>
     </ul>
-    <!-- /.navbar-top-links -->
+    <!-- top-links end -->
 
+    <!-- side-links start -->
     <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
                 <li>
-                    <a href="#"><i class="fa fa-download fa-fw"></i> Export<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-book fa-fw"></i> Translation<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="<?=site_url('page/new_unity_csharp');?>"><i class="cdc-c-sharp"></i> Unity C&#35; Script</a>
+                            <a href="<?=site_url('translation/browse_translation');?>">Browse Translations</a>
                         </li>
                         <li>
-                            <a href="<?=site_url('page/new_migration');?>"><i class="cdc-php"></i> Migrations</a>
+                            <a href="<?=site_url('translation/new_translation');?>">New Translation</a>
                         </li>
                     </ul>
-                    <!-- /.nav-second-level -->
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-file fa-fw"></i> Chapter<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="<?=site_url('chapter/browse_chapter');?>">Browse Chapters</a>
+                        </li>
+                        <li>
+                            <a href="<?=site_url('chapter/new_chapter');?>">New Chapter</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-file-text fa-fw"></i> Verse<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="<?=site_url('verse/browse_verse');?>">Browse Verses</a>
+                        </li>
+                        <li>
+                            <a href="<?=site_url('verse/new_verse');?>">New Verse</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
-        <!-- /.sidebar-collapse -->
     </div>
-    <!-- /.navbar-static-side -->
+    <!-- side-links end -->
 </nav>
