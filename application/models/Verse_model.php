@@ -24,6 +24,13 @@ class Verse_model extends CI_Model
         return $query->result_array();
     }
 
+    public function get_all_active()
+    {
+        $this->db->order_by('verse_id');
+        $query = $this->db->get_where(TABLE_VERSE, array('status' => 'Active'));
+        return $query->result_array();
+    }
+
     public function insert($verse=FALSE)
     {
         if($verse !== FALSE)

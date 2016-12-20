@@ -24,6 +24,13 @@ class Chapter_model extends CI_Model
         return $query->result_array();
     }
 
+    public function get_all_active()
+    {
+        $this->db->order_by('chapter_id');
+        $query = $this->db->get_where(TABLE_CHAPTER, array('status' => 'Active'));
+        return $query->result_array();
+    }
+
     public function get_by_chapter_id($chapter_id=FALSE)
     {
         if($chapter_id !== FALSE)

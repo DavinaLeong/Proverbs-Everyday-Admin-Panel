@@ -24,6 +24,13 @@ class Translation_model extends CI_Model
         return $query->result_array();
     }
 
+    public function get_all_active()
+    {
+        $this->db->order_by('name');
+        $query = $this->db->get_where(TABLE_TRANSLATION, array('status' => 'Active'));
+        return $query->result_array();
+    }
+
     public function get_by_translation_id($translation_id=FALSE)
     {
         if($translation_id !== FALSE)
