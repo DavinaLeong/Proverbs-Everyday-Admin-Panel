@@ -83,9 +83,92 @@ class Translation extends CI_Controller
         }
         else
         {
-            $this->session->set_userdata('message', 'Translation record not found.');
-            redirect('translation/browse_translation');
+            $this->_record_not_found();
         }
+    }
+
+    public function edit_translation($translation_id)
+    {
+        $this->User_log_model->validate_access();
+        $translation = $this->Translation_model->get_by_translation_id($translation_id);
+        if($translation)
+        {
+            $this->load->library('form_validation');
+            $this->_set_rules_edit_translation();
+
+            if($this->form_validation->run())
+            {
+                if($this->Translation_model->update($this->_prepare_edit_translation_array($translation)))
+                {
+                    $this->User_log_model->log_message('Translation record updated. | translation_id: ' . $translation_id);
+                    $this->session->set_userdata('message', 'Translation record updated.');
+                    redirect('translation/view_translation/' . $translation_id);
+                }
+                else
+                {
+                    $this->User_log_model->log_message('Unable to update Translation record. | translation_id: ' . $translation_id);
+                    $this->session->set_userdata('message', 'Unable to update Translation record');
+                }
+            }
+
+            $data = array(
+                'translation' => $translation,
+                'status_options' => $this->Translation_model->_status_array()
+            );
+            $this->load->view('translation/edit_translation_page', $data);
+        }
+        else
+        {
+            $this->_record_not_found();
+        }
+    }
+
+    private function _set_rules_edit_translation()
+    {
+        $this->form_validation->set_rules('name', 'Name', 'trim|required|max_length[512]');
+        $this->form_validation->set_rules('abbr', 'Abbr.', 'trim|required|max_length[512]');
+        $this->form_validation->set_rules('copyright', 'Copyright', 'trim|max_length[512]');
+        $status_str = implode(',', $this->Translation_model->_status_array());
+        $this->form_validation->set_rules('status', 'Status'. 'trim|required|in_list[' . $status_str . ']|max_length[512]');
+    }
+
+    private function _prepare_edit_translation_array($translation)
+    {
+        $translation['name'] = $this->input->post('name');
+        $translation['abbr'] = $this->input->post('abbr');
+        $translation['copyright'] = $this->input->post('copyright');
+        $translation['status'] = $this->input->post('status');
+        return $translation;
+    }
+
+    public function delete_translation($translation_id)
+    {
+        $this->User_log_model->validate_access();
+        if($this->Translation_model->get_by_translation_id($translation_id))
+        {
+            if($this->Translation_model->delete_by_translation_id($translation_id))
+            {
+                $this->User_log_model->log_message('Translation record deleted. | translation_id: ' . $translation_id);
+                $this->session->set_userdata('message', 'Translation record deleted.');
+                redirect('translation/browse_translation');
+            }
+            else
+            {
+                $this->User_log_model->log_message('Unable to delete Translation record. | translation_id: ' . $translation_id);
+                $this->session->set_userdata('message', 'Unable to delete Translation record.');
+                redirect('translation/view_translation/' . $translation_id);
+            }
+        }
+        else
+        {
+            $this->_record_not_found();
+        }
+    }
+
+    private function _record_not_found()
+    {
+        $this->session->set_userdata('message', 'Translation record not found');
+        redirect('translation/browse_translation');
     }
 	
 } // end Translation controller class

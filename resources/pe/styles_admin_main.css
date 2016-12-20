@@ -20,3 +20,11 @@
 .navbar-brand > img {
     display: inline-block;
 }
+
+.status-published {
+    color: #080;
+}
+
+.status-draft {
+    color: #c00;
+}

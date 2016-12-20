@@ -49,26 +49,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <?php endif;?>
                 <?php $this->load->view('_snippets/message_box'); ?>
 
-                <table id="translations_table" class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Abbr</th>
-                        <th>Status</th>
-                        <th>Last Updated</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach($translations as $key=>$translation): ?>
-                        <tr class="clickable" onclick="location.href = '<?=site_url("translation/view_translation/" . $translation['translation_id']);?>'">
-                            <td><?=$translation['name'];?></td>
-                            <td><?=$translation['abbr'];?></td>
-                            <td><?=$translation['status'];?></td>
-                            <td data-sort="<?=$translation['last_updated'];?>"><?=$this->datetime_helper->format_dd_mmm_yyyy_space($translation['last_updated']);?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                    </tbody>
-                </table>
+                <div class="row">
+                    <div class="col-md-11">
+
+                        <table id="translations_table" class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Abbr</th>
+                                <th>Status</th>
+                                <th>Last Updated</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach($translations as $key=>$translation): ?>
+                                <tr class="clickable" onclick="location.href = '<?=site_url("translation/view_translation/" . $translation['translation_id']);?>'">
+                                    <td><?=$translation['name'];?></td>
+                                    <td><?=$translation['abbr'];?></td>
+                                    <td><?=$translation['status'];?></td>
+                                    <td data-sort="<?=$translation['last_updated'];?>"><?=$this->datetime_helper->format_dd_mmm_yyyy_space($translation['last_updated']);?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
 
             </div>
         </div>

@@ -102,4 +102,12 @@ class Translation_model extends CI_Model
         }
     }
 
+    public function _status_array()
+    {
+        return array(
+            'Published',
+            'Draft'
+        );
+    }
+
 } // end Translation_model class

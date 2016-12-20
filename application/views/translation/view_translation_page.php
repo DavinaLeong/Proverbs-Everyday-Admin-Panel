@@ -48,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <?php $this->load->view('_snippets/message_box'); ?>
 
                     <div class="row">
-                        <div class="col-md-10">
+                        <div class="col-md-11">
 
                             <form id="view_translation_form" class="form-horizontal">
                                 <fieldset>
@@ -82,7 +82,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="form-group">
                                         <label class="col-md-2 control-label" for="status">Status</label>
                                         <div class="col-md-10">
-                                            <p class="form-control-static" id="status"><?=$translation['status'];?></p>
+                                            <p class="form-control-static status-<?=strtolower($translation['status']);?>" id="status"><?=$translation['status'];?></p>
                                         </div>
                                     </div>
                                     <div class="form-group">
