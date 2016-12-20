@@ -17,16 +17,16 @@ class Translation_model extends CI_Model
         return $this->db->count_all(TABLE_TRANSLATION);
     }
 
-    public function get_all()
+    public function get_all($order_by='name')
     {
-        $this->db->order_by('name');
+        $this->db->order_by($order_by);
         $query = $this->db->get(TABLE_TRANSLATION);
         return $query->result_array();
     }
 
-    public function get_all_active()
+    public function get_all_active($order_by='name')
     {
-        $this->db->order_by('name');
+        $this->db->order_by($order_by);
         $query = $this->db->get_where(TABLE_TRANSLATION, array('status' => 'Active'));
         return $query->result_array();
     }
@@ -100,6 +100,11 @@ class Translation_model extends CI_Model
         {
             return FALSE;
         }
+    }
+
+    public function _fields_list()
+    {
+        return $this->db->list_fields(TABLE_TRANSLATION);
     }
 
     public function _status_array()

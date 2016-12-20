@@ -38,7 +38,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-lg-12">
 
                 <div class="page-header">
-                    <h1>Translations</h1>
+                    <h1>Translations&nbsp;
+                        <div class="btn-group">
+                            <button id="action_dropdown" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-gavel fa-fw"></i> Action <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="<?=site_url('translation/export_translation');?>"><i class="fa fa-download fa-fw"></i> Export Records</a></li>
+                            </ul>
+                        </div>
+                    </h1>
                 </div>
                 <p class="lead">Click on a row to view a Translation record.</p>
                 <?php if( ! $translations):?>
