@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-1">
-                        <i class="fa fa-exclamation-triangle fa-2x"></i>
+                        <i class="text-danger fa fa-exclamation-triangle fa-3x"></i>
                     </div>
                     <div class="col-md-11">
                         <p>This action cannot be undone.</p>
@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger"><i class="fa fa-trash fa-fw"></i> Delete</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban fa-fw"></i> Cancel</button>
+                <a id="delete_record_btn" class="btn btn-danger" href="<?=$delete_url;?>"><i class="fa fa-trash fa-fw"></i> Delete</a>
+                <button id="cancel_delete_btn" type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban fa-fw"></i> Cancel</button>
             </div>
         </div>
     </div>

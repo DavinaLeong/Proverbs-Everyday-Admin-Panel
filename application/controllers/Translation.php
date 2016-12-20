@@ -75,7 +75,9 @@ class Translation extends CI_Controller
         if($translation)
         {
             $data = array(
-                'translation' => $translation
+                'translation' => $translation,
+                'record_name' => 'Translation',
+                'delete_url' => site_url('translation/delete_translation/' . $translation_id)
             );
             $this->load->view('translation/view_translation_page', $data);
         }

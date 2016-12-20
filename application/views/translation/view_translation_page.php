@@ -27,12 +27,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="page-wrapper">
         <div class="container-fluid">
             <ol class="breadcrumb">
-                <li><a href="<?=site_url('translation/browse_translations');?>">Translations</a></li>
+                <li><a href="<?=site_url('translation/browse_translation');?>">Translations</a></li>
                 <li class="active">Translation ID: <?=$translation['translation_id'];?></li>
             </ol>
 
             <div id="content-wrapper" class="row">
                 <div class="col-lg-12">
+
                     <h1 class="page-header">View Translation&nbsp;
                         <div class="btn-group">
                             <button id="action_dropdown" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a href="<?=site_url('translation/edit_translation/' . $translation['translation_id']);?>"><i class="fa fa-pencil-square-o fa-fw"></i> Edit</a></li>
-                                <li><a class="clickable"><i class="fa fa-trash-o fa-fw"></i> Delete</a></li>
+                                <li><a class="clickable" data-toggle="modal" data-target="#delete_modal"><i class="fa fa-trash-o fa-fw"></i> Delete</a></li>
                             </ul>
                         </div>
                     </h1>
@@ -101,6 +102,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         </div>
                     </div>
+
+                    <?php $this->load->view('_snippets/generic_delete_modal'); ?>
 
                 </div>
             </div>
