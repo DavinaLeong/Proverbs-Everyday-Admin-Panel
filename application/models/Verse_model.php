@@ -31,6 +31,60 @@ class Verse_model extends CI_Model
         return $query->result_array();
     }
 
+    public function get_by_verse_id($verse_id=FALSE)
+    {
+        if($verse_id !== FALSE)
+        {
+            $query = $this->db->get_where(TABLE_VERSE, array('verse_id' => $verse_id));
+            return $query->row_array();
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
+    public function get_by_verse_no($verse_no=FALSE)
+    {
+        if($verse_no !== FALSE)
+        {
+            $query = $this->db->get_where(TABLE_VERSE, array('verse_no' => $verse_no));
+            return $query->row_array();
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
+    public function get_by_chapter_no($chapter_no=FALSE)
+    {
+        if($chapter_no !== FALSE)
+        {
+            $this->db->order_by('verse_no');
+            $query = $this->db->get_where(TABLE_VERSE, array('chapter_no', $chapter_no));
+            return $query->result_array();
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
+    public function get_by_translation_id($translation_id=FALSE)
+    {
+        if($translation_id !== FALSE)
+        {
+            $this->db->order_by('verse_no');
+            $query = $this->db->get_where(TABLE_VERSE, array('translation_id', $translation_id));
+            return $query->result_array();
+        }
+        else
+        {
+
+        }
+    }
+
     public function insert($verse=FALSE)
     {
         if($verse !== FALSE)
@@ -91,11 +145,11 @@ class Verse_model extends CI_Model
         }
     }
 
-    public function delete_by_chapter_id($chapter_id=FALSE)
+    public function delete_by_chapter_no($chapter_no=FALSE)
     {
-        if($chapter_id)
+        if($chapter_no)
         {
-            $this->db->delete(TABLE_VERSE, array('chapter_id' => $chapter_id));
+            $this->db->delete(TABLE_VERSE, array('chapter_no' => $chapter_no));
             return $this->db->affected_rows();
         }
         else

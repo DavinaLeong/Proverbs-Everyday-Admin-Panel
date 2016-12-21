@@ -36,7 +36,7 @@ class Chapter_model extends CI_Model
         if($chapter_id !== FALSE)
         {
             $query = $this->db->get_where(TABLE_CHAPTER, array('chapter_id' => $chapter_id));
-            return $query->result_array();
+            return $query->row_array();
         }
         else
         {
@@ -49,6 +49,7 @@ class Chapter_model extends CI_Model
         if($chapter !== FALSE)
         {
             $temp_array = array(
+                'chapter_no' => $chapter['chapter_no'],
                 'total_verses' => $chapter['total_verses'],
                 'status' => $chapter['status']
             );
@@ -69,6 +70,7 @@ class Chapter_model extends CI_Model
         if($chapter !== FALSE)
         {
             $temp_array = array(
+                'chapter_no' => $chapter['chapter_no'],
                 'total_verse' => $chapter['total_verses'],
                 'status' => $chapter['status']
             );

@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 /**********************************************************************************
 	- File Info -
-		File name		: new_page.php
+		File name		: edit_page.php
 		Author(s)		: DAVINA Leong Shi Yun
 		Date Created	: 21 Dec 2016
 
@@ -11,6 +11,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		Mobile	: (+65) 9369 3752 [Singapore]
 
 ***********************************************************************************/
+/**
+ * @var $chapter
+ * @var $status_options
+ */
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,13 +29,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="page-wrapper">
         <div class="container-fluid">
             <ol class="breadcrumb">
-                <li><a href="<?=site_url('translation/browse_translation');?>">Chapters</a></li>
-                <li class="active">New Chapter</li>
+                <li><a href="<?=site_url('chapter/browse_chapter');?>">Chapters</a></li>
+                <li><a href="<?=site_url('chapter/view_chapter/' . $chapter['chapter_id']);?>">Chapter ID: <?=$chapter['chapter_id'];?></a></li>
+                <li class="active">Edit Chapter</li>
             </ol>
 
             <div id="content-wrapper" class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">New Chapter</h1>
+                    <h1 class="page-header">Edit Chapter</h1>
                     <?php $this->load->view('_snippets/validation_errors_box'); ?>
                     <?php $this->load->view('_snippets/message_box'); ?>
 
@@ -46,14 +51,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <label class="col-md-2 control-label" for="chapter_no">Chapter Number <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="number" id="chapter_no" name="chapter_no"
-                                                   value="<?=set_value('chapter_no');?> " required step="1" min="1" max="999" maxlength="3" />
+                                                   value="<?=set_value('chapter_no', $chapter['chapter_no']);?> " required step="1" min="1" max="999" maxlength="3" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-2 control-label" for="total_verses">Total Verses <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="number" id="total_verses" name="total_verses"
-                                                   value="<?=set_value('total_verses');?> " required step="1" min="1" max="999" maxlength="3" />
+                                                   value="<?=set_value('total_verses', $chapter['total_verses']);?> " required step="1" min="1" max="999" maxlength="3" />
                                         </div>
                                     </div>
                                 </fieldset>
@@ -64,7 +69,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="form-group">
                                         <label class="col-md-2 control-label" for="status">Status</label>
                                         <div class="col-md-10">
-                                            <p class="form-control-static" id="status">Draft</p>
+                                            <select class="form-control" id="status" name="status" required>
+                                                <?php foreach($status_options as $key=>$option): ?>
+                                                    <option id="status_<?=$key;?>" value="<?=$option;?>" <?=set_select('status', $option, ($chapter['status']==$option)); ?>><?=$option;?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Date Added</label>
+                                        <div class="col-md-10">
+                                            <p id="date_added" class="form-control-static"><?=$this->datetime_helper->format_dd_mmm_yyyy_hh_ii_ss($chapter['date_added']);?></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Last Updated</label>
+                                        <div class="col-md-10">
+                                            <p id="last_updated" class="form-control-static"><?=$this->datetime_helper->format_internet_standard($chapter['last_updated']);?></p>
                                         </div>
                                     </div>
                                 </fieldset>
