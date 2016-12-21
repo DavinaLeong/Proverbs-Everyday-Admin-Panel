@@ -123,16 +123,6 @@ class Translation extends CI_Controller
         }
     }
 
-    public function export_translation()
-    {
-        $this->User_log_model->validate_access();
-        $data = array(
-            'translations' => $this->Translation_model->get_all('translation_id'),
-            'fields_list' => $this->Translation_model->_fields_list()
-        );
-        $this->load->view('translation/export_template', $data);
-    }
-
     private function _set_rules_edit_translation()
     {
         $this->form_validation->set_rules('name', 'Name', 'trim|required|max_length[512]');
@@ -173,6 +163,18 @@ class Translation extends CI_Controller
         {
             $this->_record_not_found();
         }
+    }
+
+    public function export_translation()
+    {
+        $this->User_log_model->validate_access();
+        $data = array(
+            'table_name' => TABLE_TRANSLATION,
+            'id_field_name' => 'translation_id',
+            'records' => $this->Translation_model->get_all('translation_id'),
+            'fields_list' => $this->Translation_model->_fields_list()
+        );
+        $this->load->view('export/export_template', $data);
     }
 
     private function _record_not_found()

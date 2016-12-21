@@ -174,6 +174,18 @@ class Chapter extends CI_Controller
         }
     }
 
+    public function export_chapter()
+    {
+        $this->User_log_model->validate_access();
+        $data = array(
+            'table_name' => TABLE_CHAPTER,
+            'id_field_name' => 'chapter_id',
+            'records' => $this->Chapter_model->get_all(),
+            'fields_list' => $this->Chapter_model->_fields_list()
+        );
+        $this->load->view('export/export_template', $data);
+    }
+
     private function _record_not_found()
     {
         $this->session->set_userdata('message', 'Chapter record not found');

@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <?php if( ! $chapters):?>
                     <div id="no_records_box" class="alert alert-warning" role="alert">
                         <h4><i class="fa fa-exclamation fa-fw"></i> No records found.</h4>
-                        <p>Click <a href="<?=site_url('translation/new_translation');?>">here</a> to create a new record.</p>
+                        <p>Click <a href="<?=site_url('chapter/new_chapter');?>">here</a> to create a new record.</p>
                     </div>
                 <?php endif;?>
                 <?php $this->load->view('_snippets/message_box'); ?>

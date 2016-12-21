@@ -11,7 +11,9 @@
 
 ***********************************************************************************/
 /**
- * @var $translations
+ * @var $table_name
+ * @var $id_field_name
+ * @var $records
  * @var $fields_list
  */
 $newline = "\n";
@@ -19,11 +21,11 @@ $tab = "\t";
 $emptyline = $tab . $newline;
 
 header("Content-Type: application/sql");
-header("Content-Disposition: attachment; filename=translation_records_" . $this->datetime_helper->now('Ymdhis') . ".sql");
+header("Content-Disposition: attachment; filename=" . $table_name . "_records_" . $this->datetime_helper->now('Ymdhis') . ".sql");
 header("Pragma: no-cache");
 header("Expires: 0");
 
-echo "INSERT INTO `" . TABLE_TRANSLATION . "` (";
+echo "INSERT INTO `" . $table_name . "` (";
 foreach($fields_list as $field_key=>$field_name)
 {
     echo "`" . $field_name . "`";
@@ -31,21 +33,21 @@ foreach($fields_list as $field_key=>$field_name)
     echo ($field_key < count($fields_list) - 1 ? ',' : '');
 }
 echo ") VALUES" . $newline;
-foreach($translations as $key=>$translation)
+foreach($records as $key=> $record)
 {
     echo "(";
     foreach($fields_list as $field_key=>$field_name)
     {
-        if($field_name == 'translation_id')
+        if($field_name == $id_field_name)
         {
-            echo $translation[$field_name];
+            echo $record[$field_name];
         }
         else
         {
-            echo "\"" . addslashes($translation[$field_name]) . "\"";
+            echo "\"" . addslashes($record[$field_name]) . "\"";
         }
 
         echo ($field_key < count($fields_list) - 1 ? ',' : '');
     }
-    echo ")" . ($key < count($translations) - 1 ? ',' : ';') . $newline;
+    echo ")" . ($key < count($records) - 1 ? ',' : ';') . $newline;
 }
