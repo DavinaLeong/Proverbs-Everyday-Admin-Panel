@@ -67,6 +67,7 @@ class Migration_Inital_setup extends CI_Migration
 			DROP TABLE IF EXISTS `chapter`;
 			CREATE TABLE `chapter` (
 				`chapter_id` INT(3) UNSIGNED NOT NULL AUTO_INCREMENT,
+				`chapter_no` INT(3) UNSIGNED NOT NULL,
 				`total_verses` INT(4) UNSIGNED NOT NULL DEFAULT 0,
 				`status` VARCHAR(512) NOT NULL,
 				`date_added` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
