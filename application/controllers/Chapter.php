@@ -95,7 +95,7 @@ class Chapter extends CI_Controller
         $chapter = $this->Chapter_model->get_by_chapter_id($chapter_id);
         if($chapter)
         {
-            $this->load->library('form_library');
+            $this->load->library('form_validation');
             $this->_set_rules_edit_chapter($chapter);
 
             if($this->form_validation->run())

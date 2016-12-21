@@ -71,7 +71,7 @@ class Chapter_model extends CI_Model
         {
             $temp_array = array(
                 'chapter_no' => $chapter['chapter_no'],
-                'total_verse' => $chapter['total_verses'],
+                'total_verses' => $chapter['total_verses'],
                 'status' => $chapter['status']
             );
             $this->load->library('Datetime_helper');
