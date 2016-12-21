@@ -96,4 +96,17 @@ class Chapter_model extends CI_Model
         }
     }
 
+    public function _fields_list()
+    {
+        return $this->db->list_fields(TABLE_CHAPTER);
+    }
+
+    public function _status_array()
+    {
+        return array(
+            'Published',
+            'Draft'
+        );
+    }
+
 } // end Chapter_model class

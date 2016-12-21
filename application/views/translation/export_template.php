@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 /**********************************************************************************
 	- File Info -
-		File name		: export_translation_template.php
+		File name		: export_template.php
 		Author(s)		: DAVINA Leong Shi Yun
 		Date Created	: 20 Dec 2016
 

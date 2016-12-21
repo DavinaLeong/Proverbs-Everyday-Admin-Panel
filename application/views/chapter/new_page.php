@@ -2,9 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 /**********************************************************************************
 	- File Info -
-		File name		: new_translation_page.php
+		File name		: new_page.php
 		Author(s)		: DAVINA Leong Shi Yun
-		Date Created	: 20 Dec 2016
+		Date Created	: 21 Dec 2016
 
 	- Contact Info -
 		Email	: leong.shi.yun@gmail.com
@@ -25,13 +25,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="page-wrapper">
         <div class="container-fluid">
             <ol class="breadcrumb">
-                <li><a href="<?=site_url('translation/browse_translation');?>">Translations</a></li>
-                <li class="active">New Translation</li>
+                <li><a href="<?=site_url('translation/browse_translation');?>">Chapters</a></li>
+                <li class="active">New Chapter</li>
             </ol>
 
             <div id="content-wrapper" class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">New Translation</h1>
+                    <h1 class="page-header">New Chapter</h1>
                     <?php $this->load->view('_snippets/validation_errors_box'); ?>
                     <?php $this->load->view('_snippets/message_box'); ?>
 
@@ -43,23 +43,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <legend>Info</legend>
 
                                     <div class="form-group">
-                                        <label class="col-md-2 control-label" for="name">Name <span class="text-danger">*</span></label>
+                                        <label class="col-md-2 control-label" for="chapter_no">Chapter Number <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text" id="name" name="name"
-                                                   value="<?=set_value('name');?> " required maxlength="512" />
+                                            <input class="form-control" type="number" id="chapter_no" name="chapter_no"
+                                                   value="<?=set_value('chapter_no');?> " required step="1" min="1" max="999" maxlength="3" />
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-2 control-label" for="abbr">Abbr. <span class="text-danger">*</span></label>
+                                        <label class="col-md-2 control-label" for="total_verses">Total Verses <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text" id="abbr" name="abbr"
-                                                   value="<?=set_value('abbr');?> " required maxlength="512" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-2 control-label" for="copyright">Copyright</label>
-                                        <div class="col-md-10">
-                                            <textarea class="form-control" rows="4" id="copyright" name="copyright" maxlength="512"><?=set_value('copyright');?></textarea>
+                                            <input class="form-control" type="number" id="total_verses" name="total_verses"
+                                                   value="<?=set_value('total_verses');?> " required step="1" min="1" max="999" maxlength="3" />
                                         </div>
                                     </div>
                                 </fieldset>
@@ -70,7 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="form-group">
                                         <label class="col-md-2 control-label" for="status">Status</label>
                                         <div class="col-md-10">
-                                            <p class="form-control-static" id="status">Active</p>
+                                            <p class="form-control-static" id="status">Draft</p>
                                         </div>
                                     </div>
                                 </fieldset>

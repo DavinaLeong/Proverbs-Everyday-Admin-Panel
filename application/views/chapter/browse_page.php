@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 /**********************************************************************************
 	- File Info -
-		File name		: navbar_admin.php
+		File name		: browse_page.php
 		Author(s)		: DAVINA Leong Shi Yun
 		Date Created	: 20 Dec 2016
 
@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 ***********************************************************************************/
 /**
- * @var $translations
+ * @var $chapters
  */
 ?><!DOCTYPE html>
 <html>
@@ -31,26 +31,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Page Content start -->
     <div id="page-wrapper">
         <ol class="breadcrumb">
-            <li class="active">Translations</li>
+            <li class="active">Chapters</li>
         </ol>
 
         <div id="content-wrapper" class="row">
             <div class="col-lg-12">
 
                 <div class="page-header">
-                    <h1>Translations&nbsp;
+                    <h1>Chapters&nbsp;
                         <div class="btn-group">
                             <button id="action_dropdown" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-gavel fa-fw"></i> Action <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a href="<?=site_url('translation/export_translation');?>"><i class="fa fa-download fa-fw"></i> Export Records</a></li>
+                                <li><a href="<?=site_url('chapter/export_chapter');?>"><i class="fa fa-download fa-fw"></i> Export Records</a></li>
                             </ul>
                         </div>
                     </h1>
                 </div>
-                <p class="lead">Click on a row to view a Translation record.</p>
-                <?php if( ! $translations):?>
+                <p class="lead">Click on a row to view a Chapter record.</p>
+                <?php if( ! $chapters):?>
                     <div id="no_records_box" class="alert alert-warning" role="alert">
                         <h4><i class="fa fa-exclamation fa-fw"></i> No records found.</h4>
                         <p>Click <a href="<?=site_url('translation/new_translation');?>">here</a> to create a new record.</p>
@@ -61,22 +61,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="row">
                     <div class="col-md-11">
 
-                        <table id="translations_table" class="table table-hover">
+                        <table id="chapters_table" class="table table-hover">
                             <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Abbr</th>
+                                <th>Chapter Number</th>
+                                <th>Total Verses</th>
                                 <th>Status</th>
                                 <th>Last Updated</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach($translations as $key=>$translation): ?>
-                                <tr class="clickable" onclick="location.href = '<?=site_url("translation/view_translation/" . $translation['translation_id']);?>'">
-                                    <td><?=$translation['name'];?></td>
-                                    <td><?=$translation['abbr'];?></td>
-                                    <td><?=$translation['status'];?></td>
-                                    <td data-sort="<?=$translation['last_updated'];?>"><?=$this->datetime_helper->format_dd_mmm_yyyy_space($translation['last_updated']);?></td>
+                            <?php foreach($chapters as $key=>$chapter): ?>
+                                <tr class="clickable" onclick="location.href = '<?=site_url("chapter/view_chapter/" . $chapter['chapter_id']);?>'">
+                                    <td><?=$chapter['chapter_no'];?></td>
+                                    <td><?=$chapter['total_verses'];?></td>
+                                    <td><?=$chapter['status'];?></td>
+                                    <td data-sort="<?=$chapter['last_updated'];?>"><?=$this->datetime_helper->format_dd_mmm_yyyy_space($chapter['last_updated']);?></td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>
@@ -99,7 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?=RESOURCES_FOLDER;?>vendor/sb-admin-2/vendor/datatables-responsive/dataTables.responsive.js"></script>
 <script>
     $(document).ready(function() {
-        $('#translations_table').DataTable({
+        $('#chapters_table').DataTable({
             responsive: true,
             order: [[0, "asc"]]
         });

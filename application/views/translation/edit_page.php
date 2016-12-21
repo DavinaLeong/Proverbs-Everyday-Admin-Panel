@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 /**********************************************************************************
 	- File Info -
-		File name		: view_translation_page.php
+		File name		: edit_page.php
 		Author(s)		: DAVINA Leong Shi Yun
 		Date Created	: 20 Dec 2016
 
@@ -13,12 +13,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ***********************************************************************************/
 /**
  * @var $translation
+ * @var $status_options
  */
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
     <?php $this->load->view('_snippets/meta'); ?>
     <?php $this->load->view('_snippets/head_resources'); ?>
+    <link href="<?=RESOURCES_FOLDER;?>pe/styles_parsley.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="wrapper">
@@ -28,50 +30,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="container-fluid">
             <ol class="breadcrumb">
                 <li><a href="<?=site_url('translation/browse_translation');?>">Translations</a></li>
-                <li class="active">Translation ID: <?=$translation['translation_id'];?></li>
+                <li><a href="<?=site_url('translation/view_translation/' . $translation['translation_id']);?>">Translation ID: <?=$translation['translation_id'];?></a></li>
+                <li class="active">Edit Translation</li>
             </ol>
 
             <div id="content-wrapper" class="row">
                 <div class="col-lg-12">
-
-                    <h1 class="page-header">View Translation&nbsp;
-                        <div class="btn-group">
-                            <button id="action_dropdown" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-gavel fa-fw"></i> Action <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="<?=site_url('translation/edit_translation/' . $translation['translation_id']);?>"><i class="fa fa-pencil-square-o fa-fw"></i> Edit</a></li>
-                                <li><a class="clickable" data-toggle="modal" data-target="#delete_modal"><i class="fa fa-trash-o fa-fw"></i> Delete</a></li>
-                            </ul>
-                        </div>
-                    </h1>
+                    <h1 class="page-header">Edit Translation</h1>
+                    <?php $this->load->view('_snippets/validation_errors_box'); ?>
                     <?php $this->load->view('_snippets/message_box'); ?>
 
                     <div class="row">
                         <div class="col-md-11">
 
-                            <form id="view_translation_form" class="form-horizontal">
+                            <form id="new_translation_form" class="form-horizontal" method="post" data-parsley-validate>
                                 <fieldset>
                                     <legend>Info</legend>
 
                                     <div class="form-group">
-                                        <label class="col-md-2 control-label">Name</label>
+                                        <label class="col-md-2 control-label" for="name">Name <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
-                                            <p id="name" class="form-control-static"><?=$translation['name'];?></p>
+                                            <input class="form-control" type="text" id="name" name="name"
+                                                   value="<?=set_value('name', $translation['name']);?> " required maxlength="512" />
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-2 control-label">Abbr.</label>
+                                        <label class="col-md-2 control-label" for="abbr">Abbr. <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
-                                            <p id="abbr" class="form-control-static"><?=$translation['abbr'];?></p>
+                                            <input class="form-control" type="text" id="abbr" name="abbr"
+                                                   value="<?=set_value('abbr', $translation['abbr']);?> " required maxlength="512" />
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-2 control-label">Copyright</label>
+                                        <label class="col-md-2 control-label" for="copyright">Copyright</label>
                                         <div class="col-md-10">
-                                            <div class="well well-sm" style="background: #fff">
-                                                <p id="copyright"><?=nl2br($translation['copyright']);?></p>
-                                            </div>
+                                            <textarea class="form-control" rows="4" id="copyright" name="copyright" maxlength="512"><?=set_value('copyright', $translation['copyright']);?></textarea>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -82,7 +75,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="form-group">
                                         <label class="col-md-2 control-label" for="status">Status</label>
                                         <div class="col-md-10">
-                                            <p class="form-control-static status-<?=strtolower($translation['status']);?>" id="status"><?=$translation['status'];?></p>
+                                            <select class="form-control" id="status" name="status" required>
+                                                <?php foreach($status_options as $key=>$option): ?>
+                                                    <option id="status_<?=$key;?>" value="<?=$option;?>" <?=set_select('status', $option, ($translation['status']==$option)); ?>><?=$option;?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -98,12 +95,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </div>
                                     </div>
                                 </fieldset>
+
+                                <div class="form-group">
+                                    <div class="col-md-10 col-md-offset-2">
+                                        <button class="btn btn-primary" id="submit_btn" type="submit"><i class="fa fa-check fa-fw"></i> Submit</button>
+                                    </div>
+                                </div>
                             </form>
 
                         </div>
                     </div>
-
-                    <?php $this->load->view('_snippets/generic_delete_modal'); ?>
 
                 </div>
             </div>
@@ -111,7 +112,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
 </div>
-
 <?php $this->load->view('_snippets/body_resources'); ?>
+<script src="<?=RESOURCES_FOLDER;?>vendor/parsleyjs/parsley.min.js"></script>
 </body>
 </html>

@@ -24,7 +24,7 @@ class Translation extends CI_Controller
         $data = array(
             'translations' => $this->Translation_model->get_all()
         );
-        $this->load->view('translation/browse_translation_page', $data);
+        $this->load->view('translation/browse_page', $data);
     }
 
     public function new_translation()
@@ -48,7 +48,7 @@ class Translation extends CI_Controller
             }
         }
 
-        $this->load->view('translation/new_translation_page');
+        $this->load->view('translation/new_page');
     }
 
     private function _set_rules_new_translation()
@@ -64,7 +64,7 @@ class Translation extends CI_Controller
         $translation['name'] = $this->input->post('name');
         $translation['abbr'] = $this->input->post('abbr');
         $translation['copyright'] = $this->input->post('copyright');
-        $translation['status'] = 'Active';
+        $translation['status'] = 'Draft';
         return $translation;
     }
 
@@ -79,7 +79,7 @@ class Translation extends CI_Controller
                 'record_name' => 'Translation',
                 'delete_url' => site_url('translation/delete_translation/' . $translation_id)
             );
-            $this->load->view('translation/view_translation_page', $data);
+            $this->load->view('translation/view_page', $data);
         }
         else
         {
@@ -115,7 +115,7 @@ class Translation extends CI_Controller
                 'translation' => $translation,
                 'status_options' => $this->Translation_model->_status_array()
             );
-            $this->load->view('translation/edit_translation_page', $data);
+            $this->load->view('translation/edit_page', $data);
         }
         else
         {
@@ -130,7 +130,7 @@ class Translation extends CI_Controller
             'translations' => $this->Translation_model->get_all('translation_id'),
             'fields_list' => $this->Translation_model->_fields_list()
         );
-        $this->load->view('translation/export_translation_template', $data);
+        $this->load->view('translation/export_template', $data);
     }
 
     private function _set_rules_edit_translation()
