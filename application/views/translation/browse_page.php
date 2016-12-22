@@ -76,7 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <tr class="clickable" onclick="location.href = '<?=site_url("translation/view_translation/" . $translation['translation_id']);?>'">
                                     <td><?=$translation['name'];?></td>
                                     <td><?=$translation['abbr'];?></td>
-                                    <td><?=$translation['status'];?></td>
+                                    <td><span class="status-<?=strtolower($translation['status']);?>"><?=$translation['status'];?></span></td>
                                     <td data-sort="<?=$translation['last_updated'];?>"><?=$this->datetime_helper->format_dd_mmm_yyyy_space($translation['last_updated']);?></td>
                                 </tr>
                             <?php endforeach; ?>

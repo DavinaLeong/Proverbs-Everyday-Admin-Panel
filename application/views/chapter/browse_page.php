@@ -76,7 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <tr class="clickable" onclick="location.href = '<?=site_url("chapter/view_chapter/" . $chapter['chapter_id']);?>'">
                                     <td><?=$chapter['chapter_no'];?></td>
                                     <td><?=$chapter['total_verses'];?></td>
-                                    <td><?=$chapter['status'];?></td>
+                                    <td><span class="status-<?=strtolower($chapter['status']);?>"><?=$chapter['status'];?></span></td>
                                     <td data-sort="<?=$chapter['last_updated'];?>"><?=$this->datetime_helper->format_dd_mmm_yyyy_space($chapter['last_updated']);?></td>
                                 </tr>
                             <?php endforeach; ?>

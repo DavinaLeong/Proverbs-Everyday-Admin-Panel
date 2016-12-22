@@ -48,7 +48,7 @@ class Chapter_passage_model extends CI_Model
         $this->db->select('chapter_passage.*, chapter.chapter_no, translation.name, translation.abbr');
         $this->db->from(TABLE_CHAPTER_PASSAGE);
         $this->db->join('translation', 'translation.translation_id = chapter_passage.translation_id', 'left');
-        $this->db->join('chapter', 'chapter.chapter_id == chapte_passage.chapter_id', 'left');
+        $this->db->join('chapter', 'chapter.chapter_id = chapter_passage.chapter_id', 'left');
         $this->db->where('status = ', 'Published');
         $this->db->order_by('chapter_id');
 
@@ -76,11 +76,11 @@ class Chapter_passage_model extends CI_Model
             $this->db->select('chapter_passage.*, chapter.chapter_no, translation.name, translation.abbr');
             $this->db->from(TABLE_CHAPTER_PASSAGE);
             $this->db->join('translation', 'translation.translation_id = chapter_passage.translation_id', 'left');
-            $this->db->join('chapter', 'chapter.chapter_id == chapte_passage.chapter_id', 'left');
+            $this->db->join('chapter', 'chapter.chapter_id = chapter_passage.chapter_id', 'left');
             $this->db->where('chapter_passage.cp_id = ' . $cp_id);
 
             $query = $this->db->get();
-            return $query->result_array();
+            return $query->row_array();
         }
         else
         {

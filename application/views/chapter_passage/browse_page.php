@@ -76,9 +76,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <?php foreach($chapter_passages as $key=> $chapter_passage): ?>
                                 <tr class="clickable" onclick="location.href = '<?=site_url("chapter_passage/view_chapter_passage/" . $chapter_passage['cp_id']);?>'">
                                     <td><?=$chapter_passage['chapter_no'];?></td>
-                                    <td><?=word_limiter($chapter_passage['passage'], 20);?></td>
+                                    <td><?=word_limiter(strip_tags($chapter_passage['passage']), 20);?></td>
                                     <td><?=$chapter_passage['abbr'];?></td>
-                                    <td><?=$chapter_passage['status'];?></td>
+                                    <td><span class="status-<?=strtolower($chapter_passage['status']);?>"><?=$chapter_passage['status'];?></span></td>
                                     <td data-sort="<?=$chapter_passage['last_updated'];?>"><?=$this->datetime_helper->format_dd_mmm_yyyy_space($chapter_passage['last_updated']);?></td>
                                 </tr>
                             <?php endforeach; ?>

@@ -33,7 +33,7 @@ class Chapter_passage extends CI_Controller
         $this->User_log_model->validate_access();
         $this->load->model('Translation_model');
         $this->load->model('Chapter_model');
-        $this->load->library('form_valiadtion');
+        $this->load->library('form_validation');
 
         $this->_set_rules_new_chapter_passage();
         if($this->form_validation->run())
@@ -41,7 +41,7 @@ class Chapter_passage extends CI_Controller
             if($cp_id = $this->Chapter_passage_model->insert($this->_prepare_new_chapter_passage_array()))
             {
                 $this->User_log_model->log_message('Chapter Passage created. | cp_id: ' . $cp_id);
-                $this->session->set_userdata('message', 'Chapter Passage created.');
+                $this->session->set_userdata('message', 'Chapter Passage created. <a href="' . site_url('chapter_passage/new_chapter_passage') . '">Create another</a>.');
                 redirect('chapter_passage/view_chapter_passage/' . $cp_id);
             }
             else
@@ -73,7 +73,7 @@ class Chapter_passage extends CI_Controller
 
         $this->form_validation->set_rules('passage', 'Passage', 'trim|required');
 
-        $status_str = implode(',', $this->Verse_passage_model->_status_array());
+        $status_str = implode(',', $this->Chapter_passage_model->_status_array());
         $this->form_validation->set_rules('status', 'Status', 'trim|required|in_list[' . $status_str . ']');
     }
 
@@ -89,7 +89,21 @@ class Chapter_passage extends CI_Controller
 
     public function view_chapter_passage($cp_id)
     {
-
+        $this->User_log_model->validate_access();
+        $chapter_passage = $this->Chapter_passage_model->get_by_cp_id_with_chapter_translation($cp_id);
+        if($chapter_passage)
+        {
+            $data = array(
+                'chapter_passage' => $chapter_passage,
+                'record_name' => 'Chapter Passage',
+                'delete_url' => site_url('chapter_passage/delete_chapter_passage/' . $cp_id)
+            );
+            $this->load->view('chapter_passage/view_page', $data);
+        }
+        else
+        {
+            $this->_record_not_found();
+        }
     }
 
     public function edit_chapter_passage($cp_id)

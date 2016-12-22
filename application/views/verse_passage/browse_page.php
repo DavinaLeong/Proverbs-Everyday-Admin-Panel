@@ -80,7 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <td><?=$verse_passage['chapter_no'];?></td>
                                     <td><?=word_limiter($verse_passage['passage'], 20);?></td>
                                     <td><?=$verse_passage['abbr'];?></td>
-                                    <td><?=$verse_passage['status'];?></td>
+                                    <td><span class="status-<?=strtolower($verse_passage['status']);?>"><?=$verse_passage['status'];?></span></td>
                                     <td data-sort="<?=$verse_passage['last_updated'];?>"><?=$this->datetime_helper->format_dd_mmm_yyyy_space($verse_passage['last_updated']);?></td>
                                 </tr>
                             <?php endforeach; ?>

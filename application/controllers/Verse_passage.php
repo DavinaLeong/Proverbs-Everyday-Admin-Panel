@@ -42,7 +42,7 @@ class Verse_passage extends CI_Controller
             if($vp_id = $this->Verse_passage_model->insert($this->_prepare_new_verse_passage_array()))
             {
                 $this->User_log_model->log_message('Verse Passage created. | vp_id: ' . $vp_id);
-                $this->session->set_userdata('message', 'Verse Passage created.');
+                $this->session->set_userdata('message', 'Verse Passage created. <a href="' . site_url('verse_passage/new_verse_passage') . '">Create another</a>.');
                 redirect('verse_passage/view_verse_passage/' . $vp_id);
             }
             else
@@ -73,7 +73,7 @@ class Verse_passage extends CI_Controller
             'trim|required|in_list[' . $chapter_ids . ']|greater_than[0]|less_than_equal_to[9999]|is_natural_no_zero');
 
         $this->form_validation->set_rules('verse_no', 'Verse Number',
-            'trim|required|is_natural_no_zero|greater_than[0]|less_than_equal_to[999999]|is_unique[verse_passage.verse_no]');
+            'trim|required|is_natural_no_zero|greater_than[0]|less_than_equal_to[999999]');
 
         $this->form_validation->set_rules('passage', 'Passage', 'trim|required');
 
@@ -163,16 +163,8 @@ class Verse_passage extends CI_Controller
         $this->form_validation->set_rules('chapter_id', 'Chapter',
             'trim|required|in_list[' . $chapter_ids . ']|greater_than[0]|less_than_equal_to[9999]|is_natural_no_zero');
 
-        if($verse_passage['verse_no'] == $this->input->post('verse_no'))
-        {
-            $this->form_validation->set_rules('verse_no', 'Verse Number',
-                'trim|required|is_natural_no_zero|greater_than[0]|less_than[10000]');
-        }
-        else
-        {
-            $this->form_validation->set_rules('verse_no', 'Verse Number',
-                'trim|required|is_natural_no_zero|greater_than[0]|less_than[10000]|is_unique[verse_passage.verse_no]');
-        }
+        $this->form_validation->set_rules('verse_no', 'Verse Number',
+            'trim|required|is_natural_no_zero|greater_than[0]|less_than[10000]');
 
         $this->form_validation->set_rules('passage', 'Passage', 'trim|required');
 
