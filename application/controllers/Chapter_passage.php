@@ -21,6 +21,7 @@ class Chapter_passage extends CI_Controller
     public function browse_chapter_passage()
     {
         $this->User_log_model->validate_access();
+        $this->load->helper('text');
         $data = array(
             'chapter_passages' => $this->Chapter_passage_model->get_all_with_chapter_translation()
         );
@@ -30,7 +31,32 @@ class Chapter_passage extends CI_Controller
     public function new_chapter_passage()
     {
         $this->User_log_model->validate_access();
-        
+        $this->load->model('Translation_model');
+        $this->load->model('Chapter_model');
+        $this->load->library('form_valiadtion');
+
+        $this->_set_rules_new_chapter_passage();
+        if($this->form_validation->run())
+        {
+            if($cp_id = $this->Chapter_passage_model->insert($this->_prepare_new_chapter_passage_array()))
+            {
+                $this->User_log_model->log_message('Chapter Passage created. | cp_id: ' . $cp_id);
+                $this->session->set_userdata('message', 'Chapter Passage created.');
+                redirect('chapter_passage/view_chapter_passage/' . $cp_id);
+            }
+            else
+            {
+                $this->User_log_model->log_message('Unable to create Chapter Passage.');
+                $this->session->set_userdata('message', 'Unable to create Chapter Passage.');
+            }
+        }
+
+        $data = array(
+            'translations' => $this->Translation_model->get_all_published(),
+            'chapters' => $this->Chapter_model->get_all_published(),
+            'status_options' => $this->Chapter_passage_model->_status_array()
+        );
+        $this->load->view('chapter_passage/new_page', $data);
     }
 
     private function _set_rules_new_chapter_passage()
@@ -54,7 +80,10 @@ class Chapter_passage extends CI_Controller
     private function _prepare_new_chapter_passage_array()
     {
         $chapter_passage = array();
-
+        $chapter_passage['translation_id'] = $this->input->post('translation_id');
+        $chapter_passage['chapter_id'] = $this->input->post('chapter_id');
+        $chapter_passage['passage'] = $this->input->post('passage');
+        $chapter_passage['status'] = $this->input->post('status');
         return $chapter_passage;
     }
 
