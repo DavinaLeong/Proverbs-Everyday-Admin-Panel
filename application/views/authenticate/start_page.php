@@ -33,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <p class="lead">You are logged in as <span class="text-primary"><?=$this->session->userdata('name');?></span>.</p>
                     <?php $this->load->view('_snippets/message_box'); ?>
                     <ul>
-                        <li>Backend UI for updating Proverbs database.</li>
+                        <li>Backend UI for updating the Proverbs Everyday database.</li>
                     </ul>
                 </div>
             </div>

@@ -37,7 +37,7 @@ class Migration_Initial_setup extends CI_Migration
 	private function _up_script()
 	{
 		$this->load->library("datetime_helper");
-		$password_hash = password_hash('password', PASSWORD_DEFAULT);
+		$password_hash = password_hash('prov2229', PASSWORD_DEFAULT);
 		$last_updated = $date_added = $this->datetime_helper->now('Y-m-d H:i:s');
 
 		$script = "
@@ -114,7 +114,7 @@ class Migration_Initial_setup extends CI_Migration
 			) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 			INSERT INTO `user` (`username`, `password_hash`, `name`, `access`, `status`, `date_added`, `last_updated`)
-			VALUES('admin', '" . $password_hash . "', 'Default Admin', 'A', 'Active', '" . $date_added . "', '" . $last_updated . "');
+			VALUES('davina_leong', '" . $password_hash . "', 'Davina Leong', 'A', 'Active', '" . $date_added . "', '" . $last_updated . "');
 		";
 
 		return $script;
