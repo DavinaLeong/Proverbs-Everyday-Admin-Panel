@@ -65,6 +65,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </ul>
                 </li>
                 <li>
+                    <a href="#"><i class="fa fa-file-text fa-fw"></i> Chapter Passage<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="<?=site_url('chapter_passage/browse_chapter_passage');?>">Browse Chapter Passages</a>
+                        </li>
+                        <li>
+                            <a href="<?=site_url('chapter_passage/new_chapter_passage');?>">New Chapter Passage</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
                     <a href="#"><i class="fa fa-file-text fa-fw"></i> Verse Passage<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
