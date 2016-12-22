@@ -29,7 +29,7 @@ class Migration_Insert_translations extends CI_Migration
 	public function down()
 	{
 		// drop tables
-		echo '<p>Empty Tranlsations Table</p><hr/><code>';
+		echo '<p>Empty Translations Table</p><hr/><code>';
 		$this->load->model('Script_runner_model');
 		echo $this->Script_runner_model->run_script($this->_down_script())['output_str'];
 		echo '</code><hr/>';

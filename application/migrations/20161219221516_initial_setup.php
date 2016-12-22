@@ -53,7 +53,7 @@ class Migration_Initial_setup extends CI_Migration
 
 			DROP TABLE IF EXISTS `translation`;
 			CREATE TABLE `translation` (
-				`translation_id` INT(3) UNSIGNED NOT NULL AUTO_INCREMENT,
+				`translation_id` INT(4) UNSIGNED NOT NULL AUTO_INCREMENT,
 				`name` VARCHAR (512) NOT NULL,
 				`abbr` VARCHAR(512) NOT NULL,
 				`copyright` VARCHAR(512) NOT NULL,
@@ -66,8 +66,8 @@ class Migration_Initial_setup extends CI_Migration
 
 			DROP TABLE IF EXISTS `chapter`;
 			CREATE TABLE `chapter` (
-				`chapter_id` INT(3) UNSIGNED NOT NULL AUTO_INCREMENT,
-				`chapter_no` INT(3) UNSIGNED NOT NULL,
+				`chapter_id` INT(4) UNSIGNED NOT NULL AUTO_INCREMENT,
+				`chapter_no` INT(4) UNSIGNED NOT NULL,
 				`total_verses` INT(4) UNSIGNED NOT NULL DEFAULT 0,
 				`status` VARCHAR(512) NOT NULL,
 				`date_added` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -76,24 +76,24 @@ class Migration_Initial_setup extends CI_Migration
 			) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 
-			DROP TABLE IF EXISTS `verse`;
-			CREATE TABLE `verse` (
-				`verse_id` INT(3) UNSIGNED  NOT NULL AUTO_INCREMENT,
-				`chapter_id` INT(3) UNSIGNED NOT NULL,
-				`translation_id` INT(3) UNSIGNED NOT NULL,
-				`verse_no` INT(3) UNSIGNED NOT NULL,
-				`verse` VARCHAR(512) NOT NULL,
+			DROP TABLE IF EXISTS `verse_passage`;
+			CREATE TABLE `verse_passage` (
+				`vp_id` INT(4) UNSIGNED  NOT NULL AUTO_INCREMENT,
+				`chapter_id` INT(4) UNSIGNED NOT NULL,
+				`translation_id` INT(4) UNSIGNED NOT NULL,
+				`verse_no` INT(4) UNSIGNED NOT NULL,
+				`passage` TEXT NOT NULL,
 				`status` VARCHAR(512) NOT NULL,
 				`date_added` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 				`last_updated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-				PRIMARY KEY(`verse_id`)
+				PRIMARY KEY(`vp_id`)
 			) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 
 			DROP TABLE IF EXISTS `user_log`;
             CREATE TABLE `user_log` (
-              `ulid` INT(3) NOT NULL AUTO_INCREMENT,
-              `user_id` INT(3) NOT NULL,
+              `ulid` INT(4) NOT NULL AUTO_INCREMENT,
+              `user_id` INT(4) NOT NULL,
               `message` text NOT NULL,
               `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
               PRIMARY KEY (`ulid`)
@@ -102,7 +102,7 @@ class Migration_Initial_setup extends CI_Migration
 
             DROP TABLE IF EXISTS `user`;
 			CREATE TABLE `user` (
-				`user_id` INT(3) UNSIGNED NOT NULL AUTO_INCREMENT,
+				`user_id` INT(4) UNSIGNED NOT NULL AUTO_INCREMENT,
 				`username` VARCHAR(128) NOT NULL,
 				`password_hash` VARCHAR(512) NOT NULL,
 				`name` VARCHAR(128) NULL,
