@@ -39,6 +39,8 @@ class Migration_Insert_chapters extends CI_Migration
 	private function _up_script()
 	{
 		$sql = '
+            TRUNCATE TABLE `chapter`;
+
 			INSERT INTO `chapter` (`chapter_id`,`chapter_no`,`total_verses`,`status`,`date_added`,`last_updated`)
 			VALUES
 				(1, "1", "33", "Published", "2016-12-21 20:38:51", "2016-12-21 20:38:51"),

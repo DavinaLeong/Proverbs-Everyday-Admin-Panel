@@ -95,4 +95,4 @@ define('TABLE_USER', 'user');
 define('TABLE_USER_LOG', 'user_log');
 define('TABLE_TRANSLATION', 'translation');
 define('TABLE_CHAPTER', 'chapter');
-define('TABLE_VERSE', 'verse');
+define('TABLE_VERSE_PASSAGE', 'verse_passage');

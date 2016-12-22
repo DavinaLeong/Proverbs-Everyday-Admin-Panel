@@ -60,7 +60,7 @@
  * @property Script_runner_model $Script_runner_model
  * @property Translation_model $Translation_model
  * @property Chapter_model $Chapter_model
- * @property Verse_model $Verse_model
+ * @property Verse_passage_model $Verse_model
  */
 class CI_Controller {};
 class MY_Controller extends CI_Controller {};
@@ -114,7 +114,7 @@ class MY_Controller extends CI_Controller {};
  * @property Script_runner_model $Script_runner_model
  * @property Translation_model $Translation_model
  * @property Chapter_model $Chapter_model
- * @property Verse_model $Verse_model
+ * @property Verse_passage_model $Verse_model
  */
 class CI_Model {};
 
@@ -166,6 +166,6 @@ class CI_Model {};
  * @property Script_runner_model $Script_runner_model
  * @property Translation_model $Translation_model
  * @property Chapter_model $Chapter_model
- * @property Verse_model $Verse_model
+ * @property Verse_passage_model $Verse_model
  */
 class CI_Migration {};

@@ -65,13 +65,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-file-text fa-fw"></i> Verse<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-file-text fa-fw"></i> Verse Passage<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="<?=site_url('verse/browse_verse');?>">Browse Verses</a>
+                            <a href="<?=site_url('verse_passage/browse_verse_passage');?>">Browse Verse Passages</a>
                         </li>
                         <li>
-                            <a href="<?=site_url('verse/new_verse');?>">New Verse</a>
+                            <a href="<?=site_url('verse_passage/new_verse_passage');?>">New Verse Passage</a>
                         </li>
                     </ul>
                 </li>
