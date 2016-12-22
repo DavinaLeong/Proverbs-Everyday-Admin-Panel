@@ -49,15 +49,18 @@ class Chapter extends CI_Controller
             }
         }
 
-        $this->load->view('chapter/new_page');
+        $data = array(
+            'status_options' => $this->Chapter_model->_status_array()
+        );
+        $this->load->view('chapter/new_page', $data);
     }
 
     private function _set_rules_new_chapter()
     {
         $this->form_validation->set_rules('chapter_no', 'Chapter Number',
-            'trim|required|is_unique[chapter.chapter_no]|is_natural_no_zero');
+            'trim|required|greater_than[0]|less_than_equal_to[31]|is_unique[chapter.chapter_no]|is_natural_no_zero');
         $this->form_validation->set_rules('total_verses', 'Total Verses',
-            'trim|required|is_natural_no_zero');
+            'trim|required|greater_than[0]|less_than_equal_to[9999]|is_natural_no_zero');
     }
 
     private function _prepare_new_chapter_array()
@@ -129,16 +132,17 @@ class Chapter extends CI_Controller
     {
         if($chapter['chapter_no'] == $this->input->post('chapter_no'))
         {
-            $this->form_validation->set_rules('chapter_no', 'Chapter Number', 'trim|required|is_natural_no_zero');
+            $this->form_validation->set_rules('chapter_no', 'Chapter Number',
+                'trim|required|greater_than[0]|less_than_equal_to[31]|is_natural_no_zero');
         }
         else
         {
             $this->form_validation->set_rules('chapter_no', 'Chapter Number',
-                'trim|required|is_unique[chapter.chapter_no]|is_natural_no_zero');
+                'trim|required|is_unique[chapter.chapter_no]|greater_than[0]|less_than_equal_to[31]|is_natural_no_zero');
         }
 
         $this->form_validation->set_rules('total_verses', 'Total Verses',
-            'trim|required|is_natural_no_zero');
+            'trim|required|greater_than[0]|less_than_equal_to[9999]|is_natural_no_zero');
         $status_str = implode(',', $this->Chapter_model->_status_array());
         $this->form_validation->set_rules('status', 'Status', 'trim|required|in_list[' . $status_str . ']|max_length[512]');
     }

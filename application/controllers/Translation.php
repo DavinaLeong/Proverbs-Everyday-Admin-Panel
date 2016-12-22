@@ -48,7 +48,10 @@ class Translation extends CI_Controller
             }
         }
 
-        $this->load->view('translation/new_page');
+        $data = array(
+            'status_options' => $this->Translation_model->_status_array()
+        );
+        $this->load->view('translation/new_page', $data);
     }
 
     private function _set_rules_new_translation()
@@ -56,6 +59,8 @@ class Translation extends CI_Controller
         $this->form_validation->set_rules('name', 'Name', 'trim|required|max_length[512]');
         $this->form_validation->set_rules('abbr', 'Abbr.', 'trim|required|max_length[512]');
         $this->form_validation->set_rules('copyright', 'Copyright', 'trim|max_length[512]');
+        $status_str = implode(',', $this->Translation_model->_status_array());
+        $this->form_validation->set_rules('status', 'Status', 'trim|required|in_list[' . $status_str .']');
     }
 
     private function _prepare_new_translation_array()
@@ -64,7 +69,7 @@ class Translation extends CI_Controller
         $translation['name'] = $this->input->post('name');
         $translation['abbr'] = $this->input->post('abbr');
         $translation['copyright'] = $this->input->post('copyright');
-        $translation['status'] = 'Draft';
+        $translation['status'] = $this->input->post('status');
         return $translation;
     }
 

@@ -24,10 +24,10 @@ class Chapter_model extends CI_Model
         return $query->result_array();
     }
 
-    public function get_all_active()
+    public function get_all_published()
     {
         $this->db->order_by('chapter_id');
-        $query = $this->db->get_where(TABLE_CHAPTER, array('status' => 'Active'));
+        $query = $this->db->get_where(TABLE_CHAPTER, array('status' => 'Published'));
         return $query->result_array();
     }
 
@@ -42,6 +42,17 @@ class Chapter_model extends CI_Model
         {
             return FALSE;
         }
+    }
+
+    public function get_published_chapter_ids()
+    {
+        $chapters = $this->get_all_published();
+        $ids_array = array();
+        foreach($chapters as $chapter)
+        {
+            $ids_array[] = $chapter['chapter_id'];
+        }
+        return $ids_array;
     }
 
     public function insert($chapter=FALSE)

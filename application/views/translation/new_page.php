@@ -11,6 +11,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		Mobile	: (+65) 9369 3752 [Singapore]
 
 ***********************************************************************************/
+/**
+ * @var $status_options
+ */
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,7 +74,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="form-group">
                                         <label class="col-md-2 control-label" for="status">Status</label>
                                         <div class="col-md-10">
-                                            <p class="form-control-static" id="status">Draft</p>
+                                            <select class="form-control" id="status" name="status" required>
+                                                <option id="status_0" value=""></option>
+                                                <?php foreach($status_options as $key=>$option): ?>
+                                                    <option id="status_<?=$key;?>" value="<?=$option;?>" <?=set_select('status', $option); ?>><?=$option;?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                         </div>
                                     </div>
                                 </fieldset>

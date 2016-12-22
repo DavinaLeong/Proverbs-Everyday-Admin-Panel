@@ -24,10 +24,10 @@ class Translation_model extends CI_Model
         return $query->result_array();
     }
 
-    public function get_all_active($order_by='name')
+    public function get_all_published($order_by='name')
     {
         $this->db->order_by($order_by);
-        $query = $this->db->get_where(TABLE_TRANSLATION, array('status' => 'Active'));
+        $query = $this->db->get_where(TABLE_TRANSLATION, array('status' => 'Published'));
         return $query->result_array();
     }
 
@@ -42,6 +42,17 @@ class Translation_model extends CI_Model
         {
             return FALSE;
         }
+    }
+
+    public function get_published_translation_ids()
+    {
+        $translations = $this->get_all_published();
+        $ids_array = array();
+        foreach($translations as $translation)
+        {
+            $ids_array[] = $translation['translation_id'];
+        }
+        return $ids_array;
     }
 
     public function insert($translation=FALSE)
