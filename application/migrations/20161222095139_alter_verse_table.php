@@ -42,6 +42,7 @@ class Migration_Alter_verse_table extends CI_Migration
 		    RENAME TABLE `verse` TO `verse_passage`;
 
 		    ALTER TABLE `verse_passage`
+		        CHANGE `verse_id` `vp_id` INT(3) UNSIGNED  NOT NULL AUTO_INCREMENT,
 		        CHANGE `verse` `passage` VARCHAR(512) NOT NULL;
 		";
         return $sql;
@@ -53,8 +54,10 @@ class Migration_Alter_verse_table extends CI_Migration
             RENAME TABLE `verse_passage` TO `verse`;
 
 		    ALTER TABLE `verse`
+		        CHANGE `vp_id` `verse_id` INT(3) UNSIGNED  NOT NULL AUTO_INCREMENT,
 		        CHANGE `passage` `verse` VARCHAR(512) NOT NULL;
         ";
+        return $sql;
     }
 	
 } // end 20161222095139_alter_verse_table class

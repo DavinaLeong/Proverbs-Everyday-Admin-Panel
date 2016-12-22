@@ -21,7 +21,7 @@ class Authenticate extends CI_Controller
 
     public function index()
     {
-        redirect('authenticate/login');
+        redirect('authenticate/start');
     }
 
     public function login()

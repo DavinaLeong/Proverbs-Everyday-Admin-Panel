@@ -29,6 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="page-wrapper">
         <div class="container-fluid">
             <ol class="breadcrumb">
+                <li><a href="<?=site_url();?>">Home</a></li>
                 <li><a href="<?=site_url('chapter/browse_chapter');?>">Chapters</a></li>
                 <li><a href="<?=site_url('chapter/view_chapter/' . $chapter['chapter_id']);?>">Chapter ID: <?=$chapter['chapter_id'];?></a></li>
                 <li class="active">Edit Chapter</li>

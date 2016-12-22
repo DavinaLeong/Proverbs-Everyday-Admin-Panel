@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 /**********************************************************************************
 	- File Info -
-		File name		: 20161211221516_inital_setup.php
+		File name		: 20161211221516_initial_setup.php
 		Author(s)		: DAVINA Leong Shi Yun
 		Date Created	: 19 Dec 2016
 	
@@ -14,7 +14,7 @@
  * 19 Dec 2016, 10:15PM
  * 20161219221516
  */
-class Migration_Inital_setup extends CI_Migration
+class Migration_Initial_setup extends CI_Migration
 {
 	// Public Functions ----------------------------------------------------------------
 	public function up()

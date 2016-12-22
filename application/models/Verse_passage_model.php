@@ -19,23 +19,23 @@ class Verse_passage_model extends CI_Model
 
     public function get_all()
     {
-        $this->db->order_by('verse_id');
+        $this->db->order_by('vp_id');
         $query = $this->db->get(TABLE_VERSE_PASSAGE);
         return $query->result_array();
     }
 
     public function get_all_active()
     {
-        $this->db->order_by('verse_id');
+        $this->db->order_by('vp_id');
         $query = $this->db->get_where(TABLE_VERSE_PASSAGE, array('status' => 'Active'));
         return $query->result_array();
     }
 
-    public function get_by_verse_id($verse_id=FALSE)
+    public function get_by_vp_id($vp_id=FALSE)
     {
-        if($verse_id !== FALSE)
+        if($vp_id !== FALSE)
         {
-            $query = $this->db->get_where(TABLE_VERSE_PASSAGE, array('verse_id' => $verse_id));
+            $query = $this->db->get_where(TABLE_VERSE_PASSAGE, array('vp_id' => $vp_id));
             return $query->row_array();
         }
         else
@@ -123,7 +123,7 @@ class Verse_passage_model extends CI_Model
 
             $this->load->library('Datetime_helper');
             $this->db->set(TABLE_VERSE_PASSAGE, array('last_updated' => $this->datetime_helper->now('c')));
-            $this->db->update(TABLE_VERSE_PASSAGE, $temp_array, array('verse_id' => $verse['verse_id']));
+            $this->db->update(TABLE_VERSE_PASSAGE, $temp_array, array('vp_id' => $verse['vp_id']));
             return $this->db->affected_rows();
         }
         else
@@ -132,11 +132,11 @@ class Verse_passage_model extends CI_Model
         }
     }
 
-    public function delete_by_verse_id($verse_id=FALSE)
+    public function delete_by_vp_id($vp_id=FALSE)
     {
-        if($verse_id !== FALSE)
+        if($vp_id !== FALSE)
         {
-            $this->db->delete(TABLE_VERSE_PASSAGE, array('verse_id' => $verse_id));
+            $this->db->delete(TABLE_VERSE_PASSAGE, array('vp_id' => $vp_id));
             return $this->db->affected_rows();
         }
         else

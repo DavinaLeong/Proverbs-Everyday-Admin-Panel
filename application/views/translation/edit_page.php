@@ -29,6 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="page-wrapper">
         <div class="container-fluid">
             <ol class="breadcrumb">
+                <li><a href="<?=site_url();?>">Home</a></li>
                 <li><a href="<?=site_url('translation/browse_translation');?>">Translations</a></li>
                 <li><a href="<?=site_url('translation/view_translation/' . $translation['translation_id']);?>">Translation ID: <?=$translation['translation_id'];?></a></li>
                 <li class="active">Edit Translation</li>
