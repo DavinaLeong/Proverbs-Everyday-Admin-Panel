@@ -24,10 +24,35 @@ class Verse_passage_model extends CI_Model
         return $query->result_array();
     }
 
-    public function get_all_active()
+    public function get_all_published()
     {
         $this->db->order_by('vp_id');
         $query = $this->db->get_where(TABLE_VERSE_PASSAGE, array('status' => 'Active'));
+        return $query->result_array();
+    }
+
+    public function get_all_with_chapter_translation()
+    {
+        $this->db->select('verse_passage.*, chapter.chapter_no, translation.name, translation.abbr');
+        $this->db->from(TABLE_VERSE_PASSAGE);
+        $this->db->join('chapter', 'verse_passage.chapter_id = chapter.chapter_id', 'left');
+        $this->db->join('translation', 'verse_passage.translation_id = translation.translation_id', 'left');
+        $this->db->order_by('verse_passage.verse_no');
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function get_all_published_with_chapter_translation()
+    {
+        $this->db->select('verse_passage.*, chapter.chapter_no, translation.name, translation.abbr');
+        $this->db->from(TABLE_VERSE_PASSAGE);
+        $this->db->join('chapter', 'verse_passage.chapter_id = chapter.chapter_id', 'left');
+        $this->db->join('translation', 'verse_passage.translation_id = translation.translation_id', 'left');
+        $this->db->where('verse_passage.status = ', 'Published');
+        $this->db->order_by('verse_passage.verse_no');
+
+        $query = $this->db->get();
         return $query->result_array();
     }
 
@@ -44,11 +69,30 @@ class Verse_passage_model extends CI_Model
         }
     }
 
-    public function get_by_verse_no($verse_no=FALSE)
+    public function get_by_vp_id_with_chapter_translation($vp_id=FALSE)
     {
-        if($verse_no !== FALSE)
+        if($vp_id !== FALSE)
         {
-            $query = $this->db->get_where(TABLE_VERSE_PASSAGE, array('verse_no' => $verse_no));
+            $this->db->select('verse_passage.*, chapter.chapter_no, translation.name, translation.abbr');
+            $this->db->from(TABLE_VERSE_PASSAGE);
+            $this->db->join('chapter', 'verse_passage.chapter_id = chapter.chapter_id', 'left');
+            $this->db->join('translation', 'verse_passage.translation_id = translation.translation_id', 'left');
+            $this->db->where('verse_passage.vp_id = ' , $vp_id);
+
+            $query = $this->db->get();
+            return $query->row_array();
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
+    public function get_by_verse_no($verse_passage_no=FALSE)
+    {
+        if($verse_passage_no !== FALSE)
+        {
+            $query = $this->db->get_where(TABLE_VERSE_PASSAGE, array('verse_no' => $verse_passage_no));
             return $query->row_array();
         }
         else
@@ -81,25 +125,25 @@ class Verse_passage_model extends CI_Model
         }
         else
         {
-
+            return FALSE;
         }
     }
 
-    public function insert($verse=FALSE)
+    public function insert($verse_passage=FALSE)
     {
-        if($verse !== FALSE)
+        if($verse_passage !== FALSE)
         {
             $temp_array = array(
-                'chapter_id' => $verse['chapter_id'],
-                'translation_id' => $verse['translation_id'],
-                'verse_no' => $verse['verse_no'],
-                'passage' => $verse['passage'],
-                'status' => $verse['status']
+                'chapter_id' => $verse_passage['chapter_id'],
+                'translation_id' => $verse_passage['translation_id'],
+                'verse_no' => $verse_passage['verse_no'],
+                'passage' => $verse_passage['passage'],
+                'status' => $verse_passage['status']
             );
 
             $this->load->library('Datetime_helper');
-            $this->db->set(TABLE_VERSE_PASSAGE, array('date_added' => $this->datetime_helper->now('c')));
-            $this->db->set(TABLE_VERSE_PASSAGE, array('last_updated' => $this->datetime_helper->now('c')));
+            $this->db->set('date_added', $this->datetime_helper->now('c'));
+            $this->db->set('last_updated', $this->datetime_helper->now('c'));
             $this->db->insert(TABLE_VERSE_PASSAGE, $temp_array);
             return $this->db->insert_id();
         }
@@ -109,21 +153,21 @@ class Verse_passage_model extends CI_Model
         }
     }
 
-    public function update($verse=FALSE)
+    public function update($verse_passage=FALSE)
     {
-        if($verse !== FALSE)
+        if($verse_passage !== FALSE)
         {
             $temp_array = array(
-                'chapter_id' => $verse['chapter_id'],
-                'translation_id' => $verse['translation_id'],
-                'verse_no' => $verse['verse_no'],
-                'passage' => $verse['passage'],
-                'status' => $verse['status']
+                'chapter_id' => $verse_passage['chapter_id'],
+                'translation_id' => $verse_passage['translation_id'],
+                'verse_no' => $verse_passage['verse_no'],
+                'passage' => $verse_passage['passage'],
+                'status' => $verse_passage['status']
             );
 
             $this->load->library('Datetime_helper');
-            $this->db->set(TABLE_VERSE_PASSAGE, array('last_updated' => $this->datetime_helper->now('c')));
-            $this->db->update(TABLE_VERSE_PASSAGE, $temp_array, array('vp_id' => $verse['vp_id']));
+            $this->db->set('last_updated', $this->datetime_helper->now('c'));
+            $this->db->update(TABLE_VERSE_PASSAGE, $temp_array, array('vp_id' => $verse_passage['vp_id']));
             return $this->db->affected_rows();
         }
         else
@@ -169,6 +213,19 @@ class Verse_passage_model extends CI_Model
         {
             return FALSE;
         }
+    }
+
+    public function _fields_list()
+    {
+        return $this->db->list_fields(TABLE_VERSE_PASSAGE);
+    }
+
+    public function _status_array()
+    {
+        return array(
+            'Published',
+            'Draft'
+        );
     }
 
 } // end Verse_model class
