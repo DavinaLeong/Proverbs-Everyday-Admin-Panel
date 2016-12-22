@@ -30,11 +30,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div id="content-wrapper" class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Welcome to <?=SITE_TITLE;?></h1>
-                    <p class="lead">You are logged in as <span class="text-primary"><?=$this->session->userdata('name');?></span>.</p>
-                    <?php $this->load->view('_snippets/message_box'); ?>
-                    <ul>
-                        <li>Backend UI for updating the Proverbs Everyday database.</li>
-                    </ul>
+
+                    <div class="row">
+                        <div class="col-md-11">
+
+                            <p class="lead">You are logged in as <span class="text-primary"><?=$this->session->userdata('name');?></span>.</p>
+                            <?php $this->load->view('_snippets/message_box'); ?>
+
+                            <h2>About</h2>
+                            <ul>
+                                <li>Backend UI for updating the Proverbs Everyday database.</li>
+                            </ul>
+
+                            <h2>Module Status</h2>
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-success">
+                                    <i class="fa fa-check fa-fw"></i> Translation Module
+                                </li>
+                                <li class="list-group-item list-group-item-success">
+                                    <i class="fa fa-check fa-fw"></i> Chapter Module
+                                </li>
+                                <li class="list-group-item list-group-item-success">
+                                    <i class="fa fa-check fa-fw"></i> Verse Passage Module
+                                </li>
+                                <li class="list-group-item list-group-item-danger">
+                                    <i class="fa fa-times fa-fw"></i> Chapter Passage Module
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <?php $this->load->view('_snippets/footer'); ?>
