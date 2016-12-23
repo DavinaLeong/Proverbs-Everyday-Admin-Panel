@@ -65,8 +65,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <table id="verse_passages_table" class="table table-hover">
                             <thead>
                             <tr>
-                                <th>Verse No</th>
                                 <th>Chapter No</th>
+                                <th>Verse No</th>
                                 <th>Passage</th>
                                 <th>Translation</th>
                                 <th>Status</th>
@@ -76,8 +76,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <tbody>
                             <?php foreach($verse_passages as $key=>$verse_passage): ?>
                                 <tr class="clickable" onclick="location.href = '<?=site_url("verse_passage/view_verse_passage/" . $verse_passage['vp_id']);?>'">
-                                    <td><?=$verse_passage['verse_no'];?></td>
                                     <td><?=$verse_passage['chapter_no'];?></td>
+                                    <td><?=$verse_passage['verse_no'];?></td>
                                     <td><?=word_limiter($verse_passage['passage'], 20);?></td>
                                     <td><?=$verse_passage['abbr'];?></td>
                                     <td><span class="status-<?=strtolower($verse_passage['status']);?>"><?=$verse_passage['status'];?></span></td>
@@ -106,7 +106,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     $(document).ready(function() {
         $('#verse_passages_table').DataTable({
             responsive: true,
-            order: [[0, "asc"]]
+            order: [[0, "asc"]],
+            pageLength: 25
         });
     });
 </script>

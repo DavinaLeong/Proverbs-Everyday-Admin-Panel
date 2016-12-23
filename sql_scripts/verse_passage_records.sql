@@ -1,0 +1,38 @@
+-- Verse Passage records
+
+-- Chapter 1
+INSERT INTO `verse_passage` (`translation_id`,`chapter_id`,`verse_no`,`passage`,`status`)
+VALUES
+  (5,1,	1	,'	The proverbs of Solomon the son of David, king of Israel;	','Published'),
+  (5,1,	2	,'	To know wisdom and instruction; to perceive the words of understanding;	','Published'),
+  (5,1,	3	,'	To receive the instruction of wisdom, justice, and judgment, and equity;	','Published'),
+  (5,1,	4	,'	To give subtilty to the simple, to the young man knowledge and discretion.	','Published'),
+  (5,1,	5	,'	A wise man will hear, and will increase learning; and a man of understanding shall attain unto wise counsels:	','Published'),
+  (5,1,	6	,'	To understand a proverb, and the interpretation; the words of the wise, and their dark sayings.	','Published'),
+  (5,1,	7	,'	The fear of the Lord is the beginning of knowledge: but fools despise wisdom and instruction.	','Published'),
+  (5,1,	8	,'	My son, hear the instruction of thy father, and forsake not the law of thy mother:	','Published'),
+  (5,1,	9	,'	For they shall be an ornament of grace unto thy head, and chains about thy neck.	','Published'),
+  (5,1,	10	,'	My son, if sinners entice thee, consent thou not.	','Published'),
+  (5,1,	11	,'	If they say, Come with us, let us lay wait for blood, let us lurk privily for the innocent without cause:	','Published'),
+  (5,1,	12	,'	Let us swallow them up alive as the grave; and whole, as those that go down into the pit:	','Published'),
+  (5,1,	13	,'	We shall find all precious substance, we shall fill our houses with spoil:	','Published'),
+  (5,1,	14	,'	Cast in thy lot among us; let us all have one purse:	','Published'),
+  (5,1,	15	,'	My son, walk not thou in the way with them; refrain thy foot from their path:	','Published'),
+  (5,1,	16	,'	For their feet run to evil, and make haste to shed blood.	','Published'),
+  (5,1,	17	,'	Surely in vain the net is spread in the sight of any bird.	','Published'),
+  (5,1,	18	,'	And they lay wait for their own blood; they lurk privily for their own lives.	','Published'),
+  (5,1,	19	,'	So are the ways of every one that is greedy of gain; which taketh away the life of the owners thereof.	','Published'),
+  (5,1,	20	,'	Wisdom crieth without; she uttereth her voice in the streets:	','Published'),
+  (5,1,	21	,'	She crieth in the chief place of concourse, in the openings of the gates: in the city she uttereth her words, saying,	','Published'),
+  (5,1,	22	,'	How long, ye simple ones, will ye love simplicity? and the scorners delight in their scorning, and fools hate knowledge?	','Published'),
+  (5,1,	23	,'	Turn you at my reproof: behold, I will pour out my spirit unto you, I will make known my words unto you.	','Published'),
+  (5,1,	24	,'	Because I have called, and ye refused; I have stretched out my hand, and no man regarded;	','Published'),
+  (5,1,	25	,'	But ye have set at nought all my counsel, and would none of my reproof:	','Published'),
+  (5,1,	26	,'	I also will laugh at your calamity; I will mock when your fear cometh;	','Published'),
+  (5,1,	27	,'	When your fear cometh as desolation, and your destruction cometh as a whirlwind; when distress and anguish cometh upon you.	','Published'),
+  (5,1,	28	,'	Then shall they call upon me, but I will not answer; they shall seek me early, but they shall not find me:	','Published'),
+  (5,1,	29	,'	For that they hated knowledge, and did not choose the fear of the Lord:	','Published'),
+  (5,1,	30	,'	They would none of my counsel: they despised all my reproof.	','Published'),
+  (5,1,	31	,'	Therefore shall they eat of the fruit of their own way, and be filled with their own devices.	','Published'),
+  (5,1,	32	,'	For the turning away of the simple shall slay them, and the prosperity of fools shall destroy them.	','Published'),
+  (5,1,	33	,'	But whoso hearkeneth unto me shall dwell safely, and shall be quiet from fear of evil.	','Published');
