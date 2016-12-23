@@ -79,8 +79,8 @@ class Migration_Initial_setup extends CI_Migration
 			DROP TABLE IF EXISTS `verse_passage`;
 			CREATE TABLE `verse_passage` (
 				`vp_id` INT(4) UNSIGNED  NOT NULL AUTO_INCREMENT,
-				`chapter_id` INT(4) UNSIGNED NOT NULL,
 				`translation_id` INT(4) UNSIGNED NOT NULL,
+				`chapter_id` INT(4) UNSIGNED NOT NULL,
 				`verse_no` INT(4) UNSIGNED NOT NULL,
 				`passage` TEXT NOT NULL,
 				`status` VARCHAR(512) NOT NULL,
