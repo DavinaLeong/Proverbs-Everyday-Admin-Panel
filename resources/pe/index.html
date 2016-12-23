@@ -10,7 +10,7 @@
     <link href="./images/openbook_16.png" rel="icon" type="image/png" />
 
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="css/styles_main.css" rel="stylesheet" type="text/css" />
+    <link href="./dist/proverbs_everyday.min.css" rel="stylesheet" type="text/css" />
 
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
@@ -23,7 +23,7 @@
 </head>
 <body>
 <!-- navbar start -->
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav id="top" class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -39,8 +39,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li data-toggle="tooltip" title="Paragraph View"><a href="#"><i class="fa fa-align-left fa-fw"></i> <span class="visible-sm visible-xs">Paragraph</span></a></li>
-                <li data-toggle="tooltip" title="Grid View"><a href="#"><i class="fa fa-th-large fa-fw"></i> <span class="visible-sm visible-xs">Grid</span></a></li>
+                <li data-toggle="tooltip" title="Paragraph View"><a href="#"><i class="fa fa-align-left fa-fw"></i> <span class="hidden-lg hidden-md hidden-sm">Paragraph</span></a></li>
+                <li data-toggle="tooltip" title="Grid View"><a href="#"><i class="fa fa-th-large fa-fw"></i> <span class="hidden-lg hidden-md hidden-sm">Grid</span></a></li>
+                <li data-toggle="tooltop" title="Back to top"><a href="./#top"><i class="fa fa-arrow-up fa-fw"></i> <span class="hidden-lg hidden-md hidden-sm">Back to Top</span></a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -87,7 +88,7 @@
 <!-- footer start -->
 <footer>
     <div class="container">
-        <p class="text-center">Proverbs Everyday &#8226; 2016</p>
+        <p class="text-center">Proverbs Everyday&nbsp;&nbsp;&#8226;&nbsp;&nbsp;2016&nbsp;&nbsp;&#8226;&nbsp;&nbsp;<a href="./#top">Back to Top</a></p>
     </div>
 </footer>
 <!-- footer end -->

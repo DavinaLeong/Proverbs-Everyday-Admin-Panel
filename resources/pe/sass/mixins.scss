@@ -1,0 +1,40 @@
+/**********************************************************************************
+	- File Info -
+		File name		: mixins.scss
+		Author(s)		: DAVINA Leong Shi Yun
+		Date Created	: 23 Dec 2016
+
+	- Contact Info -
+		Email	: leong.shi.yun@gmail.com
+		Mobile	: (+65) 9369 3752 [Singapore]
+
+***********************************************************************************/
+@import 'variables.scss';
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin clear-border {
+  @include border-radius(0);
+  border: none;
+}
+
+@mixin navbar-link {
+  color: $colour-navbar;
+
+  &:hover {
+    color: $colour-navbar;
+    border-bottom: thin solid $colour-navbar;
+  }
+
+  &:link,
+  &:active,
+  &:focus,
+  &:visited {
+    color: $colour-navbar;
+  }
+}
