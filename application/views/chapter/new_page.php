@@ -69,7 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <label class="col-md-2 control-label" for="status">Status</label>
                                         <div class="col-md-10">
                                             <select class="form-control" id="status" name="status" required>
-                                                <option id="status_0" value=""></option>
+                                                <option id="status_0" value="">-- Select Status --</option>
                                                 <?php foreach($status_options as $key=>$option): ?>
                                                     <option id="status_<?=$key;?>" value="<?=$option;?>" <?=set_select('status', $option); ?>><?=$option;?></option>
                                                 <?php endforeach; ?>

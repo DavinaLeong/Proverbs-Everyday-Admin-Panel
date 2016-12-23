@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <label class="col-md-2 control-label" for="translation_id">Translation <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
                                             <select class="form-control" id="translation_id" name="translation_id" required>
-                                                <option id="translation_id_0" value=""></option>
+                                                <option id="translation_id_0" value="">-- Select Translation --</option>
                                                 <?php foreach($translations as $key=>$translation): ?>
                                                     <option id="translation_id_<?=$key;?>" value="<?=$translation['translation_id'];?>" <?=set_select('translation_id', $translation['translation_id']); ?>>
                                                         <?= $translation['name']; ?> (<?=$translation['abbr'];?>)
@@ -69,7 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <label class="col-md-2 control-label" for="chapter_id">Chapter <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
                                             <select class="form-control" id="chapter_id" name="chapter_id" required>
-                                                <option id="chapter_id_0" value=""></option>
+                                                <option id="chapter_id_0" value="">-- Select Chapter --</option>
                                                 <?php foreach($chapters as $key=>$chapter): ?>
                                                     <option id="chapter_id_<?=$key;?>" value="<?=$chapter['chapter_id'];?>" <?=set_select('chapter_id', $chapter['chapter_id']);?>><?= $chapter['chapter_no']; ?></option>
                                                 <?php endforeach; ?>
@@ -97,7 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <label class="col-md-2 control-label" for="status">Status</label>
                                         <div class="col-md-10">
                                             <select class="form-control" id="status" name="status" required>
-                                                <option id="status_0" value=""></option>
+                                                <option id="status_0" value="">-- Select Status --</option>
                                                 <?php foreach($status_options as $key=>$option): ?>
                                                     <option id="status_<?=$key;?>" value="<?=$option;?>" <?=set_select('status', $option); ?>><?=$option;?></option>
                                                 <?php endforeach; ?>

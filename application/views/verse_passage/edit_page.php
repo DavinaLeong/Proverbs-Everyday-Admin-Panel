@@ -55,18 +55,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <legend>Info</legend>
 
                                     <div class="form-group">
-                                        <label class="col-md-2 control-label" for="verse_no">Verse Number <span class="text-danger">*</span></label>
-                                        <div class="col-md-10">
-                                            <input class="form-control" type="text" id="verse_no" name="verse_no"
-                                                   value="<?=set_value('verse_no', $verse_passage['verse_no']);?>"
-                                                   required min="1" max="9999" maxlength="4" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
                                         <label class="col-md-2 control-label" for="translation_id">Translation <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
                                             <select class="form-control" id="translation_id" name="translation_id" required>
-                                                <option id="translation_id_0" value=""></option>
+                                                <option id="translation_id_0" value="">-- Select Translation --</option>
                                                 <?php foreach($translations as $key=>$translation): ?>
                                                     <option id="translation_id_<?=$key;?>" value="<?=$translation['translation_id'];?>" <?=set_select('translation_id', $translation['translation_id'], ($translation['translation_id'] == $verse_passage['translation_id'])); ?>>
                                                         <?= $translation['name']; ?> (<?=$translation['abbr'];?>)
@@ -79,11 +71,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <label class="col-md-2 control-label" for="chapter_id">Chapter <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
                                             <select class="form-control" id="chapter_id" name="chapter_id" required>
-                                                <option id="chapter_id_0" value=""></option>
+                                                <option id="chapter_id_0" value="">-- Select Chapter --</option>
                                                 <?php foreach($chapters as $key=>$chapter): ?>
-                                                    <option id="chapter_id_<?=$key;?>" value="<?=$chapter['chapter_id'];?>" <?=set_select('chapter_id', $chapter['chapter_id'], ($chapter['chapter_id'] == $verse_passage['chapter_id']));?>><?= $chapter['chapter_no']; ?></option>
+                                                    <option id="chapter_id_<?=$key;?>" value="<?=$chapter['chapter_id'];?>" <?=set_select('chapter_id', $chapter['chapter_id'], ($chapter['chapter_id'] == $verse_passage['chapter_id']));?>><?=$chapter['chapter_no'];?> (total verses: <?=$chapter['total_verses'];?>)</option>
                                                 <?php endforeach; ?>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label" for="verse_no">Verse Number <span class="text-danger">*</span></label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="text" id="verse_no" name="verse_no"
+                                                   value="<?=set_value('verse_no', $verse_passage['verse_no']);?>"
+                                                   required min="1" max="9999" maxlength="4" />
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -107,11 +107,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <label class="col-md-2 control-label" for="status">Status</label>
                                         <div class="col-md-10">
                                             <select class="form-control" id="status" name="status" required>
-                                                <option id="status_0" value=""></option>
+                                                <option id="status_0" value="">-- Select Status --</option>
                                                 <?php foreach($status_options as $key=>$option): ?>
                                                     <option id="status_<?=$key;?>" value="<?=$option;?>" <?=set_select('status', $option, ($option == $verse_passage['status'])); ?>><?=$option;?></option>
                                                 <?php endforeach; ?>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Date Added</label>
+                                        <div class="col-md-10">
+                                            <p id="date_added" class="form-control-static"><?=$this->datetime_helper->format_dd_mmm_yyyy_hh_ii_ss($verse_passage['date_added']);?></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Last Updated</label>
+                                        <div class="col-md-10">
+                                            <p id="last_updated" class="form-control-static"><?=$this->datetime_helper->format_internet_standard($verse_passage['last_updated']);?></p>
                                         </div>
                                     </div>
                                 </fieldset>

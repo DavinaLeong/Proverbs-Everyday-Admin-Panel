@@ -98,7 +98,7 @@ class Chapter_passage_model extends CI_Model
                     'chapter_id' => $chapter_id,
                     'translation_id' => $translation_id
                 ));
-            return $query->result_array();
+            return $query->row_array();
         }
         else
         {
