@@ -70,10 +70,10 @@ class Verse_passage extends CI_Controller
         $this->load->model('Chapter_model');
         $chapter_ids = implode(',', $this->Chapter_model->get_published_chapter_ids());
         $this->form_validation->set_rules('chapter_id', 'Chapter',
-            'trim|required|in_list[' . $chapter_ids . ']|greater_than[0]|less_than_equal_to[9999]|is_natural_no_zero');
+            'trim|required|in_list[' . $chapter_ids . ']|greater_than[0]|less_than_equal_to[9999]|is_natural_no_zero|callback_check_total_verses');
 
         $this->form_validation->set_rules('verse_no', 'Verse Number',
-            'trim|required|is_natural_no_zero|greater_than[0]|less_than_equal_to[999999]');
+            'trim|required|is_natural_no_zero|greater_than[0]|less_than_equal_to[999999]|callback_check_verse_no');
 
         $this->form_validation->set_rules('passage', 'Passage', 'trim|required');
 
@@ -160,11 +160,27 @@ class Verse_passage extends CI_Controller
 
         $this->load->model('Chapter_model');
         $chapter_ids = implode(',', $this->Chapter_model->get_published_chapter_ids());
-        $this->form_validation->set_rules('chapter_id', 'Chapter',
-            'trim|required|in_list[' . $chapter_ids . ']|greater_than[0]|less_than_equal_to[9999]|is_natural_no_zero');
+        if($verse_passage['chapter_id'] == $this->input->post('chapter_id'))
+        {
+            $this->form_validation->set_rules('chapter_id', 'Chapter',
+                'trim|required|in_list[' . $chapter_ids . ']|greater_than[0]|less_than_equal_to[9999]|is_natural_no_zero');
+        }
+        else
+        {
+            $this->form_validation->set_rules('chapter_id', 'Chapter',
+                'trim|required|in_list[' . $chapter_ids . ']|greater_than[0]|less_than_equal_to[9999]|is_natural_no_zero|callback_check_total_verses');
+        }
 
-        $this->form_validation->set_rules('verse_no', 'Verse Number',
-            'trim|required|is_natural_no_zero|greater_than[0]|less_than[10000]');
+        if($verse_passage['verse_no'] == $this->input->post('verse_no'))
+        {
+            $this->form_validation->set_rules('verse_no', 'Verse Number',
+                'trim|required|is_natural_no_zero|greater_than[0]|less_than[10000]');
+        }
+        else
+        {
+            $this->form_validation->set_rules('verse_no', 'Verse Number',
+                'trim|required|is_natural_no_zero|greater_than[0]|less_than[10000]|callback_check_verse_no');
+        }
 
         $this->form_validation->set_rules('passage', 'Passage', 'trim|required');
 
@@ -216,6 +232,39 @@ class Verse_passage extends CI_Controller
             'fields_list' => $this->Verse_passage_model->_fields_list()
         );
         $this->load->view('export/export_template', $data);
+    }
+
+    public function check_total_verses($chapter_id)
+    {
+        $this->load->model('Chapter_model');
+        $chapter = $this->Chapter_model->get_by_chapter_id($chapter_id);
+        $verse_passages = $this->Verse_passage_model->get_by_verse_no_chapter_id_and_translation_id(
+            $chapter_id, $this->input->post('translation_id'));
+
+        if(count($verse_passages) >= $chapter)
+        {
+            $this->form_validation->set_message('check_total_verses', 'Total Verses for selected {field} and Translation exceeded. Please select another Translation or Chapter.');
+            return FALSE;
+        }
+        else
+        {
+            return TRUE;
+        }
+    }
+
+    public function check_verse_no($verse_no)
+    {
+        if($this->Verse_passage_model->get_by_verse_no_chapter_id_and_translation_id(
+            $verse_no, $this->input->post('chapter_id'), $this->input->post('translation_id')))
+        {
+            $this->form_validation->set_message('check_verse_no',
+                'The current {field} value is taken for selected Translation and Chapter. Choose another value.');
+            return FALSE;
+        }
+        else
+        {
+            return TRUE;
+        }
     }
 
     private function _record_not_found()

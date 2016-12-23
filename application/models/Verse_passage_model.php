@@ -88,40 +88,27 @@ class Verse_passage_model extends CI_Model
         }
     }
 
-    public function get_by_verse_no($verse_passage_no=FALSE)
+    public function get_by_chapter_id_and_translation_id($chapter_id=FALSE, $translation_id=FALSE)
     {
-        if($verse_passage_no !== FALSE)
+        if($chapter_id !== FALSE && $translation_id !== FALSE)
         {
-            $query = $this->db->get_where(TABLE_VERSE_PASSAGE, array('verse_no' => $verse_passage_no));
+            $this->db->order_by('verse_no');
+            $query = $this->db->get_where(TABLE_VERSE_PASSAGE, array('chapter_id' => $chapter_id, 'translation_id' => $translation_id));
+            return $query->result_array();
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
+    public function get_by_verse_no_chapter_id_and_translation_id($verse_no=FALSE, $chapter_id=FALSE, $translation_id=FALSE)
+    {
+        if($verse_no !== FALSE && $chapter_id !== FALSE && $translation_id !== FALSE)
+        {
+            $this->db->order_by('verse_no');
+            $query = $this->db->get_where(TABLE_VERSE_PASSAGE, array('verse_no' => $verse_no, 'chapter_id' => $chapter_id, 'translation_id' => $translation_id));
             return $query->row_array();
-        }
-        else
-        {
-            return FALSE;
-        }
-    }
-
-    public function get_by_chapter_no($chapter_no=FALSE)
-    {
-        if($chapter_no !== FALSE)
-        {
-            $this->db->order_by('verse_no');
-            $query = $this->db->get_where(TABLE_VERSE_PASSAGE, array('chapter_no', $chapter_no));
-            return $query->result_array();
-        }
-        else
-        {
-            return FALSE;
-        }
-    }
-
-    public function get_by_translation_id($translation_id=FALSE)
-    {
-        if($translation_id !== FALSE)
-        {
-            $this->db->order_by('verse_no');
-            $query = $this->db->get_where(TABLE_VERSE_PASSAGE, array('translation_id', $translation_id));
-            return $query->result_array();
         }
         else
         {
