@@ -36,6 +36,15 @@ body {
     display: inline-block;
 }
 
+.navbar-default .navbar-toggle {
+    border: none;
+    border-radius: 0;
+}
+
+.navbar-default .navbar-toggle:hover {
+    background: none;
+}
+
 .header {
     background: url('../images/studying.png') no-repeat center center;
     background-size: cover;
@@ -53,6 +62,22 @@ p {
     font-size: 12pt;
 }
 
+a:hover,
+a:focus,
+a:active {
+    color: #a9a18c;
+}
+
+a,
+a:active {
+    color: #816c5b;
+}
+
+.chevron-link {
+    position: fixed;
+    top: 50%;
+}
+
 .date {
     color: #333;
     font-family: 'Titillium Web', Calibri, Arial, sans-serif;
@@ -61,7 +86,7 @@ p {
 
 footer {
     margin-top: 50px;
-    background: peachpuff;
+    background: rgba(219, 209, 182, 0.7);
     padding: 20px 0;
 }
 
