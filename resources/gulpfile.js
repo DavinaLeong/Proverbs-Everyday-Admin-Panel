@@ -39,6 +39,12 @@ gulp.task("minify-css", function()
 		.pipe(gulp.dest("pe/dist"));
 	console.log('- minified styles_admin_main.css');
 
+	// display pages styles
+	gulp.src('pe/src/styles_main.css')
+		.pipe(clean_css({compatibility: "ie8"}))
+		.pipe(rename({suffix: ".min"}))
+		.pipe(gulp.dest("pe/dist"));
+
 	// parsley styles
 	gulp.src('pe/src/styles_parsley.css')
 		.pipe(clean_css({compatibility: "ie8"}))
