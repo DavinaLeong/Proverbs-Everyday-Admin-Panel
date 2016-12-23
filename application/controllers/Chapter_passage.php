@@ -232,8 +232,8 @@ class Chapter_passage extends CI_Controller
 
     private function _record_not_found()
     {
-        $this->session->set_userdata('message', 'Chapter record not found');
-        redirect('chapter/browse_chapter');
+        $this->session->set_userdata('message', 'Chapter Passage record not found');
+        redirect('chapter_passage/browse_chapter_passage');
     }
 	
 } // end Chapter_passage controller class
