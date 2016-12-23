@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <?php $this->load->view('_snippets/meta'); ?>
     <?php $this->load->view('_snippets/head_resources'); ?>
-    <link href="<?=RESOURCES_FOLDER;?>pe/styles_parsley.css" rel="stylesheet" type="text/css">
+    <link href="<?=RESOURCES_FOLDER;?>pe/dist/styles_parsley.min.css" rel="stylesheet" type="text/css">
     <style>
         html, body {
             width: 100%;
@@ -24,8 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
 
         body {
-            background: url(<?=RESOURCES_FOLDER;?>pe/images/linedpaper.png) #000;
-            background-size: cover;
+            background: url(<?=RESOURCES_FOLDER;?>pe/images/linedpaper.png) repeat;
         }
     </style>
 </head>
