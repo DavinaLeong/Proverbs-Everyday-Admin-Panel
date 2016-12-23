@@ -1,0 +1,35 @@
+/**********************************************************************************
+	- File Info -
+		File name		: styles_admin_main.css
+		Author(s)		: DAVINA Leong Shi Yun
+		Date Created	: 20 Dec 2016
+
+	- Contact Info -
+		Email	: leong.shi.yun@gmail.com
+		Mobile	: (+65) 9369 3752 [Singapore]
+
+***********************************************************************************/
+#content-wrapper {
+    min-height: 750px;
+}
+
+.clickable:hover {
+    cursor: pointer;
+}
+
+.navbar-brand > img {
+    display: inline-block;
+}
+
+.status-published {
+    color: #080;
+}
+
+.status-draft {
+    color: #c00;
+}
+
+.passage-well {
+    max-height: 500px;
+    overflow: auto;
+}
