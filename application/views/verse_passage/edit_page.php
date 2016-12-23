@@ -23,10 +23,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php $this->load->view('_snippets/meta'); ?>
     <?php $this->load->view('_snippets/head_resources'); ?>
     <link href="<?=RESOURCES_FOLDER;?>pe/styles_parsley.css" rel="stylesheet" type="text/css">
-
-    <?php $this->load->view('_snippets/body_resources'); ?>
-    <script src="<?=RESOURCES_FOLDER;?>vendor/parsleyjs/parsley.min.js"></script>
-    <script src="<?=RESOURCES_FOLDER;?>vendor/ckeditor/ckeditor.js"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -89,13 +85,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="form-group">
                                         <label class="col-md-2 control-label" for="passage">Passage <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
-                                            <textarea class="form-control" rows="4" id="passage" name="passage" required data-parsley-errors-container="#passage_errors"><?=set_value('passage', $verse_passage['passage']);?></textarea>
-                                            <script>
-                                                CKEDITOR.replace('passage');
-                                                CKEDITOR.config.allowedContent = true;
-                                                CKEDITOR.config.height = 300;
-                                            </script>
-                                            <div id="passage_errors"></div>
+                                            <textarea class="form-control" rows="4" id="passage" name="passage" required><?=set_value('passage', nl2br($verse_passage['passage']));?></textarea>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -144,5 +134,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
 </div>
+<?php $this->load->view('_snippets/body_resources'); ?>
+<script src="<?=RESOURCES_FOLDER;?>vendor/parsleyjs/parsley.min.js"></script>
 </body>
 </html>
