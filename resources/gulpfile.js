@@ -25,6 +25,28 @@ const SCRIPT_GENERATOR_PATH = "./script_generator/";
 
 gulp.task("default", ["update-vendor"]);
 
+gulp.task("watch", function()
+{
+	gulp.watch("pe/src/**/*.css", ["minify-css"]);
+});
+
+gulp.task("minify-css", function()
+{
+	// admin styles
+	gulp.src('pe/src/styles_admin_main.css')
+		.pipe(clean_css({compatibility: "ie8"}))
+		.pipe(rename({suffix: ".min"}))
+		.pipe(gulp.dest("pe/dist"));
+	console.log('- minified styles_admin_main.css');
+
+	// parsley styles
+	gulp.src('pe/src/styles_parsley.css')
+		.pipe(clean_css({compatibility: "ie8"}))
+		.pipe(rename({suffix: ".min"}))
+		.pipe(gulp.dest("pe/dist"));
+	console.log('- minified styles_parsley.css');
+});
+
 // === manage vendor resources started ===
 gulp.task("update-vendor", ["clean-vendor", "copy-vendor"]);
 
