@@ -88,6 +88,24 @@ class Chapter_passage_model extends CI_Model
         }
     }
 
+    public function get_by_chapter_id_and_translation_id($chapter_id=FALSE, $translation_id=FALSE)
+    {
+        if($chapter_id !== FALSE && $translation_id !== FALSE)
+        {
+            $this->db->order_by('chapter_id');
+            $query = $this->db->get_where(TABLE_CHAPTER_PASSAGE,
+                array(
+                    'chapter_id' => $chapter_id,
+                    'translation_id' => $translation_id
+                ));
+            return $query->result_array();
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
     public function insert($chapter_passage=FALSE)
     {
         if($chapter_passage !== FALSE)
@@ -118,9 +136,10 @@ class Chapter_passage_model extends CI_Model
                 'chapter_id' => $chapter_passage['chapter_id'],
                 'passage' => $chapter_passage['passage'],
                 'status' => $chapter_passage['status'],
+                //'date_added' => $chapter_passage['date_added']
             );
             $this->db->set('last_updated', $this->datetime_helper->now('c'));
-            $this->db->update(TABLE_CHAPTER_PASSAGE, $temp_array, array('cp_id', $chapter_passage['cp_id']));
+            $this->db->update(TABLE_CHAPTER_PASSAGE, $temp_array, array('cp_id' => $chapter_passage['cp_id']));
             return $this->db->affected_rows();
         }
         else

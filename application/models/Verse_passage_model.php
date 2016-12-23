@@ -165,7 +165,6 @@ class Verse_passage_model extends CI_Model
                 'status' => $verse_passage['status']
             );
 
-            $this->load->library('Datetime_helper');
             $this->db->set('last_updated', $this->datetime_helper->now('c'));
             $this->db->update(TABLE_VERSE_PASSAGE, $temp_array, array('vp_id' => $verse_passage['vp_id']));
             return $this->db->affected_rows();

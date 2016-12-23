@@ -53,8 +53,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <li class="list-group-item list-group-item-success">
                                     <i class="fa fa-check fa-fw"></i> Verse Passage Module
                                 </li>
-                                <li class="list-group-item list-group-item-danger">
-                                    <i class="fa fa-times fa-fw"></i> Chapter Passage Module
+                                <li class="list-group-item list-group-item-success">
+                                    <i class="fa fa-check fa-fw"></i> Chapter Passage Module
                                 </li>
                             </ul>
 
