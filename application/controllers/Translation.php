@@ -72,7 +72,7 @@ class Translation extends CI_Controller
     {
         $translation = array();
         $translation['name'] = $this->input->post('name');
-        $translation['abbr'] = $this->input->post('abbr');
+        $translation['abbr'] = strtoupper($this->input->post('abbr'));
         $translation['copyright'] = $this->input->post('copyright');
         $translation['status'] = $this->input->post('status');
         return $translation;
@@ -152,7 +152,7 @@ class Translation extends CI_Controller
     private function _prepare_edit_translation_array($translation)
     {
         $translation['name'] = $this->input->post('name');
-        $translation['abbr'] = $this->input->post('abbr');
+        $translation['abbr'] = strtoupper($this->input->post('abbr'));
         $translation['copyright'] = $this->input->post('copyright');
         $translation['status'] = $this->input->post('status');
         return $translation;

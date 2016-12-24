@@ -55,6 +55,19 @@ class Translation_model extends CI_Model
         return $ids_array;
     }
 
+    public function get_by_abbr_published($abbr=FALSE)
+    {
+        if($abbr !== FALSE)
+        {
+            $query = $this->db->get_where(TABLE_TRANSLATION, array('abbr' => $abbr, 'status' => 'Published'));
+            return $query->row_array();
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
     public function insert($translation=FALSE)
     {
         if($translation !== FALSE)

@@ -116,7 +116,7 @@ class Verse_passage_model extends CI_Model
         }
     }
 
-    public function get_by_abbr_chapter_no($abbr=FALSE, $chapter_no=FALSE)
+    public function get_by_abbr_chapter_no_published($abbr=FALSE, $chapter_no=FALSE)
     {
         if($abbr !== FALSE && $chapter_no !== FALSE)
         {
