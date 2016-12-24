@@ -18,6 +18,11 @@ class Chapter_passage extends CI_Controller
         $this->load->model('Chapter_passage_model');
 	}
 
+    public function index()
+    {
+        redirect('chapter_passage/browse_chapter_passage');
+    }
+
     public function browse_chapter_passage()
     {
         $this->User_log_model->validate_access();

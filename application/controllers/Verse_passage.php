@@ -18,6 +18,11 @@ class Verse_passage extends CI_Controller
         $this->load->model('Verse_passage_model');
 	}
 
+    public function index()
+    {
+        redirect('verse_passage/browse_verse_passage');
+    }
+
     public function browse_verse_passage()
     {
         $this->User_log_model->validate_access();

@@ -18,6 +18,11 @@ class Translation extends CI_Controller
         $this->load->model('Translation_model');
 	}
 
+    public function index()
+    {
+        redirect('translation/browse_translation');
+    }
+
     public function browse_translation()
     {
         $this->User_log_model->validate_access();

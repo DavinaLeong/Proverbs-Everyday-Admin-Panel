@@ -19,6 +19,11 @@ class Chapter extends CI_Controller
         $this->load->model('Chapter_model');
 	}
 
+    public function index()
+    {
+        redirect('chapter/browse_chapter');
+    }
+
     public function browse_chapter()
     {
         $this->User_log_model->validate_access();
