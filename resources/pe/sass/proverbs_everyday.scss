@@ -18,7 +18,7 @@ body {
 }
 
 .navbar-default {
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.5);
   @include clear-border;
   color: $colour-navbar;
   font-family: $font-tillitium-web;
@@ -60,6 +60,44 @@ body {
     &:focus,
     &:visited {
       @extend .navbar-toggle;
+    }
+  }
+}
+
+#search-form {
+  .form-group > .form-control {
+    background: transparentize($colour-navbar, 0.8);
+    border: thin solid darken($colour-navbar, 20%);
+    border-radius: 0;
+    color: $colour-navbar;
+    font-family: $font-tillitium-web;
+
+    option {
+      color: $colour-body;
+    }
+
+    @include placeholder {
+      color: $colour-navbar;
+    }
+  }
+
+  .btn-navbar {
+    border-radius: 0;
+    border: thin solid darken($colour-navbar, 20%);
+    color: $colour-navbar;
+    background: transparentize($colour-navbar, 0.8);
+
+    &:hover {
+      border-color: $colour-navbar;
+      background: transparentize($colour-navbar, 0.6);
+    }
+
+    &:focus {
+      border-color: $colour-navbar;
+    }
+
+    &:active {
+      @extend .btn-navbar;
     }
   }
 }
@@ -121,13 +159,14 @@ a {
 
 .chevron-link {
   position: fixed;
-  top: 50%;
+  top: 55%;
 }
 
 .date {
+  padding-left: 20px;
   color: $colour-heading;
   font-family: $font-tillitium-web;
-  font-size: 12pt;
+  font-size: 10pt;
 }
 
 footer {

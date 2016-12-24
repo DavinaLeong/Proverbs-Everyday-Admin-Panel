@@ -24,7 +24,7 @@ const NODE_PATH = './node_modules/';
 const VENDOR_PATH = './vendor/';
 const SCRIPT_GENERATOR_PATH = './script_generator/';
 
-gulp.task('default', ['update-vendor']);
+gulp.task('default', ['update-vendor', 'minify-css', 'watch']);
 
 gulp.task('watch', function()
 {

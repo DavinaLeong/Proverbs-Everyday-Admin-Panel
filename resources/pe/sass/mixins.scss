@@ -18,6 +18,13 @@
   border-radius: $radius;
 }
 
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}
+}
+
 @mixin clear-border {
   @include border-radius(0);
   border: none;
