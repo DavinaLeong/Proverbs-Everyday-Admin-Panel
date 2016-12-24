@@ -168,7 +168,7 @@ class Chapter_passage extends CI_Controller
         else
         {
             $this->form_validation->set_rules('chapter_id', 'Chapter',
-                'trim|required|in_list[' . $chapter_ids . ']|greater_than[0]|less_than_equal_to[9999]|is_natural_no_zero'); //|callback_check_chapter_id');
+                'trim|required|in_list[' . $chapter_ids . ']|greater_than[0]|less_than_equal_to[9999]|is_natural_no_zero|callback_check_chapter_id');
         }
 
         $this->form_validation->set_rules('passage', 'Passage', 'trim|required');
@@ -209,7 +209,7 @@ class Chapter_passage extends CI_Controller
         }
     }
 
-    public function export_chapter()
+    public function export_chapter_passage()
     {
         $this->User_log_model->validate_access();
         $data = array(
