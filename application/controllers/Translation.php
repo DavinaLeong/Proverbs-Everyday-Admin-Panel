@@ -18,6 +18,11 @@ class Translation extends CI_Controller
         $this->load->model('Translation_model');
 	}
 
+    public function index()
+    {
+        redirect('translation/browse_translation');
+    }
+
     public function browse_translation()
     {
         $this->User_log_model->validate_access();
@@ -57,7 +62,7 @@ class Translation extends CI_Controller
     private function _set_rules_new_translation()
     {
         $this->form_validation->set_rules('name', 'Name', 'trim|required|max_length[512]');
-        $this->form_validation->set_rules('abbr', 'Abbr.', 'trim|required|max_length[512]');
+        $this->form_validation->set_rules('abbr', 'Abbr.', 'trim|required|max_length[512]|is_unique[translation.abbr]');
         $this->form_validation->set_rules('copyright', 'Copyright', 'trim|max_length[512]');
         $status_str = implode(',', $this->Translation_model->_status_array());
         $this->form_validation->set_rules('status', 'Status', 'trim|required|in_list[' . $status_str .']');
@@ -67,7 +72,7 @@ class Translation extends CI_Controller
     {
         $translation = array();
         $translation['name'] = $this->input->post('name');
-        $translation['abbr'] = $this->input->post('abbr');
+        $translation['abbr'] = strtoupper($this->input->post('abbr'));
         $translation['copyright'] = $this->input->post('copyright');
         $translation['status'] = $this->input->post('status');
         return $translation;
@@ -99,7 +104,7 @@ class Translation extends CI_Controller
         if($translation)
         {
             $this->load->library('form_validation');
-            $this->_set_rules_edit_translation();
+            $this->_set_rules_edit_translation($translation);
 
             if($this->form_validation->run())
             {
@@ -128,10 +133,17 @@ class Translation extends CI_Controller
         }
     }
 
-    private function _set_rules_edit_translation()
+    private function _set_rules_edit_translation($translation)
     {
         $this->form_validation->set_rules('name', 'Name', 'trim|required|max_length[512]');
-        $this->form_validation->set_rules('abbr', 'Abbr.', 'trim|required|max_length[512]');
+        if($translation['abbr'] == $this->input->post('abbr'))
+        {
+            $this->form_validation->set_rules('abbr', 'Abbr.', 'trim|required|max_length[512]');
+        }
+        else
+        {
+            $this->form_validation->set_rules('abbr', 'Abbr.', 'trim|required|max_length[512]|is_unique[translation.abbr]');
+        }
         $this->form_validation->set_rules('copyright', 'Copyright', 'trim|max_length[512]');
         $status_str = implode(',', $this->Translation_model->_status_array());
         $this->form_validation->set_rules('status', 'Status'. 'trim|required|in_list[' . $status_str . ']|max_length[512]');
@@ -140,7 +152,7 @@ class Translation extends CI_Controller
     private function _prepare_edit_translation_array($translation)
     {
         $translation['name'] = $this->input->post('name');
-        $translation['abbr'] = $this->input->post('abbr');
+        $translation['abbr'] = strtoupper($this->input->post('abbr'));
         $translation['copyright'] = $this->input->post('copyright');
         $translation['status'] = $this->input->post('status');
         return $translation;

@@ -55,6 +55,19 @@ class Chapter_model extends CI_Model
         return $ids_array;
     }
 
+    public function get_by_chapter_no_published($chapter_no=FALSE)
+    {
+        if($chapter_no !== FALSE)
+        {
+            $query = $this->db->get_where(TABLE_CHAPTER, array('chapter_no' => $chapter_no, 'status' => 'Published'));
+            return $query->row_array();
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
     public function insert($chapter=FALSE)
     {
         if($chapter !== FALSE)

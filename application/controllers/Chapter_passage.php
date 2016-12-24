@@ -18,6 +18,11 @@ class Chapter_passage extends CI_Controller
         $this->load->model('Chapter_passage_model');
 	}
 
+    public function index()
+    {
+        redirect('chapter_passage/browse_chapter_passage');
+    }
+
     public function browse_chapter_passage()
     {
         $this->User_log_model->validate_access();
@@ -163,7 +168,7 @@ class Chapter_passage extends CI_Controller
         else
         {
             $this->form_validation->set_rules('chapter_id', 'Chapter',
-                'trim|required|in_list[' . $chapter_ids . ']|greater_than[0]|less_than_equal_to[9999]|is_natural_no_zero'); //|callback_check_chapter_id');
+                'trim|required|in_list[' . $chapter_ids . ']|greater_than[0]|less_than_equal_to[9999]|is_natural_no_zero|callback_check_chapter_id');
         }
 
         $this->form_validation->set_rules('passage', 'Passage', 'trim|required');
@@ -204,7 +209,7 @@ class Chapter_passage extends CI_Controller
         }
     }
 
-    public function export_chapter()
+    public function export_chapter_passage()
     {
         $this->User_log_model->validate_access();
         $data = array(
@@ -232,8 +237,8 @@ class Chapter_passage extends CI_Controller
 
     private function _record_not_found()
     {
-        $this->session->set_userdata('message', 'Chapter record not found');
-        redirect('chapter/browse_chapter');
+        $this->session->set_userdata('message', 'Chapter Passage record not found');
+        redirect('chapter_passage/browse_chapter_passage');
     }
 	
 } // end Chapter_passage controller class

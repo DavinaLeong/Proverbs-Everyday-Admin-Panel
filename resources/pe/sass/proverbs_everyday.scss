@@ -1,0 +1,182 @@
+/**********************************************************************************
+	- File Info -
+		File name		: proverbs_everyday.scss
+		Author(s)		: DAVINA Leong Shi Yun
+		Date Created	: 23 Dec 2016
+
+	- Contact Info -
+		Email	: leong.shi.yun@gmail.com
+		Mobile	: (+65) 9369 3752 [Singapore]
+
+***********************************************************************************/
+@import 'variables.scss';
+@import 'mixins.scss';
+
+body {
+  background: $bg-body;
+  color: $colour-body;
+}
+
+.navbar-default {
+  background: rgba(0, 0, 0, 0.5);
+  @include clear-border;
+  color: $colour-navbar;
+  font-family: $font-tillitium-web;
+
+  .navbar-brand {
+    @include navbar-link;
+
+    img {
+      display: inline-block;
+    }
+  }
+
+  .navbar-nav > li > a {
+    @include navbar-link;
+
+    .visible-sm,
+    .visible-xs {
+      display: inline;
+    }
+  }
+
+  .navbar-toggle {
+    @include clear-border;
+
+    .icon-bar {
+      background-color: $colour-navbar;
+    }
+
+    &:hover {
+      background: none;
+
+      .icon-bar {
+        background-color: darken($colour-navbar, 20%);
+      }
+    }
+
+    &:link,
+    &:active,
+    &:focus,
+    &:visited {
+      @extend .navbar-toggle;
+    }
+  }
+}
+
+#search-form {
+  .form-group > .form-control {
+    background: transparentize($colour-navbar, 0.8);
+    border: thin solid darken($colour-navbar, 20%);
+    border-radius: 0;
+    color: $colour-navbar;
+    font-family: $font-tillitium-web;
+
+    option {
+      color: $colour-body;
+    }
+
+    @include placeholder {
+      color: $colour-navbar;
+    }
+  }
+
+  .btn-navbar {
+    border-radius: 0;
+    border: thin solid darken($colour-navbar, 20%);
+    color: $colour-navbar;
+    background: transparentize($colour-navbar, 0.8);
+
+    &:hover {
+      border-color: $colour-navbar;
+      background: transparentize($colour-navbar, 0.6);
+    }
+
+    &:focus {
+      border-color: $colour-navbar;
+    }
+
+    &:active {
+      @extend .btn-navbar;
+    }
+  }
+}
+
+.header {
+  background: $bg-header;
+  background-size: cover;
+  height: 300px;
+}
+
+@for $index from 1 through 3 {
+  h#{$index} {
+    color: $colour-heading;
+    font-family: $font-arapey;
+  }
+}
+
+@for $index from 4 through 6 {
+  h#{$index} {
+    color: $colour-heading;
+    font-family: $font-tillitium-web;
+  }
+}
+
+p {
+  color: $colour-passage-text;
+  font-family: $font-handlee;
+  font-size: 12pt;
+}
+
+a {
+  color: $colour-link;
+  text-decoration: none;
+
+  &:hover {
+    color: lighten($colour-link, 20%);
+    text-decoration: none;
+  }
+
+  &:link,
+  &:active,
+  &:focus,
+  &:visited {
+    @extend a;
+  }
+}
+
+.disabled-link {
+  color: $colour-link-disabled;
+  cursor: default;
+
+  &:link,
+  &:active,
+  &focus,
+  &:visited {
+    @extend .disabled-link;
+  }
+}
+
+.chevron-link {
+  position: fixed;
+  top: 55%;
+}
+
+.date {
+  padding-left: 20px;
+  color: $colour-heading;
+  font-family: $font-tillitium-web;
+  font-size: 10pt;
+}
+
+footer {
+  margin-top: 50px;
+  padding: 20px 0;
+  background: rgba(219, 209, 182, 0.5);
+
+  p {
+    color: lighten($colour-heading, 30%);
+    font-family: $font-tillitium-web;
+    font-size: 12pt;
+  }
+}

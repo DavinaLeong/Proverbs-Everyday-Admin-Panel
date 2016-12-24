@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <?php $this->load->view('_snippets/meta'); ?>
     <?php $this->load->view('_snippets/head_resources'); ?>
-    <link href="<?=RESOURCES_FOLDER;?>pe/styles_parsley.css" rel="stylesheet" type="text/css">
+    <link href="<?=RESOURCES_FOLDER;?>pe/dist/styles_parsley.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="wrapper">
@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <select class="form-control" id="translation_id" name="translation_id" required>
                                                 <option id="translation_id_0" value="">-- Select Translation --</option>
                                                 <?php foreach($translations as $key=>$translation): ?>
-                                                    <option id="translation_id_<?=$key;?>" value="<?=$translation['translation_id'];?>" <?=set_select('translation_id', $translation['translation_id'], ($translation['translation_id'] == $verse_passage['translation_id'])); ?>>
+                                                    <option id="translation_id_<?=$key+1;?>" value="<?=$translation['translation_id'];?>" <?=set_select('translation_id', $translation['translation_id'], ($translation['translation_id'] == $verse_passage['translation_id'])); ?>>
                                                         <?= $translation['name']; ?> (<?=$translation['abbr'];?>)
                                                     </option>
                                                 <?php endforeach; ?>
@@ -69,7 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <select class="form-control" id="chapter_id" name="chapter_id" required>
                                                 <option id="chapter_id_0" value="">-- Select Chapter --</option>
                                                 <?php foreach($chapters as $key=>$chapter): ?>
-                                                    <option id="chapter_id_<?=$key;?>" value="<?=$chapter['chapter_id'];?>" <?=set_select('chapter_id', $chapter['chapter_id'], ($chapter['chapter_id'] == $verse_passage['chapter_id']));?>><?=$chapter['chapter_no'];?> (total verses: <?=$chapter['total_verses'];?>)</option>
+                                                    <option id="chapter_id_<?=$key+1;?>" value="<?=$chapter['chapter_id'];?>" <?=set_select('chapter_id', $chapter['chapter_id'], ($chapter['chapter_id'] == $verse_passage['chapter_id']));?>><?=$chapter['chapter_no'];?> (total verses: <?=$chapter['total_verses'];?>)</option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
@@ -99,7 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <select class="form-control" id="status" name="status" required>
                                                 <option id="status_0" value="">-- Select Status --</option>
                                                 <?php foreach($status_options as $key=>$option): ?>
-                                                    <option id="status_<?=$key;?>" value="<?=$option;?>" <?=set_select('status', $option, ($option == $verse_passage['status'])); ?>><?=$option;?></option>
+                                                    <option id="status_<?=$key+1;?>" value="<?=$option;?>" <?=set_select('status', $option, ($option == $verse_passage['status'])); ?>><?=$option;?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>

@@ -106,6 +106,27 @@ class Chapter_passage_model extends CI_Model
         }
     }
 
+    public function get_by_abbr_chapter_no_published($abbr=FALSE, $chapter_no=FALSE)
+    {
+        if($abbr !== FALSE && $chapter_no !== FALSE)
+        {
+            $this->db->select('chapter_passage.*, chapter.chapter_no, translation.name, translation.abbr');
+            $this->db->from(TABLE_CHAPTER_PASSAGE);
+            $this->db->join('translation', 'translation.translation_id = chapter_passage.translation_id', 'left');
+            $this->db->join('chapter', 'chapter.chapter_id = chapter_passage.chapter_id', 'left');
+            $this->db->where('translation.abbr = ', $abbr);
+            $this->db->where('chapter.chapter_no = ', $chapter_no);
+            $this->db->where('chapter_passage.status = ', 'Published');
+
+            $query = $this->db->get();
+            return $query->row_array();
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
     public function insert($chapter_passage=FALSE)
     {
         if($chapter_passage !== FALSE)

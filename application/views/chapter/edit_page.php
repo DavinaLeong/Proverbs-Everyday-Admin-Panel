@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <?php $this->load->view('_snippets/meta'); ?>
     <?php $this->load->view('_snippets/head_resources'); ?>
-    <link href="<?=RESOURCES_FOLDER;?>pe/styles_parsley.css" rel="stylesheet" type="text/css">
+    <link href="<?=RESOURCES_FOLDER;?>pe/dist/styles_parsley.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="wrapper">
@@ -73,7 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <select class="form-control" id="status" name="status" required>
                                                 <option id="status_0" value="">-- Select Status --</option>
                                                 <?php foreach($status_options as $key=>$option): ?>
-                                                    <option id="status_<?=$key;?>" value="<?=$option;?>" <?=set_select('status', $option, ($chapter['status']==$option)); ?>><?=$option;?></option>
+                                                    <option id="status_<?=$key+1;?>" value="<?=$option;?>" <?=set_select('status', $option, ($chapter['status']==$option)); ?>><?=$option;?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>

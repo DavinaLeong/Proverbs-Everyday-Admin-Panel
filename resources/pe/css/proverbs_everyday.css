@@ -1,0 +1,180 @@
+/**********************************************************************************
+	- File Info -
+		File name		: proverbs_everyday.scss
+		Author(s)		: DAVINA Leong Shi Yun
+		Date Created	: 23 Dec 2016
+
+	- Contact Info -
+		Email	: leong.shi.yun@gmail.com
+		Mobile	: (+65) 9369 3752 [Singapore]
+
+***********************************************************************************/
+/**********************************************************************************
+	- File Info -
+		File name		: variables.scss
+		Author(s)		: DAVINA Leong Shi Yun
+		Date Created	: 23 Dec 2016
+
+	- Contact Info -
+		Email	: leong.shi.yun@gmail.com
+		Mobile	: (+65) 9369 3752 [Singapore]
+
+***********************************************************************************/
+/**********************************************************************************
+	- File Info -
+		File name		: mixins.scss
+		Author(s)		: DAVINA Leong Shi Yun
+		Date Created	: 23 Dec 2016
+
+	- Contact Info -
+		Email	: leong.shi.yun@gmail.com
+		Mobile	: (+65) 9369 3752 [Singapore]
+
+***********************************************************************************/
+/**********************************************************************************
+	- File Info -
+		File name		: variables.scss
+		Author(s)		: DAVINA Leong Shi Yun
+		Date Created	: 23 Dec 2016
+
+	- Contact Info -
+		Email	: leong.shi.yun@gmail.com
+		Mobile	: (+65) 9369 3752 [Singapore]
+
+***********************************************************************************/
+body {
+  background: url("../images/paper.png") repeat;
+  color: #000; }
+
+.navbar-default {
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  border-radius: 0;
+  border: none;
+  color: #fff;
+  font-family: "Titillium Web", Calibri, Arial, sans-serif; }
+  .navbar-default .navbar-brand {
+    color: #fff; }
+    .navbar-default .navbar-brand:hover {
+      color: #fff;
+      border-bottom: thin solid #fff; }
+    .navbar-default .navbar-brand:link, .navbar-default .navbar-brand:active, .navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:visited {
+      color: #fff; }
+    .navbar-default .navbar-brand img {
+      display: inline-block; }
+  .navbar-default .navbar-nav > li > a {
+    color: #fff; }
+    .navbar-default .navbar-nav > li > a:hover {
+      color: #fff;
+      border-bottom: thin solid #fff; }
+    .navbar-default .navbar-nav > li > a:link, .navbar-default .navbar-nav > li > a:active, .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:visited {
+      color: #fff; }
+    .navbar-default .navbar-nav > li > a .visible-sm,
+    .navbar-default .navbar-nav > li > a .visible-xs {
+      display: inline; }
+  .navbar-default .navbar-toggle, .navbar-default .navbar-toggle:link, .navbar-default .navbar-toggle:active, .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:visited {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    border-radius: 0;
+    border: none; }
+    .navbar-default .navbar-toggle .icon-bar {
+      background-color: #fff; }
+    .navbar-default .navbar-toggle:hover {
+      background: none; }
+      .navbar-default .navbar-toggle:hover .icon-bar {
+        background-color: #cccccc; }
+
+#search-form .form-group > .form-control {
+  background: rgba(255, 255, 255, 0.2);
+  border: thin solid #cccccc;
+  border-radius: 0;
+  color: #fff;
+  font-family: "Titillium Web", Calibri, Arial, sans-serif; }
+  #search-form .form-group > .form-control option {
+    color: #000; }
+  #search-form .form-group > .form-control ::-webkit-input-placeholder {
+    color: #fff; }
+  #search-form .form-group > .form-control :-moz-placeholder {
+    color: #fff; }
+  #search-form .form-group > .form-control ::-moz-placeholder {
+    color: #fff; }
+  #search-form .form-group > .form-control :-ms-input-placeholder {
+    color: #fff; }
+
+#search-form .btn-navbar, #search-form .btn-navbar:active {
+  border-radius: 0;
+  border: thin solid #cccccc;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2); }
+  #search-form .btn-navbar:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.4); }
+  #search-form .btn-navbar:focus {
+    border-color: #fff; }
+
+.header {
+  background: url("../images/studying.png") no-repeat center center;
+  background-size: cover;
+  height: 300px; }
+
+h1 {
+  color: #333;
+  font-family: "Arapey", "Cambria", Georgia, "Times New Roman", "Times", sans-serif; }
+
+h2 {
+  color: #333;
+  font-family: "Arapey", "Cambria", Georgia, "Times New Roman", "Times", sans-serif; }
+
+h3 {
+  color: #333;
+  font-family: "Arapey", "Cambria", Georgia, "Times New Roman", "Times", sans-serif; }
+
+h4 {
+  color: #333;
+  font-family: "Titillium Web", Calibri, Arial, sans-serif; }
+
+h5 {
+  color: #333;
+  font-family: "Titillium Web", Calibri, Arial, sans-serif; }
+
+h6 {
+  color: #333;
+  font-family: "Titillium Web", Calibri, Arial, sans-serif; }
+
+p {
+  color: #072b56;
+  font-family: "Handlee", Calibri, Arial, sans-serif;
+  font-size: 12pt; }
+
+a, a:link, a:active, a:focus, a:visited {
+  color: #816c5b;
+  text-decoration: none; }
+  a:hover {
+    color: #b19f91;
+    text-decoration: none; }
+
+.disabled-link, .disabled-link:link, .disabled-link:active, .disabled-linkfocus, .disabled-link:visited {
+  color: #ccc;
+  cursor: default; }
+
+.chevron-link {
+  position: fixed;
+  top: 55%; }
+
+.date {
+  padding-left: 20px;
+  color: #333;
+  font-family: "Titillium Web", Calibri, Arial, sans-serif;
+  font-size: 10pt; }
+
+footer {
+  margin-top: 50px;
+  padding: 20px 0;
+  background: rgba(219, 209, 182, 0.5); }
+  footer p {
+    color: gray;
+    font-family: "Titillium Web", Calibri, Arial, sans-serif;
+    font-size: 12pt; }

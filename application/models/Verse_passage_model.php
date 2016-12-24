@@ -116,6 +116,28 @@ class Verse_passage_model extends CI_Model
         }
     }
 
+    public function get_by_abbr_chapter_no_published($abbr=FALSE, $chapter_no=FALSE)
+    {
+        if($abbr !== FALSE && $chapter_no !== FALSE)
+        {
+            $this->db->select('verse_passage.*, chapter.chapter_no, translation.name, translation.abbr');
+            $this->db->from('verse_passage');
+            $this->db->join('translation', 'translation.translation_id = verse_passage.translation_id', 'left');
+            $this->db->join('chapter', 'chapter.chapter_id = verse_passage.chapter_id', 'left');
+            $this->db->where('translation.abbr = ', $abbr);
+            $this->db->where('chapter.chapter_no = ', $chapter_no);
+            $this->db->where('verse_passage.status = ', 'Published');
+            $this->db->order_by('verse_passage.verse_no', 'asc');
+
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
     public function insert($verse_passage=FALSE)
     {
         if($verse_passage !== FALSE)

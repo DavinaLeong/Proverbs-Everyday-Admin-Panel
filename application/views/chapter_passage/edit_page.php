@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <?php $this->load->view('_snippets/meta'); ?>
     <?php $this->load->view('_snippets/head_resources'); ?>
-    <link href="<?=RESOURCES_FOLDER;?>pe/styles_parsley.css" rel="stylesheet" type="text/css">
+    <link href="<?=RESOURCES_FOLDER;?>pe/dist/styles_parsley.min.css" rel="stylesheet" type="text/css">
 
     <?php $this->load->view('_snippets/body_resources'); ?>
     <script src="<?=RESOURCES_FOLDER;?>vendor/parsleyjs/parsley.min.js"></script>
@@ -73,7 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <select class="form-control" id="chapter_id" name="chapter_id" required>
                                                 <option id="chapter_id_0" value="">-- Select Chapter --</option>
                                                 <?php foreach($chapters as $key=>$chapter): ?>
-                                                    <option id="chapter_id_<?=$key;?>" value="<?=$chapter['chapter_id'];?>" <?=set_select('chapter_id', $chapter['chapter_id'], ($chapter['chapter_id'] == $chapter_passage['chapter_id']));?>><?= $chapter['chapter_no']; ?></option>
+                                                    <option id="chapter_id_<?=$key+1;?>" value="<?=$chapter['chapter_id'];?>" <?=set_select('chapter_id', $chapter['chapter_id'], ($chapter['chapter_id'] == $chapter_passage['chapter_id']));?>><?= $chapter['chapter_no']; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
@@ -101,7 +101,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <select class="form-control" id="status" name="status" required>
                                                 <option id="status_0" value="">-- Select Status --</option>
                                                 <?php foreach($status_options as $key=>$option): ?>
-                                                    <option id="status_<?=$key;?>" value="<?=$option;?>" <?=set_select('status', $option, ($option == $chapter_passage['status'])); ?>><?=$option;?></option>
+                                                    <option id="status_<?=$key+1;?>" value="<?=$option;?>" <?=set_select('status', $option, ($option == $chapter_passage['status'])); ?>><?=$option;?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
