@@ -79,6 +79,7 @@ gulp.task('jsx', function()
 			'plugins': ['syntax-object-rest-spread']
 		}))
 		.pipe(uglify())
+		.pipe(rename({suffix: '.min'}))
 		.pipe(gulp.dest(COMPILED_JSX_PATH));
 });
 
@@ -96,6 +97,7 @@ gulp.task('dev-jsx', function()
 		}))
 		.pipe(uglify())
 		.pipe(sourcemaps.write())
+		.pipe(rename({suffix: '.min'}))
 		.pipe(gulp.dest(COMPILED_JSX_PATH));
 });
 // === manage scripts end ===

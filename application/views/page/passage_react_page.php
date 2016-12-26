@@ -26,18 +26,29 @@ $url = site_url('passage/' . $abbr . '/' . $chapter_no);
 </head>
 <body>
 
-<div id="Test"></div>
+<div id="ProverbsEveryday"></div>
 
 <?php $this->load->view('page/page_body_resources'); ?>
 <!-- React JS -->
 <script src="<?=RESOURCES_FOLDER;?>vendor/react/react-with-addons.js"></script>
 <script src="<?=RESOURCES_FOLDER;?>vendor/react-dom/react-dom.js"></script>
-<script src="<?=RESOURCES_FOLDER;?>pe/dist/js/Test.js"></script>
+<script src="<?=RESOURCES_FOLDER;?>pe/dist/js/ProverbsEveryday.min.js"></script>
+<script src="<?=RESOURCES_FOLDER;?>pe/dist/js/Navbar.min.js"></script>
 <script>
-	var props = {};
-	var element = React.createElement(Test, props);
+	var props = {
+		'siteTitle': '<?=SITE_TITLE;?>',
+		'siteUrl': '<?=site_url();?>',
+		'today': '<?=$this->datetime_helper->today('d M Y');?>',
 
-	ReactDOM.render(element, document.getElementById('Test'));
+		'chapterNo': <?=$chapter_no;?>,
+		'abbr': '<?=$abbr;?>',
+		'translations': <?=json_encode($translations);?>,
+		'chapterPassage': <?=json_encode($chapter_passage);?>,
+		'versePassage': <?=json_encode($verse_passage);?>
+	};
+	var element = React.createElement(ProverbsEveryday, props);
+
+	ReactDOM.render(element, document.getElementById('ProverbsEveryday'));
 </script>
 </body>
 </html>
