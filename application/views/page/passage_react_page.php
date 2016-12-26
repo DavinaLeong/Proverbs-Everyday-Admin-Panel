@@ -32,8 +32,12 @@ $url = site_url('passage/' . $abbr . '/' . $chapter_no);
 <!-- React JS -->
 <script src="<?=RESOURCES_FOLDER;?>vendor/react/react-with-addons.js"></script>
 <script src="<?=RESOURCES_FOLDER;?>vendor/react-dom/react-dom.js"></script>
+
+<!-- React Components -->
 <script src="<?=RESOURCES_FOLDER;?>pe/dist/js/ProverbsEveryday.min.js"></script>
 <script src="<?=RESOURCES_FOLDER;?>pe/dist/js/Navbar.min.js"></script>
+<script src="<?=RESOURCES_FOLDER;?>pe/dist/js/ChapterSelect.min.js"></script>
+<script src="<?=RESOURCES_FOLDER;?>pe/dist/js/TranslationSelect.min.js"></script>
 <script>
 	var props = {
 		'siteTitle': '<?=SITE_TITLE;?>',

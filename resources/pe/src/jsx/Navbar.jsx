@@ -18,6 +18,10 @@ var Navbar = React.createClass({
                     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         {/* search-form start */}
                         <form id="search-form" className="navbar-form navbar-left" method="post">
+                            <ChapterSelect />
+                            &nbsp;
+                            <TranslationSelect translations={this.props.translations} />
+                            &nbsp;
                             <button className="btn btn-navbar" type="submit" data-toggle="tooltip" title="Search"><i className="fa fa-search fa-fw">&nbsp;</i></button>
                         </form>
                         {/* search-form end */}
