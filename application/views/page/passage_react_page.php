@@ -38,6 +38,7 @@ $url = site_url('passage/' . $abbr . '/' . $chapter_no);
 <script src="<?=RESOURCES_FOLDER;?>pe/dist/js/Navbar.min.js"></script>
 <script src="<?=RESOURCES_FOLDER;?>pe/dist/js/ChapterSelect.min.js"></script>
 <script src="<?=RESOURCES_FOLDER;?>pe/dist/js/TranslationSelect.min.js"></script>
+<script src="<?=RESOURCES_FOLDER;?>pe/dist/js/Chapter.min.js"></script>
 <script>
 	var props = {
 		'siteTitle': '<?=SITE_TITLE;?>',
