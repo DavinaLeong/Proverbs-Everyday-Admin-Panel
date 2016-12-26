@@ -1,0 +1,8 @@
+1. Import React and ReacDOM
+2. Implement components:
+    a. ProverbsEveryday
+    b. Navbar
+        i. ChapterSelect
+        ii. TranslationSelect
+    c. Chapter
+        i. Passage
