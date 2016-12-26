@@ -17,9 +17,10 @@ var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var plumber = require('gulp-plumber');
 var rename = require('gulp-rename');
+var babel = require('gulp-babel');
 var del = require('del');
 
-// === path constants ===
+// === path constants start ===
 const NODE_PATH = './node_modules/';
 const VENDOR_PATH = './vendor/';
 
@@ -29,19 +30,74 @@ const COMPILED_CSS_PATH = "./pe/dist/css";
 
 const JSX_PATH = "./pe/src/jsx/**/*.jsx";
 const COMPILED_JSX_PATH = "./pe/dist/js";
-// === path constants ===
+// === path constants end ===
 
 
-gulp.task('default', ['update-vendor', 'update-css', 'watch']);
+// === main tasks start ===
+gulp.task('default', ['update-vendor', 'update-css', 'update-jsx', 'watch']);
 
-gulp.task('watch', function()
+gulp.task('dev-default', ['update-vendor', 'update-css', 'dev-update-jsx', 'dev-watch']);
+
+gulp.task('watch', ['update-vendor', 'update-css', 'update-jsx'], function()
 {
 	gulp.watch(SASS_PATH, ['sass']);
 	gulp.watch(CSS_PATH, ['minify-css']);
+	gulp.watch(JSX_PATH, ['jsx']);
 });
 
-// === manage scripts started ===
+gulp.task('dev-watch', ['update-vendor', 'update-css', 'dev-update-jsx'], function()
+{
+	gulp.watch(SASS_PATH, ['sass']);
+	gulp.watch(CSS_PATH, ['minify-css']);
+	gulp.watch(JSX_PATH, ['dev-jsx']);
+});
+// === main tasks end ===
 
+
+// === manage scripts start ===
+gulp.task('update-jsx', ['clean-jsx', 'jsx']);
+
+gulp.task('dev-update-jsx', ['clean-jsx', 'dev-jsx']);
+
+gulp.task('clean-jsx', function()
+{
+	del.sync([
+		COMPILED_JSX_PATH,
+		'!' + COMPILED_JSX_PATH
+	])
+});
+
+gulp.task('jsx', function()
+{
+	gulp.src(JSX_PATH)
+		.pipe(plumber({errorHandler: function(err)
+		{
+			console.log(err);
+		}}))
+		.pipe(babel({
+			'presets': ['es2015', 'react'],
+			'plugins': ['syntax-object-rest-spread']
+		}))
+		.pipe(uglify())
+		.pipe(gulp.dest(COMPILED_JSX_PATH));
+});
+
+gulp.task('dev-jsx', function()
+{
+	gulp.src(JSX_PATH)
+		.pipe(sourcemaps.init())
+		.pipe(plumber({errorHandler: function(err)
+		{
+			console.log(err);
+		}}))
+		.pipe(babel({
+			'presets': ['es2015', 'react'],
+			'plugins': ['syntax-object-rest-spread']
+		}))
+		.pipe(uglify())
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest(COMPILED_JSX_PATH));
+});
 // === manage scripts end ===
 
 // === manage styles started ===

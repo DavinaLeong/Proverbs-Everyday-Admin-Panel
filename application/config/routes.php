@@ -54,3 +54,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['passage/(:any)/(:any)'] = 'page/passage/$1/$2';
+$route['passage_react/(:any)/(:any)'] = 'page/passage_react/$1/$2';

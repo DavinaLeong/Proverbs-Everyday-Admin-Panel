@@ -48,5 +48,31 @@ class Page extends CI_Controller
 			show_error('Passage not found.');
 		}
 	}
+
+	public function passage_react($abbr, $chapter_no)
+	{
+		$this->load->model('Translation_model');
+		$this->load->model('Chapter_model');
+		$this->load->library('form_validation');
+
+		if($this->Translation_model->get_by_abbr_published($abbr) &&
+			$this->Chapter_model->get_by_chapter_no_published($chapter_no))
+		{
+			$this->load->model('Chapter_passage_model');
+			$this->load->model('Verse_passage_model');
+			$data = array(
+				'abbr' => $abbr,
+				'chapter_no' => $chapter_no,
+				'translations' => $this->Translation_model->get_all_published(),
+				'chapter_passage' => $this->Chapter_passage_model->get_by_abbr_chapter_no_published($abbr, $chapter_no),
+				'verse_passage' => $this->Verse_passage_model->get_by_abbr_chapter_no_published($abbr, $chapter_no),
+			);
+			$this->load->view('page/passage_react_page', $data);
+		}
+		else
+		{
+			show_error('Passage not found.');
+		}
+	}
 	
 } // end Page controller class
