@@ -9,7 +9,7 @@
 		Mobile	: (+65) 9369 3752 [Singapore]
 
 ***********************************************************************************/
-@import 'variables.scss';
+@import 'variables';
 
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;

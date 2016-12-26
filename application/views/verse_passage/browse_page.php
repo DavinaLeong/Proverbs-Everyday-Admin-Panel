@@ -31,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Page Content start -->
     <div id="page-wrapper">
         <ol class="breadcrumb">
-            <li><a href="<?=site_url();?>">Home</a></li>
+            <li><a href="<?=site_url('authenticate/start');?>">Home</a></li>
             <li class="active">Verse Passages</li>
         </ol>
 

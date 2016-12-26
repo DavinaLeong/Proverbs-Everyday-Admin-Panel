@@ -43,7 +43,7 @@
 
 ***********************************************************************************/
 body {
-  background: url("../images/paper.png") repeat;
+  background: url("../../images/paper.png") repeat;
   color: #000; }
 
 .navbar-default {
@@ -116,7 +116,7 @@ body {
     border-color: #fff; }
 
 .header {
-  background: url("../images/studying.png") no-repeat center center;
+  background: url("../../images/studying.png") no-repeat center center;
   background-size: cover;
   height: 300px; }
 

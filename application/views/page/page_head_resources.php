@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <link href="<?=RESOURCES_FOLDER;?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
 <!-- Proverbs Everyday Admin CSS -->
-<link href="<?=RESOURCES_FOLDER;?>pe/dist/proverbs_everyday.min.css" rel="stylesheet" />
+<link href="<?=RESOURCES_FOLDER;?>pe/dist/css/proverbs_everyday.min.css" rel="stylesheet" />
 
 <!-- Fonts from Google -->
 <link href="https://fonts.googleapis.com/css?family=Aref+Ruqaa|Handlee|Titillium+Web" rel="stylesheet" type="text/css" />

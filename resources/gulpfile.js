@@ -22,38 +22,53 @@ var del = require('del');
 
 const NODE_PATH = './node_modules/';
 const VENDOR_PATH = './vendor/';
-const SCRIPT_GENERATOR_PATH = './script_generator/';
 
-gulp.task('default', ['update-vendor', 'minify-css', 'watch']);
+const SASS_PATH = "./pe/src/sass/proverbs_everyday.scss";
+const CSS_PATH = "./pe/src/css/**/*.css";
+const COMPILED_CSS_PATH = "./pe/dist/css";
+
+gulp.task('default', ['update-vendor', 'update-css', 'watch']);
 
 gulp.task('watch', function()
 {
-	gulp.watch('pe/sass/*.scss', ['sass']);
-	gulp.watch('pe/css/*.css', ['minify-css']);
+	gulp.watch(SASS_PATH, ['sass']);
+	gulp.watch(CSS_PATH, ['minify-css']);
+});
+
+// === manage styles started ===
+gulp.task('update-css', ['clean-css', 'minify-css']);
+
+gulp.task('clean-css', function()
+{
+	del.sync([
+		COMPILED_CSS_PATH,
+		CSS_PATH,
+		'!' + COMPILED_CSS_PATH,
+		'!' + CSS_PATH
+	])
 });
 
 gulp.task('minify-css', ['sass'], function()
 {
-	gulp.src('pe/css/*.css')
+	gulp.src(CSS_PATH)
 		.pipe(clean_css({compatibility: 'ie8'}))
 		.pipe(rename({suffix: '.min'}))
-		.pipe(gulp.dest('pe/dist'));
+		.pipe(gulp.dest(COMPILED_CSS_PATH));
 });
 
 gulp.task('sass', function()
 {
-	gulp.src('pe/sass/proverbs_everyday.scss')
+	gulp.src(SASS_PATH)
 		.pipe(sass().on('error', sass.logError))
-		.pipe(gulp.dest('pe/css'));
+		.pipe(gulp.dest(CSS_PATH));
 });
+// === manage styles end ===
 
 // === manage vendor resources started ===
 gulp.task('update-vendor', ['clean-vendor', 'copy-vendor']);
 
 gulp.task('copy-vendor', function()
 {
-	console.log('--- task: copy-vendor STARTED');
-
 	// --- jQuery ---
 	gulp.src([
 		NODE_PATH + 'jquery/dist/jquery.min.js'
@@ -102,14 +117,10 @@ gulp.task('copy-vendor', function()
 		NODE_PATH + 'parsleyjs/dist/parsley.min.js.map'
 	]).pipe(gulp.dest(VENDOR_PATH + 'parsleyjs'));
 	console.log('~ copied ParsleyJs files.');
-
-	console.log('--- task: copy-vendor ENDED');
 });
 
 gulp.task('clean-vendor', function()
 {
-	console.log('--- task: clean-vendor STARTED ---');
-
 	del.sync([
 		VENDOR_PATH + 'bootstrap/**',
 		VENDOR_PATH + 'font-awesome/**',
@@ -118,7 +129,5 @@ gulp.task('clean-vendor', function()
 		VENDOR_PATH + 'sb-admin-2/**',
 		'!' + VENDOR_PATH
 	]);
-
-	console.log('--- task: clean-vendor ENDED ---');
 });
 // === manage vendor resources end ===
