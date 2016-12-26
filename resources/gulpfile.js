@@ -9,7 +9,6 @@
 		Mobile	: (+65) 9369 3752 [Singapore]
 
 ***********************************************************************************/
-
 var gulp = require('gulp');
 var clean_css = require('gulp-clean-css');
 var sass = require('gulp-sass');
@@ -26,6 +25,7 @@ const VENDOR_PATH = './vendor/';
 const SASS_PATH = "./pe/src/sass/proverbs_everyday.scss";
 const CSS_PATH = "./pe/src/css/**/*.css";
 const COMPILED_CSS_PATH = "./pe/dist/css";
+
 
 gulp.task('default', ['update-vendor', 'update-css', 'watch']);
 
@@ -75,6 +75,7 @@ gulp.task('copy-vendor', function()
 	]).pipe(gulp.dest(VENDOR_PATH + 'jquery'));
 	console.log('~ copied jQuery files.');
 
+
 	// --- Twitter Bootstrap ---
 	gulp.src([
 		NODE_PATH + 'bootstrap/dist/css/bootstrap.min.css'
@@ -87,6 +88,7 @@ gulp.task('copy-vendor', function()
 	]).pipe(gulp.dest(VENDOR_PATH + 'bootstrap/fonts'));
 	console.log('~ copied Bootstrap files.');
 
+
 	// --- Font-Awesome ---
 	gulp.src([
 		NODE_PATH + 'font-awesome/css/font-awesome.min.css'
@@ -95,6 +97,7 @@ gulp.task('copy-vendor', function()
 		NODE_PATH + 'font-awesome/fonts/**'
 	]).pipe(gulp.dest(VENDOR_PATH + 'font-awesome/fonts'));
 	console.log('~ copied Font Awesome files.');
+
 
 	// --- SB Admin 2 ---
 	gulp.src([
@@ -111,12 +114,25 @@ gulp.task('copy-vendor', function()
 	]).pipe(gulp.dest(VENDOR_PATH + 'sb-admin-2/vendor/metisMenu'));
 	console.log('~ copied SB Admin 2 files.');
 
-	// --- ParsleyJS end ---
+
+	// --- ParsleyJS ---
 	gulp.src([
 		NODE_PATH + 'parsleyjs/dist/parsley.min.js',
 		NODE_PATH + 'parsleyjs/dist/parsley.min.js.map'
 	]).pipe(gulp.dest(VENDOR_PATH + 'parsleyjs'));
 	console.log('~ copied ParsleyJs files.');
+
+
+	// --- React ---
+	gulp.src(NODE_PATH + 'react/dist/**/*.*')
+		.pipe(gulp.dest(VENDOR_PATH + 'react'));
+	console.log('~ copied React files.');
+
+
+	// --- ReactDOM ---
+	gulp.src(NODE_PATH + 'react-dom/dist/**/*.*')
+		.pipe(gulp.dest(VENDOR_PATH + 'react-dom'));
+	console.log('~ copied ReactDOM files.');
 });
 
 gulp.task('clean-vendor', function()
@@ -127,6 +143,8 @@ gulp.task('clean-vendor', function()
 		VENDOR_PATH + 'jquery/**',
 		VENDOR_PATH + 'parsleyjs/**',
 		VENDOR_PATH + 'sb-admin-2/**',
+		VENDOR_PATH + 'react/**',
+		VENDOR_PATH + 'react-dom/**',
 		'!' + VENDOR_PATH
 	]);
 });
