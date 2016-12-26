@@ -19,12 +19,17 @@ var plumber = require('gulp-plumber');
 var rename = require('gulp-rename');
 var del = require('del');
 
+// === path constants ===
 const NODE_PATH = './node_modules/';
 const VENDOR_PATH = './vendor/';
 
 const SASS_PATH = "./pe/src/sass/proverbs_everyday.scss";
 const CSS_PATH = "./pe/src/css/**/*.css";
 const COMPILED_CSS_PATH = "./pe/dist/css";
+
+const JSX_PATH = "./pe/src/jsx/**/*.jsx";
+const COMPILED_JSX_PATH = "./pe/dist/js";
+// === path constants ===
 
 
 gulp.task('default', ['update-vendor', 'update-css', 'watch']);
@@ -34,6 +39,10 @@ gulp.task('watch', function()
 	gulp.watch(SASS_PATH, ['sass']);
 	gulp.watch(CSS_PATH, ['minify-css']);
 });
+
+// === manage scripts started ===
+
+// === manage scripts end ===
 
 // === manage styles started ===
 gulp.task('update-css', ['clean-css', 'minify-css']);
