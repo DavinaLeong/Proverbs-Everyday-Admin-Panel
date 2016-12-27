@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <?php $this->load->view('_snippets/meta'); ?>
     <?php $this->load->view('_snippets/head_resources'); ?>
-    <link href="<?=RESOURCES_FOLDER;?>pe/dist/styles_parsley.min.css" rel="stylesheet" type="text/css">
+    <link href="<?=RESOURCES_FOLDER;?>pe/dist/css/styles_parsley.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="wrapper">
@@ -31,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="page-wrapper">
         <div class="container-fluid">
             <ol class="breadcrumb">
-                <li><a href="<?=site_url();?>">Home</a></li>
+                <li><a href="<?=site_url('authenticate/start');?>">Home</a></li>
                 <li><a href="<?=site_url('verse_passage/browse_verse_passage');?>">Verse Passages</a></li>
                 <li><a href="<?=site_url('verse_passage/view_verse_passage/' . $verse_passage['vp_id']);?>">Verse Passage ID: <?=$verse_passage['vp_id'];?></a></li>
                 <li class="active">Edit Verse Passage</li>
@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <div class="col-md-10">
                                             <input class="form-control" type="text" id="verse_no" name="verse_no"
                                                    value="<?=set_value('verse_no', $verse_passage['verse_no']);?>"
-                                                   required min="1" max="9999" maxlength="4" />
+                                                   required data-parsley-type="digits" min="1" max="9999" maxlength="4" />
                                         </div>
                                     </div>
                                     <div class="form-group">

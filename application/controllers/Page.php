@@ -19,11 +19,11 @@ class Page extends CI_Controller
 
 	public function index()
 	{
-		//redirect('passage/KJV/' . $this->datetime_helper->today('j'));
-		redirect('passage/KJV/1');
+		//redirect('passage/KJV/' . $this->datetime_helper->today('j') . '/paragraph');
+		redirect('passage/KJV/1/paragraph');
 	}
 
-	public function passage($abbr, $chapter_no)
+	public function passage($abbr, $chapter_no, $display_type='Paragraph')
 	{
 		$this->load->model('Translation_model');
 		$this->load->model('Chapter_model');
@@ -37,9 +37,11 @@ class Page extends CI_Controller
 			$data = array(
 				'abbr' => $abbr,
 				'chapter_no' => $chapter_no,
+                'display_type' => $display_type,
 				'translations' => $this->Translation_model->get_all_published(),
 				'chapter_passage' => $this->Chapter_passage_model->get_by_abbr_chapter_no_published($abbr, $chapter_no),
-				'verse_passage' => $this->Verse_passage_model->get_by_abbr_chapter_no_published($abbr, $chapter_no),
+				'verse_passages' => $this->Verse_passage_model->get_by_abbr_chapter_no_published($abbr, $chapter_no),
+                'displays' => $this->_displays()
 			);
 			$this->load->view('page/passage_page', $data);
 		}
@@ -48,5 +50,13 @@ class Page extends CI_Controller
 			show_error('Passage not found.');
 		}
 	}
+
+    private function _displays()
+    {
+        return array(
+            'Paragraph',
+            'Grid'
+        );
+    }
 	
 } // end Page controller class

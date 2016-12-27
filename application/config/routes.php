@@ -53,4 +53,4 @@ $route['default_controller'] = 'page';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['passage/(:any)/(:any)'] = 'page/passage/$1/$2';
+$route['passage/(:any)/(:any)/(:any)'] = 'page/passage/$1/$2/$3';

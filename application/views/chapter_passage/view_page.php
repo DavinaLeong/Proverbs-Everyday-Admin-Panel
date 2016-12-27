@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="page-wrapper">
         <div class="container-fluid">
             <ol class="breadcrumb">
-                <li><a href="<?=site_url();?>">Home</a></li>
+                <li><a href="<?=site_url('authenticate/start');?>">Home</a></li>
                 <li><a href="<?=site_url('chapter_passage/browse_chapter_passage');?>">Chapter Passages</a></li>
                 <li class="active">Chapter Passage ID: <?=$chapter_passage['cp_id'];?></li>
             </ol>
