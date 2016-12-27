@@ -22,10 +22,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 $url = site_url('passage/' . $abbr . '/' . $chapter_no) . '/';
 
-$prev_chapter_no = $chapter_no > 1 ? $chapter_no - 1 : $chapter_no;
+$prev_chapter_no = $chapter_no > 1 ? $chapter_no - 1 : 31;
 $prev_url = site_url('passage/' . $abbr . '/' . $prev_chapter_no) . '/';
 
-$next_chapter_no = $chapter_no < 31 ? $chapter_no + 1 : $chapter_no;
+$next_chapter_no = $chapter_no < 31 ? $chapter_no + 1 : 1;
 $next_url = site_url('passage/' . $abbr . '/' . $next_chapter_no ). '/';
 ?><!DOCTYPE html>
 <html lang="en">
@@ -38,25 +38,18 @@ $next_url = site_url('passage/' . $abbr . '/' . $next_chapter_no ). '/';
 <!-- container start -->
 <div class="container">
 
-    <h1>Chapter <?=$chapter_no;?> (<?=$abbr;?>)</h1>
+    <h1>Chapter <?=$chapter_no;?> <small>(<?=$abbr;?>)</small></h1>
     <p class="date"><?= $this->datetime_helper->today('d M Y'); ?></p>
 
     <table id="passage_table">
         <tr>
             <?php if(in_array($display_type, $displays)): ?>
                 <td id="left-chevron" class="col-xs-1 text-center">
-                    <?php if($chapter_no > 1): ?>
-                        <a class="chevron-link" href="<?=$prev_url . $display_type;?>"
-                           data-toggle="tooltip" title="<?=$prev_chapter_no;?>">
-                            <span class="hidden-xs"><i class="fa fa-angle-left fa-3x"></i></span>
-                            <span class="visible-xs"><i class="fa fa-angle-left fa-lg"></i></span>
-                        </a>
-                    <?php else: ?>
-                        <a class="chevron-link disabled-link">
-                            <span class="hidden-xs"><i class="fa fa-angle-left fa-3x"></i></span>
-                            <span class="visible-xs"><i class="fa fa-angle-left fa-lg"></i></span>
-                        </a>
-                    <?php endif; ?>
+                    <a class="chevron-link" href="<?=$prev_url . $display_type;?>"
+                       data-toggle="tooltip" title="Chapter <?=$prev_chapter_no;?>">
+                        <span class="hidden-xs"><i class="fa fa-angle-left fa-3x"></i></span>
+                        <span class="visible-xs"><i class="fa fa-angle-left fa-lg"></i></span>
+                    </a>
                 </td>
                 <td id="passage" class="col-xs-10">
                     <?php
@@ -99,18 +92,11 @@ $next_url = site_url('passage/' . $abbr . '/' . $next_chapter_no ). '/';
                     ?>
                 </td>
                 <td id="right-chevron" class="col-xs-1 text-center">
-                    <?php if($chapter_no < 31): ?>
-                        <a class="chevron-link" href="<?=$next_url . $display_type;?>"
-                           data-toggle="tooltip" title="<?=$next_chapter_no;?>">
-                            <span class="hidden-xs"><i class="fa fa-angle-right fa-3x"></i></span>
-                            <span class="visible-xs"><i class="fa fa-angle-right fa-lg"></i></span>
-                        </a>
-                    <?php else: ?>
-                        <a class="chevron-link disabled-link">
-                            <span class="hidden-xs"><i class="fa fa-angle-right fa-3x"></i></span>
-                            <span class="visible-xs"><i class="fa fa-angle-right fa-lg"></i></span>
-                        </a>
-                    <?php endif; ?>
+                    <a class="chevron-link" href="<?=$next_url . $display_type;?>"
+                       data-toggle="tooltip" title="Chapter <?=$next_chapter_no;?>">
+                        <span class="hidden-xs"><i class="fa fa-angle-right fa-3x"></i></span>
+                        <span class="visible-xs"><i class="fa fa-angle-right fa-lg"></i></span>
+                    </a>
                 </td>
             <?php else: ?>
                 <td id="passage" class="text-center" style="vertical-align: top;"><p>Passage not found.</p></td>
