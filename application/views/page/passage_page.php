@@ -30,70 +30,10 @@ $next_url = site_url('passage/' . $abbr . '/' . $next_chapter_no ). '/';
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php $this->load->view('page/page_head_resources'); ?>
+    <?php $this->load->view('page/_snippets/page_head_resources'); ?>
 </head>
 <body>
-<!-- navbar start -->
-<nav id="top" class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="<?=$url . $display_type;?>">Proverbs Everyday</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <!-- search form start -->
-            <form id="search-form" class="navbar-form navbar-left" method="post" action="<?=site_url('page/process_form');?>">
-                <div class="form-group" data-toggle="tooltip" title="Chapter No.">
-                    <select class="form-control" id="chapter_no" name="cnapter_no" required>
-                        <option id="chapter_no_1" value="">-- Select Chapter ---</option>
-                        <?php for($i = 1; $i <= 31; ++$i): ?>
-                            <option id="chapter_no_<?=$i;?>" <?=set_select('chapter_no', $i);?>><?=$i;?></option>
-                        <?php endfor; ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <select class="form-control" id="abbr" name="abbr" required>
-                        <option id="abbr_0" value="">-- Select Translation --</option>
-                        <?php foreach($translations as $key=>$translation): ?>
-                            <option id="abbr_<?=$key+1;?>" value="<?=$translation['abbr'];?>" <?=set_select('abbr', $translation['abbr']);?>><?=$translation['name'];?> (<?=$translation['abbr'];?>)</option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <select class="form-control" id="display_type" name="display_type" required>
-                        <option id="display_type_0" value="">-- Select View --</option>
-                        <?php foreach($displays as $display_key=>$display): ?>
-                            <option id="display_type_<?=$display_key+1;?>" value="<?=strtolower($display);?>" <?=set_select('display_type', strtolower($display), ($display == $display_type));?>><?=$display;?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-                <button class="btn btn-navbar" type="submit" data-toggle="tooltip" title="Search">
-                    <i class="fa fa-search fa-fw"></i>
-                </button>
-            </form>
-            <!-- search form end -->
-
-            <!-- right links start -->
-            <ul class="nav navbar-nav navbar-right">
-                <li data-toggle="tooltip" title="Paragraph View"><a href="<?=$url . 'paragraph';?>"><i class="fa fa-align-left fa-fw"></i> <span class="hidden-lg hidden-md hidden-sm">Paragraph</span></a></li>
-                <li data-toggle="tooltip" title="Grid View"><a href="<?=$url . 'grid';?>"><i class="fa fa-th-large fa-fw"></i> <span class="hidden-lg hidden-md hidden-sm">Grid</span></a></li>
-                <li data-toggle="tooltop" title="Back to top"><a href="<?=$url . $display_type;?>/#top"><i class="fa fa-arrow-up fa-fw"></i> <span class="hidden-lg hidden-md hidden-sm">Back to Top</span></a></li>
-            </ul>
-            <!-- right links start -->
-        </div>
-    </div>
-</nav>
-<!-- navbar end -->
-
-<div class="header"></div>
+<?php $this->load->view('page/_snippets/page_header'); ?>
 
 <!-- container start -->
 <div class="container">
@@ -103,57 +43,77 @@ $next_url = site_url('passage/' . $abbr . '/' . $next_chapter_no ). '/';
 
     <table id="passage_table">
         <tr>
-            <?php if($display_type == 'grid'): ?>
-                <?php if( ! empty($verse_passages)): ?>
-                    <td id="left-chevron" class="col-xs-1 text-center">
-                        <a class="chevron-link" href="<?=$prev_url . 'grid';?>" data-toggle="tooltip" title="<?=$prev_chapter_no;?>">
+            <?php if(in_array($display_type, $displays)): ?>
+                <td id="left-chevron" class="col-xs-1 text-center">
+                    <?php if($chapter_no > 1): ?>
+                        <a class="chevron-link" href="<?=$prev_url . $display_type;?>"
+                           data-toggle="tooltip" title="<?=$prev_chapter_no;?>">
                             <span class="hidden-xs"><i class="fa fa-angle-left fa-3x"></i></span>
                             <span class="visible-xs"><i class="fa fa-angle-left fa-lg"></i></span>
                         </a>
-                    </td>
-                    <td id="passage" class="col-xs-10">
-                        <?php foreach($verse_passages as $verse_passage): ?>
-                            <div class="row">
-                                <div class="col-xs-1 text-right"><?=$verse_passage['verse_no'];?></div>
-                                <div class="col-xs-11"><?=$verse_passage['passage'];?></div>
-                            </div>
-                        <?php endforeach; ?>
-                    </td>
-                    <td id="right-chevron" class="col-xs-1 text-center">
-                        <a class="chevron-link" href="<?=$next_url . 'grid';?>" data-toggle="tooltip" title="<?=$next_chapter_no;?>">
+                    <?php else: ?>
+                        <a class="chevron-link disabled-link">
+                            <span class="hidden-xs"><i class="fa fa-angle-left fa-3x"></i></span>
+                            <span class="visible-xs"><i class="fa fa-angle-left fa-lg"></i></span>
+                        </a>
+                    <?php endif; ?>
+                </td>
+                <td id="passage" class="col-xs-10">
+                    <?php
+                    switch($display_type)
+                    {
+                        case 'paragraph':
+                            if(empty($chapter_passage))
+                            {
+                                echo '<p class="text-center">Passage not found</p>';
+                            }
+                            else
+                            {
+                                echo $chapter_passage['passage'];
+                            }
+                            break;
+
+                        case 'grid':
+                            if(empty($verse_passages))
+                            {
+                                echo '<p class="text-center">Passage not found.</p>';
+                            }
+                            else
+                            {
+                                foreach($verse_passages as $verse_passage)
+                                {
+                                    ?>
+                                    <div class="row">
+                                        <div class="col-xs-1 text-right"><?=$verse_passage['verse_no'];?></div>
+                                        <div class="col-xs-11"><?=$verse_passage['passage'];?></div>
+                                    </div>
+                                    <?php
+                                }
+                            }
+                            break;
+
+                        default:
+                            echo '<p class="text-center">Passage not found.</p>';
+                            break;
+                    }
+                    ?>
+                </td>
+                <td id="right-chevron" class="col-xs-1 text-center">
+                    <?php if($chapter_no < 31): ?>
+                        <a class="chevron-link" href="<?=$next_url . $display_type;?>"
+                           data-toggle="tooltip" title="<?=$next_chapter_no;?>">
                             <span class="hidden-xs"><i class="fa fa-angle-right fa-3x"></i></span>
                             <span class="visible-xs"><i class="fa fa-angle-right fa-lg"></i></span>
                         </a>
-                    </td>
-                <?php else: ?>
-                    <td id="passage" class="text-center" style="vertical-align: top;">
-                        <p class="text-danger">No passage record found.</p>
-                        <a href="javascript:history.back()"><i class="fa fa-arrow-left"></i> Go Back</a>
-                    </td>
-                <?php endif; ?>
+                    <?php else: ?>
+                        <a class="chevron-link disabled-link">
+                            <span class="hidden-xs"><i class="fa fa-angle-right fa-3x"></i></span>
+                            <span class="visible-xs"><i class="fa fa-angle-right fa-lg"></i></span>
+                        </a>
+                    <?php endif; ?>
+                </td>
             <?php else: ?>
-                <?php if( ! empty($chapter_passage)): ?>
-                    <td id="left-chevron" class="col-xs-1 text-center">
-                        <a class="chevron-link" href="<?=$prev_url . 'paragraph';?>" data-toggle="tooltip" title="<?=$prev_chapter_no;?>">
-                            <span class="hidden-xs"><i class="fa fa-angle-left fa-3x"></i></span>
-                            <span class="visible-xs"><i class="fa fa-angle-left fa-lg"></i></span>
-                        </a>
-                    </td>
-                    <td id="passage" class="col-xs-10">
-                        <?=$chapter_passage['passage'];?>
-                    </td>
-                    <td id="right-chevron" class="col-xs-1 text-center">
-                        <a class="chevron-link" href="<?=$next_url . 'paragraph';?>" data-toggle="tooltip" title="<?=$next_chapter_no;?>">
-                            <span class="hidden-xs"><i class="fa fa-angle-right fa-3x"></i></span>
-                            <span class="visible-xs"><i class="fa fa-angle-right fa-lg"></i></span>
-                        </a>
-                    </td>
-                <?php else: ?>
-                    <td id="passage" class="text-center" style="vertical-align: top;">
-                        <p class="text-danger">No passage record found.</p>
-                        <a href="javascript:history.back()"><i class="fa fa-arrow-left"></i> Go Back</a>
-                    </td>
-                <?php endif; ?>
+                <td id="passage" class="text-center" style="vertical-align: top;"><p>Passage not found.</p></td>
             <?php endif; ?>
         </tr>
     </table>
@@ -168,6 +128,6 @@ $next_url = site_url('passage/' . $abbr . '/' . $next_chapter_no ). '/';
     </div>
 </footer>
 <!-- font end -->
-<?php $this->load->view('page/page_body_resources'); ?>
+<?php $this->load->view('page/_snippets/page_body_resources'); ?>
 </body>
 </html>
