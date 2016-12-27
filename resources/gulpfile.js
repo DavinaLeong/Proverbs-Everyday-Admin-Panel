@@ -17,29 +17,23 @@ var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var plumber = require('gulp-plumber');
 var rename = require('gulp-rename');
-var babel = require('gulp-babel');
 var del = require('del');
 
-// === path constants start ===
 const NODE_PATH = './node_modules/';
 const VENDOR_PATH = './vendor/';
 
 const SASS_PATH = "./pe/src/sass/proverbs_everyday.scss";
 const CSS_PATH = "./pe/src/css/**/*.css";
 const COMPILED_CSS_PATH = "./pe/dist/css";
-// === path constants end ===
 
 
-// === main tasks start ===
-gulp.task('default', ['update-vendor', 'update-css', 'update-jsx', 'watch']);
+gulp.task('default', ['update-vendor', 'update-css', 'watch']);
 
-gulp.task('watch', ['update-vendor', 'update-css', 'update-jsx'], function()
+gulp.task('watch', function()
 {
 	gulp.watch(SASS_PATH, ['sass']);
 	gulp.watch(CSS_PATH, ['minify-css']);
 });
-// === main tasks end ===
-
 
 // === manage styles started ===
 gulp.task('update-css', ['clean-css', 'minify-css']);
@@ -54,8 +48,7 @@ gulp.task('clean-css', function()
 	])
 });
 
-//gulp.task('minify-css', ['sass'], function()
-gulp.task('minify-css', function()
+gulp.task('minify-css', ['sass'], function()
 {
 	gulp.src(CSS_PATH)
 		.pipe(clean_css({compatibility: 'ie8'}))
