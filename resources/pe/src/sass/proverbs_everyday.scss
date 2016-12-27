@@ -24,7 +24,7 @@ body {
   font-family: $font-tillitium-web;
 
   .navbar-brand {
-    @include navbar-link;
+    @include navbar-link($colour-navbar);
 
     img {
       display: inline-block;
@@ -32,7 +32,7 @@ body {
   }
 
   .navbar-nav > li > a {
-    @include navbar-link;
+    @include navbar-link($colour-navbar);
 
     .visible-sm,
     .visible-xs {
@@ -122,10 +122,14 @@ body {
   }
 }
 
-p {
-  color: $colour-passage-text;
-  font-family: $font-handlee;
-  font-size: 12pt;
+#passage_table {
+  min-height: 500px;
+
+  #passage {
+    color: $colour-passage-text;
+    font-family: $font-handlee;
+    font-size: 12pt;
+  }
 }
 
 a {
@@ -167,6 +171,10 @@ a {
   color: $colour-heading;
   font-family: $font-tillitium-web;
   font-size: 10pt;
+}
+
+table {
+  width: 100%;
 }
 
 footer {

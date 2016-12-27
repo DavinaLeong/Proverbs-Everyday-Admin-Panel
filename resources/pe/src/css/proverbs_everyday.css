@@ -9,39 +9,6 @@
 		Mobile	: (+65) 9369 3752 [Singapore]
 
 ***********************************************************************************/
-/**********************************************************************************
-	- File Info -
-		File name		: variables.scss
-		Author(s)		: DAVINA Leong Shi Yun
-		Date Created	: 23 Dec 2016
-
-	- Contact Info -
-		Email	: leong.shi.yun@gmail.com
-		Mobile	: (+65) 9369 3752 [Singapore]
-
-***********************************************************************************/
-/**********************************************************************************
-	- File Info -
-		File name		: mixins.scss
-		Author(s)		: DAVINA Leong Shi Yun
-		Date Created	: 23 Dec 2016
-
-	- Contact Info -
-		Email	: leong.shi.yun@gmail.com
-		Mobile	: (+65) 9369 3752 [Singapore]
-
-***********************************************************************************/
-/**********************************************************************************
-	- File Info -
-		File name		: variables.scss
-		Author(s)		: DAVINA Leong Shi Yun
-		Date Created	: 23 Dec 2016
-
-	- Contact Info -
-		Email	: leong.shi.yun@gmail.com
-		Mobile	: (+65) 9369 3752 [Singapore]
-
-***********************************************************************************/
 body {
   background: url("../../images/paper.png") repeat;
   color: #000; }
@@ -144,7 +111,10 @@ h6 {
   color: #333;
   font-family: "Titillium Web", Calibri, Arial, sans-serif; }
 
-p {
+#passage_table {
+    min-height: 440px; }
+
+#passage_table #passage {
   color: #072b56;
   font-family: "Handlee", Calibri, Arial, sans-serif;
   font-size: 12pt; }
@@ -169,6 +139,10 @@ a, a:link, a:active, a:focus, a:visited {
   color: #333;
   font-family: "Titillium Web", Calibri, Arial, sans-serif;
   font-size: 10pt; }
+
+table {
+    width: 100%;
+}
 
 footer {
   margin-top: 50px;

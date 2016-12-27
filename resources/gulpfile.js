@@ -27,80 +27,19 @@ const VENDOR_PATH = './vendor/';
 const SASS_PATH = "./pe/src/sass/proverbs_everyday.scss";
 const CSS_PATH = "./pe/src/css/**/*.css";
 const COMPILED_CSS_PATH = "./pe/dist/css";
-
-const JSX_PATH = "./pe/src/jsx/**/*.jsx";
-const COMPILED_JSX_PATH = "./pe/dist/js";
 // === path constants end ===
 
 
 // === main tasks start ===
 gulp.task('default', ['update-vendor', 'update-css', 'update-jsx', 'watch']);
 
-gulp.task('dev-default', ['update-vendor', 'update-css', 'dev-update-jsx', 'dev-watch']);
-
 gulp.task('watch', ['update-vendor', 'update-css', 'update-jsx'], function()
 {
 	gulp.watch(SASS_PATH, ['sass']);
 	gulp.watch(CSS_PATH, ['minify-css']);
-	gulp.watch(JSX_PATH, ['jsx']);
-});
-
-gulp.task('dev-watch', ['update-vendor', 'update-css', 'dev-update-jsx'], function()
-{
-	gulp.watch(SASS_PATH, ['sass']);
-	gulp.watch(CSS_PATH, ['minify-css']);
-	gulp.watch(JSX_PATH, ['dev-jsx']);
 });
 // === main tasks end ===
 
-
-// === manage scripts start ===
-gulp.task('update-jsx', ['clean-jsx', 'jsx']);
-
-gulp.task('dev-update-jsx', ['clean-jsx', 'dev-jsx']);
-
-gulp.task('clean-jsx', function()
-{
-	del.sync([
-		COMPILED_JSX_PATH,
-		'!' + COMPILED_JSX_PATH
-	])
-});
-
-gulp.task('jsx', function()
-{
-	gulp.src(JSX_PATH)
-		.pipe(plumber({errorHandler: function(err)
-		{
-			console.log(err);
-		}}))
-		.pipe(babel({
-			'presets': ['es2015', 'react'],
-			'plugins': ['syntax-object-rest-spread']
-		}))
-		.pipe(uglify())
-		.pipe(rename({suffix: '.min'}))
-		.pipe(gulp.dest(COMPILED_JSX_PATH));
-});
-
-gulp.task('dev-jsx', function()
-{
-	gulp.src(JSX_PATH)
-		.pipe(sourcemaps.init())
-		.pipe(plumber({errorHandler: function(err)
-		{
-			console.log(err);
-		}}))
-		.pipe(babel({
-			'presets': ['es2015', 'react'],
-			'plugins': ['syntax-object-rest-spread']
-		}))
-		.pipe(uglify())
-		.pipe(sourcemaps.write())
-		.pipe(rename({suffix: '.min'}))
-		.pipe(gulp.dest(COMPILED_JSX_PATH));
-});
-// === manage scripts end ===
 
 // === manage styles started ===
 gulp.task('update-css', ['clean-css', 'minify-css']);
@@ -115,7 +54,8 @@ gulp.task('clean-css', function()
 	])
 });
 
-gulp.task('minify-css', ['sass'], function()
+//gulp.task('minify-css', ['sass'], function()
+gulp.task('minify-css', function()
 {
 	gulp.src(CSS_PATH)
 		.pipe(clean_css({compatibility: 'ie8'}))
