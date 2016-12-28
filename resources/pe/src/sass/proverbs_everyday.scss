@@ -164,6 +164,15 @@ a {
 .chevron-link {
   position: fixed;
   top: 55%;
+
+  .chapter-no {
+      font-family: $font-tillitium-web;
+      font-size: 12pt;
+
+      .chapter-no-xs {
+          font-size: 8pt;
+      }
+  }
 }
 
 .date {

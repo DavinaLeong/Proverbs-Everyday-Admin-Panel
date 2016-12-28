@@ -131,8 +131,15 @@ a, a:link, a:active, a:focus, a:visited {
   cursor: default; }
 
 .chevron-link {
-  position: fixed;
-  top: 55%; }
+	position: fixed;
+	top: 55%; }
+
+.chevron-link .chapter-no {
+	font-family: "Arapey", "Cambria", Georgia, "Times New Roman", "Times", sans-serif;
+	font-size: 12pt; }
+
+.chevron-link .chapter-no .chapter-no-xs {
+	font-size: 8pt; }
 
 .date {
   padding-left: 20px;

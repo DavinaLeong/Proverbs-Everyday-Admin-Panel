@@ -57,12 +57,12 @@ $next_url = site_url('passage/' . $abbr . '/' . $next_chapter_no ). '/';
                         <span class="hidden-xs">
                             <i class="fa fa-angle-left fa-3x"></i>
                             <br/>
-                            <strong style="font-size: 12pt;"><?=$prev_chapter_no;?></strong>
+                            <strong class="chapter-no"><?=$prev_chapter_no;?></strong>
                         </span>
                         <span class="visible-xs">
                             <i class="fa fa-angle-left fa-lg"></i>
                             <br/>
-                            <strong style="font-size: 8pt;"><?=$prev_chapter_no;?></strong>
+                            <strong class="chapter-no chapter-no-xs"><?=$prev_chapter_no;?></strong>
                         </span>
                     </a>
                 </td>
@@ -114,12 +114,12 @@ $next_url = site_url('passage/' . $abbr . '/' . $next_chapter_no ). '/';
                         <span class="hidden-xs">
                             <i class="fa fa-angle-right fa-3x"></i>
                             <br/>
-                            <strong style="font-size: 12pt;"><?=$next_chapter_no;?></strong>
+                            <strong class="chapter-no"><?=$next_chapter_no;?></strong>
                         </span>
                         <span class="visible-xs">
                             <i class="fa fa-angle-right fa-lg"></i>
                             <br/>
-                            <strong style="font-size: 8pt;"><?=$next_chapter_no;?></strong>
+                            <strong class="chapter-no"><?=$next_chapter_no;?></strong>
                         </span>
                     </a>
                 </td>
