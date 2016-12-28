@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <?php $this->load->view('_snippets/meta'); ?>
     <?php $this->load->view('_snippets/head_resources'); ?>
-    <link href="<?=RESOURCES_FOLDER;?>pe/dist/styles_parsley.min.css" rel="stylesheet" type="text/css">
+    <link href="<?=RESOURCES_FOLDER;?>pe/dist/css/styles_parsley.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="wrapper">
@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="page-wrapper">
         <div class="container-fluid">
             <ol class="breadcrumb">
-                <li><a href="<?=site_url();?>">Home</a></li>
+                <li><a href="<?=site_url('authenticate/start');?>">Home</a></li>
                 <li><a href="<?=site_url('translation/browse_translation');?>">Translations</a></li>
                 <li class="active">New Translation</li>
             </ol>

@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <?php $this->load->view('_snippets/meta'); ?>
     <?php $this->load->view('_snippets/head_resources'); ?>
-    <link href="<?=RESOURCES_FOLDER;?>pe/dist/styles_parsley.min.css" rel="stylesheet" type="text/css">
+    <link href="<?=RESOURCES_FOLDER;?>pe/dist/css/styles_parsley.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="wrapper">
@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="page-wrapper">
         <div class="container-fluid">
             <ol class="breadcrumb">
-                <li><a href="<?=site_url();?>">Home</a></li>
+                <li><a href="<?=site_url('authenticate/start');?>">Home</a></li>
                 <li><a href="<?=site_url('chapter/browse_chapter');?>">Chapters</a></li>
                 <li><a href="<?=site_url('chapter/view_chapter/' . $chapter['chapter_id']);?>">Chapter ID: <?=$chapter['chapter_id'];?></a></li>
                 <li class="active">Edit Chapter</li>
@@ -51,15 +51,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="form-group">
                                         <label class="col-md-2 control-label" for="chapter_no">Chapter Number <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="number" id="chapter_no" name="chapter_no"
-                                                   value="<?=set_value('chapter_no', $chapter['chapter_no']);?> " required step="1" min="1" max="999" maxlength="3" />
+                                            <input class="form-control" type="text" id="chapter_no" name="chapter_no"
+                                                   value="<?=set_value('chapter_no', $chapter['chapter_no']);?>" required
+                                                   data-parsley-type="digits" min="1" max="999" maxlength="3" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-2 control-label" for="total_verses">Total Verses <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="number" id="total_verses" name="total_verses"
-                                                   value="<?=set_value('total_verses', $chapter['total_verses']);?> " required step="1" min="1" max="999" maxlength="3" />
+                                            <input class="form-control" type="text" id="total_verses" name="total_verses"
+                                                   value="<?=set_value('total_verses', $chapter['total_verses']);?>" required
+                                                   data-parsley-type="digits" min="1" max="999" maxlength="3" />
                                         </div>
                                     </div>
                                 </fieldset>

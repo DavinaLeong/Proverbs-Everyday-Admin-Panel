@@ -68,6 +68,17 @@ class Translation_model extends CI_Model
         }
     }
 
+    public function get_all_published_abbr()
+    {
+        $translations = $this->get_all_published();
+        $abbrs = array();
+        foreach($translations as $translation)
+        {
+            $abbrs[] = $translation['abbr'];
+        }
+        return $abbrs;
+    }
+
     public function insert($translation=FALSE)
     {
         if($translation !== FALSE)

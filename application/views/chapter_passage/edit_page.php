@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <?php $this->load->view('_snippets/meta'); ?>
     <?php $this->load->view('_snippets/head_resources'); ?>
-    <link href="<?=RESOURCES_FOLDER;?>pe/dist/styles_parsley.min.css" rel="stylesheet" type="text/css">
+    <link href="<?=RESOURCES_FOLDER;?>pe/dist/css/styles_parsley.min.css" rel="stylesheet" type="text/css">
 
     <?php $this->load->view('_snippets/body_resources'); ?>
     <script src="<?=RESOURCES_FOLDER;?>vendor/parsleyjs/parsley.min.js"></script>
@@ -35,7 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="page-wrapper">
         <div class="container-fluid">
             <ol class="breadcrumb">
-                <li><a href="<?=site_url();?>">Home</a></li>
+                <li><a href="<?=site_url('authenticate/start');?>">Home</a></li>
                 <li><a href="<?=site_url('chapter_passage/browse_chapter_passage');?>">Chapter Passages</a></li>
                 <li><a href="<?=site_url('chapter_passage/view_chapter_passage/' . $chapter_passage['cp_id']);?>">Chapter Passage ID: <?=$chapter_passage['cp_id'];?></a></li>
                 <li class="active">Edit Chapter Passage</li>

@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <link href="<?=RESOURCES_FOLDER;?>vendor/sb-admin-2/dist/css/sb-admin-2.min.css" rel="stylesheet" />
 
 <!-- Proverbs Everyday Admin CSS -->
-<link href="<?=RESOURCES_FOLDER;?>pe/dist/styles_admin_main.min.css" rel="stylesheet" />
+<link href="<?=RESOURCES_FOLDER;?>pe/dist/css/styles_admin_main.min.css" rel="stylesheet" />
 
 <!-- Font Awesome Icons -->
 <link href="<?=RESOURCES_FOLDER;?>vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />

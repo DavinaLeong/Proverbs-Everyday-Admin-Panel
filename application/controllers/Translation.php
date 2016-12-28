@@ -15,7 +15,8 @@ class Translation extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-        $this->load->model('Translation_model');
+		$this->load->model('Translation_model');
+        $this->load->model('Chapter_model');
 	}
 
     public function index()
@@ -199,5 +200,5 @@ class Translation extends CI_Controller
         $this->session->set_userdata('message', 'Translation record not found');
         redirect('translation/browse_translation');
     }
-	
+
 } // end Translation controller class

@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<?=site_url();?>"><img src="<?=RESOURCES_FOLDER;?>pe/images/openbook_admin_16.png" />&nbsp;&nbsp;<?=SITE_TITLE;?></a>
+        <a class="navbar-brand" href="<?=site_url('authenticate/start');?>"><img src="<?=RESOURCES_FOLDER;?>pe/images/openbook_admin_16.png" />&nbsp;&nbsp;<?=SITE_TITLE;?></a>
     </div>
     <!-- header end -->
 
