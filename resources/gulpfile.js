@@ -48,7 +48,7 @@ gulp.task('clean-css', function()
 	])
 });
 
-gulp.task('minify-css', ['sass'], function()
+gulp.task('minify-css', function()
 {
 	gulp.src(CSS_PATH)
 		.pipe(clean_css({compatibility: 'ie8'}))

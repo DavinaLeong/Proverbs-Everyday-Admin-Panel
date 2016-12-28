@@ -31,6 +31,12 @@ $next_url = site_url('passage/' . $abbr . '/' . $next_chapter_no ). '/';
 <html lang="en">
 <head>
     <?php $this->load->view('page/_snippets/page_head_resources'); ?>
+    <style>
+        #passage > table > tbody > tr > td {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
 <?php $this->load->view('page/_snippets/page_header'); ?>
@@ -42,66 +48,86 @@ $next_url = site_url('passage/' . $abbr . '/' . $next_chapter_no ). '/';
     <p class="date"><?= $this->datetime_helper->today('d M Y'); ?></p>
 
     <table id="passage_table">
+        <tbody>
         <tr>
             <?php if(in_array($display_type, $displays)): ?>
                 <td id="left-chevron" class="col-xs-1 text-center">
                     <a class="chevron-link" href="<?=$prev_url . $display_type;?>"
                        data-toggle="tooltip" title="Chapter <?=$prev_chapter_no;?>">
-                        <span class="hidden-xs"><i class="fa fa-angle-left fa-3x"></i></span>
-                        <span class="visible-xs"><i class="fa fa-angle-left fa-lg"></i></span>
+                        <span class="hidden-xs">
+                            <i class="fa fa-angle-left fa-3x"></i>
+                            <br/>
+                            <strong style="font-size: 12pt;"><?=$prev_chapter_no;?></strong>
+                        </span>
+                        <span class="visible-xs">
+                            <i class="fa fa-angle-left fa-lg"></i>
+                            <br/>
+                            <strong style="font-size: 8pt;"><?=$prev_chapter_no;?></strong>
+                        </span>
                     </a>
                 </td>
                 <td id="passage" class="col-xs-10">
-                    <?php
-                    switch($display_type)
-                    {
-                        case 'paragraph':
-                            if(empty($chapter_passage))
-                            {
-                                echo '<p class="text-center">Passage not found</p>';
-                            }
-                            else
-                            {
-                                echo $chapter_passage['passage'];
-                            }
-                            break;
-
-                        case 'grid':
-                            if(empty($verse_passages))
-                            {
-                                echo '<p class="text-center">Passage not found.</p>';
-                            }
-                            else
-                            {
-                                foreach($verse_passages as $verse_passage)
+                    <table>
+                        <?php
+                        switch($display_type)
+                        {
+                            case 'paragraph':
+                                if(empty($chapter_passage))
                                 {
-                                    ?>
-                                    <div class="row">
-                                        <div class="col-xs-1 text-right"><?=$verse_passage['verse_no'];?></div>
-                                        <div class="col-xs-11"><?=$verse_passage['passage'];?></div>
-                                    </div>
-                                    <?php
+                                    echo '<p class="text-center">Passage not found</p>';
                                 }
-                            }
-                            break;
+                                else
+                                {
+                                    echo $chapter_passage['passage'];
+                                }
+                                break;
 
-                        default:
-                            echo '<p class="text-center">Passage not found.</p>';
-                            break;
-                    }
-                    ?>
+                            case 'grid':
+                                if(empty($verse_passages))
+                                {
+                                    echo '<p class="text-center">Passage not found.</p>';
+                                }
+                                else
+                                {
+                                    foreach($verse_passages as $verse_passage)
+                                    {
+                                        ?>
+                                        <tr>
+                                            <td class="col-xs-1 text-right"><?=$verse_passage['verse_no'];?></td>
+                                            <td class="col-xs-11"><?=$verse_passage['passage'];?></td>
+                                        </tr>
+                                        <?php
+                                    }
+                                }
+                                break;
+
+                            default:
+                                echo '<p class="text-center">Passage not found.</p>';
+                                break;
+                        }
+                        ?>
+                    </table>
                 </td>
                 <td id="right-chevron" class="col-xs-1 text-center">
                     <a class="chevron-link" href="<?=$next_url . $display_type;?>"
                        data-toggle="tooltip" title="Chapter <?=$next_chapter_no;?>">
-                        <span class="hidden-xs"><i class="fa fa-angle-right fa-3x"></i></span>
-                        <span class="visible-xs"><i class="fa fa-angle-right fa-lg"></i></span>
+                        <span class="hidden-xs">
+                            <i class="fa fa-angle-right fa-3x"></i>
+                            <br/>
+                            <strong style="font-size: 12pt;"><?=$next_chapter_no;?></strong>
+                        </span>
+                        <span class="visible-xs">
+                            <i class="fa fa-angle-right fa-lg"></i>
+                            <br/>
+                            <strong style="font-size: 8pt;"><?=$next_chapter_no;?></strong>
+                        </span>
                     </a>
                 </td>
             <?php else: ?>
                 <td id="passage" class="text-center" style="vertical-align: top;"><p>Passage not found.</p></td>
             <?php endif; ?>
         </tr>
+        </tbody>
     </table>
 
 </div>
