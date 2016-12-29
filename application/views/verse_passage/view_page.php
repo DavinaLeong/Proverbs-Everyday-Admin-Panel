@@ -41,6 +41,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <i class="fa fa-gavel fa-fw"></i> Action <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
+                                <?php if($verse_passage['status'] == 'Published'): ?>
+                                    <li><a href="<?=site_url('passage/' . $verse_passage['abbr'] . '/' . $verse_passage['chapter_no'] . '/grid');?>" target="_blank"><i class="fa fa-eye fa-fw"></i> Preview</a></li>
+                                <?php endif; ?>
                                 <li><a href="<?=site_url('verse_passage/edit_verse_passage/' . $verse_passage['vp_id']);?>"><i class="fa fa-pencil-square-o fa-fw"></i> Edit</a></li>
                                 <li><a class="clickable" data-toggle="modal" data-target="#delete_modal"><i class="fa fa-trash-o fa-fw"></i> Delete</a></li>
                             </ul>
