@@ -68,6 +68,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label class="col-md-2 control-label">Language</label>
+                                        <div class="col-md-10">
+                                            <p id="language" class="form-control-static"><?=$translation['language'];?></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="col-md-2 control-label">Copyright</label>
                                         <div class="col-md-10">
                                             <div class="well well-sm" style="background: #fff">

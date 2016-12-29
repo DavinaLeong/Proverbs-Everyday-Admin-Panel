@@ -86,6 +86,7 @@ class Translation_model extends CI_Model
             $temp_array = array(
                 'name' => $translation['name'],
                 'abbr' => $translation['abbr'],
+                'language' => $translation['language'],
                 'copyright' => $translation['copyright'],
                 'status' => $translation['status']
             );
@@ -109,6 +110,7 @@ class Translation_model extends CI_Model
             $temp_array = array(
                 'name' => $translation['name'],
                 'abbr' => $translation['abbr'],
+                'language' => $translation['language'],
                 'copyright' => $translation['copyright'],
                 'status' => $translation['status']
             );
@@ -140,6 +142,13 @@ class Translation_model extends CI_Model
     public function _fields_list()
     {
         return $this->db->list_fields(TABLE_TRANSLATION);
+    }
+
+    public function _language_array()
+    {
+        return array(
+            'English'
+        );
     }
 
     public function _status_array()
