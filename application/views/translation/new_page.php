@@ -12,6 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 ***********************************************************************************/
 /**
+ * @var $language_options
  * @var $status_options
  */
 ?><!DOCTYPE html>
@@ -50,14 +51,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <label class="col-md-2 control-label" for="name">Name <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="text" id="name" name="name"
-                                                   value="<?=set_value('name');?> " required maxlength="512" />
+                                                   value="<?=set_value('name');?>" required maxlength="512" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-2 control-label" for="abbr">Abbr. <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="text" id="abbr" name="abbr"
-                                                   value="<?=set_value('abbr');?> " required maxlength="512" />
+                                                   value="<?=set_value('abbr');?>" required maxlength="512" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label" for="language">Language</label>
+                                        <div class="col-md-10">
+                                            <select class="form-control" id="language" name="language" required>
+                                                <option id="language_0" value="">-- Select Language --</option>
+                                                <?php foreach($language_options as $key=>$option): ?>
+                                                    <option id="language_<?=$key+1;?>" value="<?=$option;?>" <?=set_select('language', $option); ?>><?=$option;?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
