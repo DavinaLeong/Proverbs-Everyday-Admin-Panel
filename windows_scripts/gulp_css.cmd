@@ -1,5 +1,7 @@
 cd ../resources
 
-call gulp update-css
+call gulp sass
+
+call gulp minify-css
 
 cd ../windows_scripts

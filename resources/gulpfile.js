@@ -29,7 +29,7 @@ const CSS_PATH = "./pe/src/css/**/*.css";
 const COMPILED_CSS_PATH = "./pe/dist/css";
 
 
-gulp.task('default', ['update-vendor', 'update-css', 'watch']);
+gulp.task('default', ['watch', 'update-vendor', 'update-css']);
 
 gulp.task('watch', function()
 {
