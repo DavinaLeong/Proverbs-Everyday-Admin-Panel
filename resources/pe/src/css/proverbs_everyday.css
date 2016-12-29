@@ -112,12 +112,11 @@ h6 {
   font-family: "Titillium Web", Calibri, Arial, sans-serif; }
 
 #passage_table {
-    min-height: 440px; }
-
-#passage_table #passage {
-  color: #000f88;
-  font-family: "Handlee", Calibri, Arial, sans-serif;
-  font-size: 12pt; }
+  min-height: 500px; }
+  #passage_table #passage {
+    color: #000f88;
+    font-family: "Handlee", Calibri, Arial, sans-serif;
+    font-size: 12pt; }
 
 a, a:link, a:active, a:focus, a:visited {
   color: #816c5b;
@@ -131,15 +130,13 @@ a, a:link, a:active, a:focus, a:visited {
   cursor: default; }
 
 .chevron-link {
-	position: fixed;
-	top: 55%; }
-
-.chevron-link .chapter-no {
-	font-family: "Arapey", "Cambria", Georgia, "Times New Roman", "Times", sans-serif;
-	font-size: 12pt; }
-
-.chevron-link .chapter-no .chapter-no-xs {
-	font-size: 8pt; }
+  position: fixed;
+  top: 55%; }
+  .chevron-link .chapter-no {
+    font-family: "Titillium Web", Calibri, Arial, sans-serif;
+    font-size: 12pt; }
+    .chevron-link .chapter-no .chapter-no-xs {
+      font-size: 8pt; }
 
 .date {
   padding-left: 20px;
@@ -148,8 +145,7 @@ a, a:link, a:active, a:focus, a:visited {
   font-size: 10pt; }
 
 table {
-    width: 100%;
-}
+  width: 100%; }
 
 footer {
   margin-top: 50px;

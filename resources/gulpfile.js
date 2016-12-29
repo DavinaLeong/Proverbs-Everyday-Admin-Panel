@@ -23,18 +23,22 @@ var del = require('del');
 const NODE_PATH = './node_modules/';
 const VENDOR_PATH = './vendor/';
 
-const SASS_PATH = "./pe/src/sass/proverbs_everyday.scss";
-const COMPILED_SASS_PATH = "./pe/src/css";
-const CSS_PATH = "./pe/src/css/**/*.css";
-const COMPILED_CSS_PATH = "./pe/dist/css";
+const SASS_PATH = './pe/src/sass/proverbs_everyday.scss';
+const COMPILED_SASS_PATH = './pe/src/css';
+const CSS_PATH = './pe/src/css/**/*.css';
+const COMPILED_CSS_PATH = './pe/dist/css';
+
+const JS_PATH = './pe/src/js/**/*.js';
+const COMPILED_JS_PATH = './pe/dist/js';
 
 
-gulp.task('default', ['watch', 'update-vendor', 'update-css']);
+gulp.task('default', ['watch']);
 
-gulp.task('watch', function()
+gulp.task('watch', ['update-vendor', 'update-css', 'js'], function()
 {
 	gulp.watch(SASS_PATH, ['sass']);
 	gulp.watch(CSS_PATH, ['minify-css']);
+	gulp.watch(JS_PATH, ['js']);
 });
 
 // === manage styles started ===
@@ -67,6 +71,21 @@ gulp.task('sass', function()
 		.pipe(gulp.dest(COMPILED_SASS_PATH));
 });
 // === manage styles end ===
+
+// === manage scripts start ===
+gulp.task('js', function()
+{
+	gulp.src(JS_PATH)
+		.pipe(plumber({errorHandler: function(err)
+		{
+			console.log(err);
+		}}))
+		.pipe(uglify())
+		.pipe(rename({suffix: '.min'}))
+		.pipe(debug({title: 'js_path'}))
+		.pipe(gulp.dest(COMPILED_JS_PATH));
+});
+// === manage scripts end ===
 
 // === manage vendor resources started ===
 gulp.task('update-vendor', ['clean-vendor', 'copy-vendor']);

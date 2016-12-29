@@ -52,8 +52,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </fieldset>
                     </form>
                 </div>
-                <div class="panel-footer text-right text-muted text-italic">
-                    <small><?=SITE_TITLE;?> &#8226; <?= $this->datetime_helper->today('Y'); ?></small>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-4"><button class="btn-invisible" onclick="fillLoginForm();">&nbsp;</button></div>
+                        <div class="col-md-8 text-right text-muted"><small><?=SITE_TITLE;?> &#8226; <?= $this->datetime_helper->today('Y'); ?></small></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -61,5 +64,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <?php $this->load->view('_snippets/body_resources'); ?>
 <script src="<?=RESOURCES_FOLDER;?>vendor/parsleyjs/parsley.min.js"></script>
+<script src="<?=RESOURCES_FOLDER;?>pe/dist/js/admin_login.min.js"></script>
 </body>
 </html>
