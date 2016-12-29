@@ -1,28 +1,29 @@
 {
-  "name": "script_generator",
+  "name": "proverbs_everyday",
   "version": "1.0.0",
-  "description": "Script generator tool",
+  "description": "Proverbs Everyday",
   "main": "../index.php",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://DavinaLSY@bitbucket.org/DavinaLSY/script-generator.git"
+    "url": ""
   },
   "keywords": [
-    "script-generator",
-    "script",
-    "generator"
+    "proverbs-everyday",
+    "proverbs",
+    "everyday"
   ],
   "author": "Davina Leong",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/DavinaLSY/script-generator/index.php",
+  "homepage": "",
   "devDependencies": {
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.2.1",
     "gulp-concat": "^2.6.1",
+    "gulp-debug": "^3.0.0",
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.0.0",

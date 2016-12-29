@@ -10,6 +10,7 @@
 
 ***********************************************************************************/
 var gulp = require('gulp');
+var debug = require('gulp-debug');
 var clean_css = require('gulp-clean-css');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
@@ -53,6 +54,7 @@ gulp.task('minify-css', function()
 	gulp.src(CSS_PATH)
 		.pipe(clean_css({compatibility: 'ie8'}))
 		.pipe(rename({suffix: '.min'}))
+        .pipe(debug({title: 'css_path'}))
 		.pipe(gulp.dest(COMPILED_CSS_PATH));
 });
 
@@ -60,6 +62,7 @@ gulp.task('sass', function()
 {
 	gulp.src(SASS_PATH)
 		.pipe(sass().on('error', sass.logError))
+        .pipe(debug({title: 'sass_path'}))
 		.pipe(gulp.dest(CSS_PATH));
 });
 // === manage styles end ===
