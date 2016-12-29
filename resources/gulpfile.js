@@ -24,6 +24,7 @@ const NODE_PATH = './node_modules/';
 const VENDOR_PATH = './vendor/';
 
 const SASS_PATH = "./pe/src/sass/proverbs_everyday.scss";
+const COMPILED_SASS_PATH = "./pe/src/css";
 const CSS_PATH = "./pe/src/css/**/*.css";
 const COMPILED_CSS_PATH = "./pe/dist/css";
 
@@ -49,7 +50,7 @@ gulp.task('clean-css', function()
 	])
 });
 
-gulp.task('minify-css', function()
+gulp.task('minify-css', ['sass'], function()
 {
 	gulp.src(CSS_PATH)
 		.pipe(clean_css({compatibility: 'ie8'}))
@@ -63,7 +64,7 @@ gulp.task('sass', function()
 	gulp.src(SASS_PATH)
 		.pipe(sass().on('error', sass.logError))
         .pipe(debug({title: 'sass_path'}))
-		.pipe(gulp.dest(CSS_PATH));
+		.pipe(gulp.dest(COMPILED_SASS_PATH));
 });
 // === manage styles end ===
 
@@ -73,69 +74,59 @@ gulp.task('update-vendor', ['clean-vendor', 'copy-vendor']);
 gulp.task('copy-vendor', function()
 {
 	// --- jQuery ---
-	gulp.src([
-		NODE_PATH + 'jquery/dist/jquery.min.js'
-	]).pipe(gulp.dest(VENDOR_PATH + 'jquery'));
+	gulp.src(NODE_PATH + 'jquery/dist/jquery.min.js')
+        .pipe(debug({title: 'jquery js'}))
+        .pipe(gulp.dest(VENDOR_PATH + 'jquery'));
 	console.log('~ copied jQuery files.');
 
 
 	// --- Twitter Bootstrap ---
-	gulp.src([
-		NODE_PATH + 'bootstrap/dist/css/bootstrap.min.css'
-	]).pipe(gulp.dest(VENDOR_PATH + 'bootstrap/css'));
-	gulp.src([
-		NODE_PATH + 'bootstrap/dist/js/bootstrap.min.js'
-	]).pipe(gulp.dest(VENDOR_PATH + 'bootstrap/js'));
-	gulp.src([
-		NODE_PATH + 'bootstrap/dist/fonts'
-	]).pipe(gulp.dest(VENDOR_PATH + 'bootstrap/fonts'));
+	gulp.src(NODE_PATH + 'bootstrap/dist/css/bootstrap.min.css')
+        .pipe(debug({title: 'bootstrap css'}))
+        .pipe(gulp.dest(VENDOR_PATH + 'bootstrap/css'));
+	gulp.src(NODE_PATH + 'bootstrap/dist/js/bootstrap.min.js')
+        .pipe(debug({title: 'bootstrap js'}))
+        .pipe(gulp.dest(VENDOR_PATH + 'bootstrap/js'));
+	gulp.src(NODE_PATH + 'bootstrap/dist/fonts')
+        .pipe(debug({title: 'bootstrap fonts'}))
+        .pipe(gulp.dest(VENDOR_PATH + 'bootstrap/fonts'));
 	console.log('~ copied Bootstrap files.');
 
 
 	// --- Font-Awesome ---
-	gulp.src([
-		NODE_PATH + 'font-awesome/css/font-awesome.min.css'
-	]).pipe(gulp.dest(VENDOR_PATH + 'font-awesome/css'));
-	gulp.src([
-		NODE_PATH + 'font-awesome/fonts/**'
-	]).pipe(gulp.dest(VENDOR_PATH + 'font-awesome/fonts'));
+	gulp.src(NODE_PATH + 'font-awesome/css/font-awesome.min.css')
+        .pipe(debug({title: 'font-awesome css'}))
+        .pipe(gulp.dest(VENDOR_PATH + 'font-awesome/css'));
+	gulp.src(NODE_PATH + 'font-awesome/fonts/**')
+        .pipe(debug({title: 'font-awesome fonts'}))
+        .pipe(gulp.dest(VENDOR_PATH + 'font-awesome/fonts'));
 	console.log('~ copied Font Awesome files.');
 
 
 	// --- SB Admin 2 ---
-	gulp.src([
-		NODE_PATH + 'sb-admin-2/dist/css/sb-admin-2.min.css'
-	]).pipe(gulp.dest(VENDOR_PATH + 'sb-admin-2/dist/css'));
-	gulp.src([
-		NODE_PATH + 'sb-admin-2/dist/js/sb-admin-2.min.js'
-	]).pipe(gulp.dest(VENDOR_PATH + 'sb-admin-2/dist/js'));
-	gulp.src([
-		NODE_PATH + 'sb-admin-2/vendor/datatables*/**'
-	]).pipe(gulp.dest(VENDOR_PATH + 'sb-admin-2/vendor'));
-	gulp.src([
-		NODE_PATH + 'sb-admin-2/vendor/metisMenu/**'
-	]).pipe(gulp.dest(VENDOR_PATH + 'sb-admin-2/vendor/metisMenu'));
+	gulp.src(NODE_PATH + 'sb-admin-2/dist/css/sb-admin-2.min.css')
+        .pipe(debug({title: 'sd-admin-2 css'}))
+        .pipe(gulp.dest(VENDOR_PATH + 'sb-admin-2/dist/css'));
+	gulp.src(NODE_PATH + 'sb-admin-2/dist/js/sb-admin-2.min.js')
+        .pipe(debug({title: 'ab-admin-2 js'}))
+        .pipe(gulp.dest(VENDOR_PATH + 'sb-admin-2/dist/js'));
+	gulp.src(NODE_PATH + 'sb-admin-2/vendor/datatables*/**')
+        .pipe(debug({title: 'ab-admin-2 datatables'}))
+        .pipe(gulp.dest(VENDOR_PATH + 'sb-admin-2/vendor'));
+	gulp.src(NODE_PATH + 'sb-admin-2/vendor/metisMenu/**')
+        .pipe(debug({title: 'ab-admin-2 metis-menu'}))
+        .pipe(gulp.dest(VENDOR_PATH + 'sb-admin-2/vendor/metisMenu'));
 	console.log('~ copied SB Admin 2 files.');
 
 
 	// --- ParsleyJS ---
 	gulp.src([
-		NODE_PATH + 'parsleyjs/dist/parsley.min.js',
-		NODE_PATH + 'parsleyjs/dist/parsley.min.js.map'
-	]).pipe(gulp.dest(VENDOR_PATH + 'parsleyjs'));
+            NODE_PATH + 'parsleyjs/dist/parsley.min.js',
+            NODE_PATH + 'parsleyjs/dist/parsley.min.js.map'
+        ])
+        .pipe(debug({title: 'parsley js'}))
+        .pipe(gulp.dest(VENDOR_PATH + 'parsleyjs'));
 	console.log('~ copied ParsleyJs files.');
-
-
-	// --- React ---
-	gulp.src(NODE_PATH + 'react/dist/**/*.*')
-		.pipe(gulp.dest(VENDOR_PATH + 'react'));
-	console.log('~ copied React files.');
-
-
-	// --- ReactDOM ---
-	gulp.src(NODE_PATH + 'react-dom/dist/**/*.*')
-		.pipe(gulp.dest(VENDOR_PATH + 'react-dom'));
-	console.log('~ copied ReactDOM files.');
 });
 
 gulp.task('clean-vendor', function()
@@ -146,8 +137,6 @@ gulp.task('clean-vendor', function()
 		VENDOR_PATH + 'jquery/**',
 		VENDOR_PATH + 'parsleyjs/**',
 		VENDOR_PATH + 'sb-admin-2/**',
-		VENDOR_PATH + 'react/**',
-		VENDOR_PATH + 'react-dom/**',
 		'!' + VENDOR_PATH
 	]);
 });
