@@ -45,15 +45,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <input class="form-control" id="username" name="username" type="text" placeholder="Username" required autofocus />
                             </div>
                             <div class="form-group">
-                                <input class="form-control" id="password" name="password" type="password" required />
+                                <input class="form-control" id="password" name="password" type="password" placeholder="Password" required />
                             </div>
                             <!-- Change this to a button or input when using this as a form -->
                             <button class="btn btn-lg btn-primary btn-block" id="submit_btn" type="submit">Login</button>
                         </fieldset>
                     </form>
                 </div>
-                <div class="panel-footer text-right text-muted text-italic">
-                    <small><?=SITE_TITLE;?> &#8226; <?= $this->datetime_helper->today('Y'); ?></small>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-6"><small><a href="<?=site_url('page/');?>" target="_blank">Today's Proverb</a></small></div>
+                        <div class="col-md-6 text-right text-muted"><small><?=SITE_TITLE;?> &#8226; <?= $this->datetime_helper->today('Y'); ?></small></div>
+                    </div>
                 </div>
             </div>
         </div>

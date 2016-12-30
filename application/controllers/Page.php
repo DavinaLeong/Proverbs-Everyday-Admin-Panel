@@ -19,8 +19,7 @@ class Page extends CI_Controller
 
 	public function index()
 	{
-		//redirect('passage/KJV/' . $this->datetime_helper->today('j') . '/paragraph');
-		redirect('passage/KJV/1/paragraph');
+		redirect('passage/KJV/' . $this->datetime_helper->today('j') . '/paragraph');
 	}
 
 	public function passage($abbr, $chapter_no, $display_type='paragraph')

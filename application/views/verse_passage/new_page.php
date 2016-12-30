@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <option id="translation_id_0" value="">-- Select Translation --</option>
                                                 <?php foreach($translations as $key=>$translation): ?>
                                                     <option id="translation_id_<?=$key+1;?>" value="<?=$translation['translation_id'];?>" <?=set_select('translation_id', $translation['translation_id']); ?>>
-                                                        <?= $translation['name']; ?> (<?=$translation['abbr'];?>)
+                                                        <?=$translation['name'];?> (<?=$translation['abbr'];?>)
                                                     </option>
                                                 <?php endforeach; ?>
                                             </select>
@@ -76,7 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <label class="col-md-2 control-label" for="verse_no">Verse Number <span class="text-danger">*</span></label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="text" id="verse_no" name="verse_no"
-                                                   value="<?=set_value('verse_no');?> " required
+                                                   value="<?=set_value('verse_no');?>" required
                                                    data-parsley-type="digits" min="1" max="9999" maxlength="4" />
                                         </div>
                                     </div>
