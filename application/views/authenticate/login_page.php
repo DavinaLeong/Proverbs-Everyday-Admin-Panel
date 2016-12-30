@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <input class="form-control" id="username" name="username" type="text" placeholder="Username" required autofocus />
                             </div>
                             <div class="form-group">
-                                <input class="form-control" id="password" name="password" type="password" required />
+                                <input class="form-control" id="password" name="password" type="password" placeholder="Password" required />
                             </div>
                             <!-- Change this to a button or input when using this as a form -->
                             <button class="btn btn-lg btn-primary btn-block" id="submit_btn" type="submit">Login</button>
