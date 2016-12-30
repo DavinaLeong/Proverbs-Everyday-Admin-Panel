@@ -226,7 +226,7 @@ class Chapter_passage extends CI_Controller
         if($this->Chapter_passage_model->get_by_chapter_id_and_translation_id($chapter_id,
             $this->input->post('translation_id')))
         {
-            $this->form_validation->set_message('check_chapter_id', 'Selected {field} is taken for this Translation. Pick another value.');
+            $this->form_validation->set_message('check_chapter_id', 'Selected {field} is taken for this Translation. Pick another Translation or Chapter.');
             return FALSE;
         }
         else

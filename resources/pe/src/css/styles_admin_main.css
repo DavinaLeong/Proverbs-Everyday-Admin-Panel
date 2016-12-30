@@ -34,9 +34,9 @@
     overflow: auto;
 }
 
-.btn-invisible {
-    display: block;
-    width: 100%;
+.link-invisible {
+    display: inline-block;
+    width: 40px;
     height: 100%;
 
     border: none;

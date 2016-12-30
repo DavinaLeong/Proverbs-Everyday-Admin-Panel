@@ -9,8 +9,25 @@
 		Mobile	: (+65) 9369 3752 [Singapore]
 
 ***********************************************************************************/
+var $username = null;
+var $password = null;
+
+function init()
+{
+	$username = $('#username');
+	$password = $('#password');
+}
+
 function fillLoginForm()
 {
-    $('#username').val('admin');
-    $('#password').val('prov2229');
+	init();
+    $username.val('admin');
+    $password.val('prov2229');
+}
+
+function clearLoginForm()
+{
+	init();
+	$username.val('');
+	$password.val('');
 }
