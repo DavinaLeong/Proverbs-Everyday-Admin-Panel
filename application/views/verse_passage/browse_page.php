@@ -107,7 +107,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $('#verse_passages_table').DataTable({
             responsive: true,
             order: [[0, "asc"]],
-            pageLength: 25
+            pageLength: 50
         });
     });
 </script>

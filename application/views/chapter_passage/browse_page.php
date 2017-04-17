@@ -104,7 +104,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     $(document).ready(function() {
         $('#chapter_passages_table').DataTable({
             responsive: true,
-            order: [[0, "asc"]]
+            order: [[0, "asc"]],
+            pageLength: 25
         });
     });
 </script>
