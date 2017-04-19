@@ -33,6 +33,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </a>
             <ul class="dropdown-menu dropdown-user">
                 <li><a href="<?=site_url('authenticate/logout');?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+                <li class="divider"></li>
+                <li><a href="<?=site_url('export');?>"><i class="fa fa-download fa-fw"></i> Export</a></li>
             </ul>
         </li>
     </ul>
