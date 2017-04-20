@@ -2,7 +2,7 @@
 	"name": "King James Version",
 	"abbr": "KJV",
 	"copyright": "Public Domain",
-	chapters: [
+	"chapters": [
 		{
 			"paragraph": "<p>1 The proverbs of Solomon ...",
 			"grid": [
@@ -16,6 +16,6 @@
 				"My son, if thou wilt ...",
 				"So that thou incline thou ..."
 			]
-		},
+		}
 	]
 }
