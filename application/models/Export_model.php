@@ -62,7 +62,7 @@ class Export_model extends CI_Model
             $query = $this->db->get();
             if($query->row_array() && array_key_exists('passage', $query->row_array()))
             {
-                return $query->row_array()['passage'];
+                return $query->row_array();
             }
             else
             {
