@@ -43,6 +43,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </ul>
 
                             <h2>Module Status</h2>
+                            <h4>
+                                <span class="label label-success"><i class="fa fa-check fa-fw"></i> Done</span>&nbsp;
+                                <span class="label label-warning"><i class="fa fa-minus fa-fw"></i> Work in progress</span>&nbsp;
+                                <span class="label label-danger"><i class="fa fa-times fa-fw"></i> Not Started</span>
+                            </h4>
+                            <br/>
                             <ul class="list-group">
                                 <li class="list-group-item list-group-item-success">
                                     <i class="fa fa-check fa-fw"></i> Translation Module
@@ -55,6 +61,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </li>
                                 <li class="list-group-item list-group-item-success">
                                     <i class="fa fa-check fa-fw"></i> Chapter Passage Module
+                                </li>
+                                <li class="list-group-item list-group-item-success">
+                                    <i class="fa fa-check fa-fw"></i> Export Module
                                 </li>
                             </ul>
 
