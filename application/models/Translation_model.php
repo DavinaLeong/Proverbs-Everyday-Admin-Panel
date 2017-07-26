@@ -44,6 +44,17 @@ class Translation_model extends CI_Model
         }
     }
 
+    public function get_all_translation_ids()
+    {
+        $translations = $this->get_all();
+        $ids_array = array();
+        foreach($translations as $translation)
+        {
+            $ids_array[] = $translation['translation_id'];
+        }
+        return $ids_array;
+    }
+
     public function get_published_translation_ids()
     {
         $translations = $this->get_all_published();

@@ -101,6 +101,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </ul>
                 </li>
                 <li>
+                    <a href="<?=site_url();?>find_passage"><i class="fa fa-search fa-fw"></i> Find Passage</a>
+                </li>
+                <li>
                     <a href="<?=site_url();?>passage/kjv/1/paragraph" target="_blank"><i class="fa fa-globe fa-fw"></i> Sample Passage</a>
                 </li>
             </ul>

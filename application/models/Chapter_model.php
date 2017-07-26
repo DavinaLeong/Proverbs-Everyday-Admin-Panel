@@ -44,6 +44,17 @@ class Chapter_model extends CI_Model
         }
     }
 
+    public function get_all_chapter_ids()
+    {
+        $chapters = $this->get_all();
+        $ids_array = array();
+        foreach($chapters as $chapter)
+        {
+            $ids_array[] = $chapter['chapter_id'];
+        }
+        return $ids_array;
+    }
+
     public function get_published_chapter_ids()
     {
         $chapters = $this->get_all_published();

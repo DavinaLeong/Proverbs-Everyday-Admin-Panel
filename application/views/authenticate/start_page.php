@@ -30,6 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div id="content-wrapper" class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Welcome to <?=SITE_TITLE;?></h1>
+                    <?php $this->load->view('_snippets/message_box'); ?>
 
                     <div class="row">
                         <div class="col-md-11">

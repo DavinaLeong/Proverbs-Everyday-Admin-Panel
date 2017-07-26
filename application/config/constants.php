@@ -97,3 +97,6 @@ define('TABLE_TRANSLATION', 'translation');
 define('TABLE_CHAPTER', 'chapter');
 define('TABLE_CHAPTER_PASSAGE', 'chapter_passage');
 define('TABLE_VERSE_PASSAGE', 'verse_passage');
+
+define('SEARCHED_TRANSLATION_ID_KEY', 'searched_translation_id');
+define('SEARCHED_CHAPTER_ID_KEY', 'searched_chapter_id');
