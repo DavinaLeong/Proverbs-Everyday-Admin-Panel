@@ -100,6 +100,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="<?=site_url();?>passage/kjv/1/paragraph" target="_blank"><i class="fa fa-globe fa-fw"></i> Sample Passage</a>
+                </li>
             </ul>
         </div>
     </div>
